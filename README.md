@@ -1,5 +1,5 @@
 # ParkingAdvisor
-<img src="C:\Users\Zack\Desktop\Logo.png" style="zoom:50%" />
+<img src="images/Logo.png" style="zoom:50%" />
 
 
 
