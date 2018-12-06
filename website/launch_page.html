@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ParkingAdvisor</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  		<link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" />
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link href="https://cdn.jsdelivr.net/bootstrap.timepicker/0.2.6/css/bootstrap-timepicker.min.css" rel="stylesheet" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="https://cdn.jsdelivr.net/bootstrap.timepicker/0.2.6/js/bootstrap-timepicker.min.js"></script>
+
+        <!-- Load Leaflet from CDN-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+
+        <!-- Load Esri Leaflet from CDN -->
+        <script src="https://unpkg.com/esri-leaflet@2.2.3/dist/esri-leaflet.js"></script>
+
+        <!-- Esri Leaflet Geocoder -->
+        <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.2.13/dist/esri-leaflet-geocoder.css">
+        <script src="https://unpkg.com/esri-leaflet-geocoder@2.2.13/dist/esri-leaflet-geocoder.js"></script>
+
+        <script src="js/L.Control.Sidebar.js"></script>
+        <link rel="stylesheet" href="css/L.Control.Sidebar.css">
+        <script src="js/jquery.cookie.js"></script>
+</head>
+<style>
+body{
+	height: 100%;
+}
+.navigator{
+	background-color: white;
+	color:#1B5C99;
+	margin: 0px;
+	padding: 2px;
+	overflow: hidden;
+	position: fixed;
+	width: 100%;
+	z-index: 5;
+	box-shadow: 3px 3px 8px #888888;
+
+}
+
+.navigator img{
+	width:250px;
+}
+
+.navigator a {
+	text-decoration: none;
+	float: right;
+	text-align:center;
+	padding: 13px 20px;
+	font-size: 28px;
+	font-family:Times New Roman;
+	top:100px;
+}
+.navigator a:hover {
+	background-color: #1B5C99;
+	color:white;
+}
+
+.mapdiv{
+    position: relative;
+	margin-left: 0;
+    margin-right: 0;
+    margin-top: 6%;
+    width: 100%;
+	height: 575px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    float:left;
+}
+
+.userinput{
+	float:right;
+	right:300px;
+	height:100px;
+	width:400px;
+	background-color: white;
+	padding-top: 150px;
+}
+
+.form-horizontal{
+
+}
+
+.formtext{
+	margin-bottom:0;
+	vertical-align:middle;
+	margin-bottom:15px;
+	display:inline-block;
+	margin-bottom:0;
+	vertical-align:middle;
+	margin-right:-15px;
+	margin-left:-15px;
+	display:inline-block;
+}
+
+.control_label{
+	margin-bottom:0;
+	vertical-align:middle;
+	text-align:right;
+	padding-top:11px;
+	font-size:18px;
+	position:relative;
+	min-height:1px;
+	padding-right:15px;
+	padding-left:15px;
+	float:right;
+	width:16.66666667%;
+}
+
+.infotext{
+	float: left;
+	padding-left: 10px;
+	padding-top: 20px;
+	font-family: Times New Roman;
+	font-size: 20px;
+}
+
+
+.col-sm-10{
+	position:relative;
+	min-height:1px;
+	padding-right:15px;
+	padding-left:15px;
+	float:right;
+	width:90%;
+	float:left;
+	left:10px;
+
+
+}
+
+.pageoutput{
+	float: right;
+}
+
+.icon-chevron-up{
+	background-position:-288px -120px;
+}
+.icon-chevron-down{
+	background-position:-313px -119px;
+}
+
+
+
+.checkbox{
+	position:relative;
+	display:block;
+	margin-top:10px;
+	margin-bottom:10px;
+	float: left;
+	left:-35px;
+	width:180px;
+
+
+}
+.footer{
+	background-color: #2C5C94;
+	height: 44px;
+	background-position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed; 
+    left:0px;
+    bottom:0px;
+    width:100%;
+}
+</style>
+<body>
+
+<nav>
+	<div class="navigator navbar-collapse">
+		<div id="nav">
+
+			<img class="img" id="nav_img" src="images/homepage/u41.png"/>
+			<a class="js-scroll-trigger" href="Homepage.html#members"><b>Members</b></a>
+			<a class="js-scroll-trigger" href="Homepage.html#features"><b>Features</b></a>
+			<a class="js-scroll-trigger" href="Homepage.html"><b>About</b></a>
+		</div>
+	</div>
+</nav>
+
+	<div>
+		<div id="map" class="mapdiv"></div>
+        <div id="sidebar">
+            <h1></h1>
+        </div>
+	</div>
+
+<div class="footer">
+	<p style="text-align: center;font-size: 30px;color: white;padding-top: 0px">ParkingAdvisor</p>
+	</div>
+</body>
+<script>
+
+        var map = L.map('map').setView([47.6062, -122.3321], 10);
+        var tiles = L.esri.basemapLayer("Gray").addTo(map);
+
+        // add a sidebar
+        var sidebar = L.control.sidebar('sidebar', {
+            closeButton: false,
+            position: 'right'
+        });
+        map.addControl(sidebar);
+
+        // create the geocoding control and add it to the map
+        var searchControl = L.esri.Geocoding.geosearch().addTo(map);
+
+        // create an empty layer group to store the results and add it to the map
+        var results = L.layerGroup().addTo(map);
+        // listen for the results event and add every result to the map
+        searchControl.on("results", function(data) {
+
+            results.clearLayers();
+            for (var i = data.results.length - 1; i >= 0; i--) {
+                var gis = data.results[i].latlng;
+                // console.log(gis);
+                results.addLayer(L.marker(data.results[i].latlng).on('click', function (gis) {
+                sidebar.toggle();
+
+                $.ajax({
+                type: "POST",
+                data: JSON.stringify({
+                    'gis_lat': gis.latlng.lat,
+                    'gis_lon': gis.latlng.lng
+                }),
+                headers: { "X-CSRFToken":$.cookie('csrftoken') },
+                contentType: "application/json",
+                success: function (gis_data) {
+                    alert(gis_data);
+                },
+                });
+
+            }));
+            }
+        });
+
+        // var inBounds = [];
+        // sidebar.setContent(inBounds.join(''));
+        map.on('click', function () {
+            sidebar.hide();
+        })
+
+
+
+
+
+</script>
+</html>
