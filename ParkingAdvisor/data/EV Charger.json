@@ -1,0 +1,5157 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "1",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Seattle-Tacoma International Airport - General Parking",
+        "Street Address": "17801 Pacific Hwy S",
+        "City": "Seattle",
+        "ZIP": 98188,
+        "Station Phone": "206-433-5308",
+        "EV Level1 EVSE Num": 36.0,
+        "EV Level2 EVSE Num": null,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "NEMA520",
+        "Latitude": 47.443377000000005,
+        "Longitude": -122.296229,
+        "NEMA520": true,
+        "J1772": false,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": true,
+        "Level 2": false,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.296229,
+          47.443377000000005
+        ]
+      }
+    },
+    {
+      "id": "47",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Rainbow Parking - Seattle Metropolitan Credit Union",
+        "Street Address": "214 Columbia St",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "206-682-2991",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.604115,
+        "Longitude": -122.332907,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.332907,
+          47.604115
+        ]
+      }
+    },
+    {
+      "id": "69",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "MADISON MARQUET",
+        "Street Address": "600 Pine St",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 7.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6126,
+        "Longitude": -122.3347,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3347,
+          47.6126
+        ]
+      }
+    },
+    {
+      "id": "70",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Walgreens - Seattle, WA #4898",
+        "Street Address": "6330 35th Ave SW",
+        "City": "Seattle",
+        "ZIP": 98126,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.5454638,
+        "Longitude": -122.3764102,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3764102,
+          47.5454638
+        ]
+      }
+    },
+    {
+      "id": "71",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Walgreens - Seattle, WA #6389",
+        "Street Address": "8500 15th Ave NW, Ste A",
+        "City": "Seattle",
+        "ZIP": 98117,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6906401,
+        "Longitude": -122.37674969999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.37674969999999,
+          47.6906401
+        ]
+      }
+    },
+    {
+      "id": "90",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "City of Seattle - Central Library",
+        "Street Address": "1000 4th Ave",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "206-386-4636",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 3.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.606684,
+        "Longitude": -122.332664,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.332664,
+          47.606684
+        ]
+      }
+    },
+    {
+      "id": "91",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "City of Seattle - Seattle Center",
+        "Street Address": "516 Harrison St",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "206-684-7200",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 9.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.622085,
+        "Longitude": -122.347124,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.347124,
+          47.622085
+        ]
+      }
+    },
+    {
+      "id": "121",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Alexis Hotel",
+        "Street Address": "1007 1st Ave",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "206-624-4844",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.60465,
+        "Longitude": -122.336,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.336,
+          47.60465
+        ]
+      }
+    },
+    {
+      "id": "124",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "KING COUNTY DOT",
+        "Street Address": "201 S Jackson St",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 6.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.59878,
+        "Longitude": -122.33083700000002,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33083700000002,
+          47.59878
+        ]
+      }
+    },
+    {
+      "id": "128",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "CARCHARGING",
+        "Street Address": "1200 Western Ave",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6059837,
+        "Longitude": -122.33874509999998,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33874509999998,
+          47.6059837
+        ]
+      }
+    },
+    {
+      "id": "131",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "BROOKFIELD WEST",
+        "Street Address": "1730 Minor Ave",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.617160299999995,
+        "Longitude": -122.3295135,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3295135,
+          47.617160299999995
+        ]
+      }
+    },
+    {
+      "id": "132",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "BROOKFIELD WEST",
+        "Street Address": "1100 Olive Way",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.616296000000006,
+        "Longitude": -122.33052479999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33052479999999,
+          47.616296000000006
+        ]
+      }
+    },
+    {
+      "id": "140",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "HINES",
+        "Street Address": "202 Westlake Ave N",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 6.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.620041,
+        "Longitude": -122.338071,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.338071,
+          47.620041
+        ]
+      }
+    },
+    {
+      "id": "141",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "STATION",
+        "Street Address": "2010 5th Ave",
+        "City": "Seattle",
+        "ZIP": 98121,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.614087100000006,
+        "Longitude": -122.3395311,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3395311,
+          47.614087100000006
+        ]
+      }
+    },
+    {
+      "id": "147",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "THE NOBLE",
+        "Street Address": "4301 Stone Way N",
+        "City": "Seattle",
+        "ZIP": 98103,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6595352,
+        "Longitude": -122.3425815,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3425815,
+          47.6595352
+        ]
+      }
+    },
+    {
+      "id": "148",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "VIA6",
+        "Street Address": "2121 6th Ave",
+        "City": "Seattle",
+        "ZIP": 98121,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6150446,
+        "Longitude": -122.34035049999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.34035049999999,
+          47.6150446
+        ]
+      }
+    },
+    {
+      "id": "153",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "KING COUNTY DOT",
+        "Street Address": "9105 Fauntleroy Way SW",
+        "City": "Seattle",
+        "ZIP": 98136,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 5.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.522914,
+        "Longitude": -122.393658,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.393658,
+          47.522914
+        ]
+      }
+    },
+    {
+      "id": "154",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "KING COUNTY DOT",
+        "Street Address": "415 6th Ave S",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.602677,
+        "Longitude": -122.327402,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.327402,
+          47.602677
+        ]
+      }
+    },
+    {
+      "id": "155",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "KING COUNTY DOT",
+        "Street Address": "415 Sixth Ave, Seattle",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.603241,
+        "Longitude": -122.3275681,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3275681,
+          47.603241
+        ]
+      }
+    },
+    {
+      "id": "156",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "800 FIFTH AVE",
+        "Street Address": "800 5th Ave",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": 1.0,
+        "EV Level2 EVSE Num": 3.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772 NEMA520",
+        "Latitude": 47.60523,
+        "Longitude": -122.33058999999999,
+        "NEMA520": true,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": true,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33058999999999,
+          47.60523
+        ]
+      }
+    },
+    {
+      "id": "157",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "LYRIC APARTMENT",
+        "Street Address": "215 10th ave E",
+        "City": "Seattle",
+        "ZIP": 98102,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 6.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.620090999999995,
+        "Longitude": -122.319741,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.319741,
+          47.620090999999995
+        ]
+      }
+    },
+    {
+      "id": "160",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Central Co-op",
+        "Street Address": "1600 East Madison Street",
+        "City": "Seattle",
+        "ZIP": 98122,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.615489399999994,
+        "Longitude": -122.31100690000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.31100690000001,
+          47.615489399999994
+        ]
+      }
+    },
+    {
+      "id": "161",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Queen Anne Square",
+        "Street Address": "200 West Mercer Street",
+        "City": "Seattle",
+        "ZIP": 98119,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6246042,
+        "Longitude": -122.3593182,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3593182,
+          47.6246042
+        ]
+      }
+    },
+    {
+      "id": "162",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "101 Elliott",
+        "Street Address": "101 Elliott Avenue West",
+        "City": "Seattle",
+        "ZIP": 98121,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.619075,
+        "Longitude": -122.359573,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.359573,
+          47.619075
+        ]
+      }
+    },
+    {
+      "id": "180",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Level A",
+        "Street Address": "999 Third Avenue, Level A",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6048564,
+        "Longitude": -122.33382859999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33382859999999,
+          47.6048564
+        ]
+      }
+    },
+    {
+      "id": "183",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "1111 THIRD AVE",
+        "Street Address": "1111 3rd Ave",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.606737100000004,
+        "Longitude": -122.3355595,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3355595,
+          47.606737100000004
+        ]
+      }
+    },
+    {
+      "id": "191",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "SCH",
+        "Street Address": "4800 Sand Point Way NE Seattle WA 98105",
+        "City": "Seattle",
+        "ZIP": 98105,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.664356,
+        "Longitude": -122.28303400000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.28303400000001,
+          47.664356
+        ]
+      }
+    },
+    {
+      "id": "195",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "KING COUNTY DOT",
+        "Street Address": "7277 Perimeter Road King County Airport Acrd",
+        "City": "Seattle",
+        "ZIP": 98108,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.536899600000005,
+        "Longitude": -122.3034973,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3034973,
+          47.536899600000005
+        ]
+      }
+    },
+    {
+      "id": "202",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "AMLI SLU",
+        "Street Address": "1250-1282 Republican St",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.623129999999996,
+        "Longitude": -122.3314419,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3314419,
+          47.623129999999996
+        ]
+      }
+    },
+    {
+      "id": "208",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "REO",
+        "Street Address": "1525 14th Ave",
+        "City": "Seattle",
+        "ZIP": 98122,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": null,
+        "EV DC Fast Count": 1.0,
+        "EV Connector Types": "CHADEMO",
+        "Latitude": 47.614911,
+        "Longitude": -122.3144085,
+        "NEMA520": false,
+        "J1772": false,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": false,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3144085,
+          47.614911
+        ]
+      }
+    },
+    {
+      "id": "209",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "UWMC 4245",
+        "Street Address": "4245 Roosevelt Ave NE",
+        "City": "Seattle",
+        "ZIP": 98105,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.658961100000006,
+        "Longitude": -122.3185003,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3185003,
+          47.658961100000006
+        ]
+      }
+    },
+    {
+      "id": "210",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "UWMC 4225",
+        "Street Address": "4225 Roosevelt Way NE",
+        "City": "Seattle",
+        "ZIP": 98105,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6584089,
+        "Longitude": -122.3183925,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3183925,
+          47.6584089
+        ]
+      }
+    },
+    {
+      "id": "217",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Array Apartments",
+        "Street Address": "14027 Lake City Way NE",
+        "City": "Seattle",
+        "ZIP": 98125,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.731273,
+        "Longitude": -122.293062,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.293062,
+          47.731273
+        ]
+      }
+    },
+    {
+      "id": "220",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "CHARGEPOINT",
+        "Street Address": "1400 NW 56th St",
+        "City": "Seattle",
+        "ZIP": 98107,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6695961,
+        "Longitude": -122.3744615,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3744615,
+          47.6695961
+        ]
+      }
+    },
+    {
+      "id": "222",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "BMW SEATTLE",
+        "Street Address": "601-699 S Plummer St",
+        "City": "Seattle",
+        "ZIP": 98134,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.59404179999999,
+        "Longitude": -122.32397730000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.32397730000001,
+          47.59404179999999
+        ]
+      }
+    },
+    {
+      "id": "226",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Market Place Tower",
+        "Street Address": "2025 1st Avenue",
+        "City": "Seattle",
+        "ZIP": 98121,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.611468200000004,
+        "Longitude": -122.3438233,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3438233,
+          47.611468200000004
+        ]
+      }
+    },
+    {
+      "id": "229",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Inn At The Market",
+        "Street Address": "86 Pine Street",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6098122,
+        "Longitude": -122.34130159999998,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.34130159999998,
+          47.6098122
+        ]
+      }
+    },
+    {
+      "id": "230",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "1551 EASTLAKE A",
+        "Street Address": "1551 Eastlake Ave E",
+        "City": "Seattle",
+        "ZIP": 98102,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6337033,
+        "Longitude": -122.32583659999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.32583659999999,
+          47.6337033
+        ]
+      }
+    },
+    {
+      "id": "231",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "901 FIFTH",
+        "Street Address": "901 5th Ave",
+        "City": "Seattle",
+        "ZIP": 98164,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.605816,
+        "Longitude": -122.33197450000002,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33197450000002,
+          47.605816
+        ]
+      }
+    },
+    {
+      "id": "232",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "1616 EASTLAKE",
+        "Street Address": "1616 Eastlake Ave E",
+        "City": "Seattle",
+        "ZIP": 98102,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.63443770000001,
+        "Longitude": -122.3245831,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3245831,
+          47.63443770000001
+        ]
+      }
+    },
+    {
+      "id": "235",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "UDR",
+        "Street Address": "809 Olive Way",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.61397,
+        "Longitude": -122.333519,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.333519,
+          47.61397
+        ]
+      }
+    },
+    {
+      "id": "247",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "525 NORTHGATE",
+        "Street Address": "525 NE Northgate Way",
+        "City": "Seattle",
+        "ZIP": 98125,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.708346999999996,
+        "Longitude": -122.322015,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.322015,
+          47.708346999999996
+        ]
+      }
+    },
+    {
+      "id": "262",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Millennium Tower",
+        "Street Address": "719 Second Ave",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.60344179999999,
+        "Longitude": -122.3339101,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3339101,
+          47.60344179999999
+        ]
+      }
+    },
+    {
+      "id": "273",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "VM CHARGERS",
+        "Street Address": "1012 Terry Ave",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 3.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.609162,
+        "Longitude": -122.326222,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.326222,
+          47.609162
+        ]
+      }
+    },
+    {
+      "id": "275",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Walgreens - Seattle, WA #4157",
+        "Street Address": "859 NE Northgate Way",
+        "City": "Seattle",
+        "ZIP": 98125,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.708437700000005,
+        "Longitude": -122.31792250000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.31792250000001,
+          47.708437700000005
+        ]
+      }
+    },
+    {
+      "id": "279",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "INSIGNIA 953",
+        "Street Address": "588 Bell St",
+        "City": "Seattle",
+        "ZIP": 98121,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 3.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.61675,
+        "Longitude": -122.343295,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.343295,
+          47.61675
+        ]
+      }
+    },
+    {
+      "id": "281",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "THE CENTURY",
+        "Street Address": "101 Taylor Ave N",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.619399,
+        "Longitude": -122.346696,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.346696,
+          47.619399
+        ]
+      }
+    },
+    {
+      "id": "285",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "BMGF",
+        "Street Address": "570 Mercer St",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.624097,
+        "Longitude": -122.34636529999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.34636529999999,
+          47.624097
+        ]
+      }
+    },
+    {
+      "id": "294",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Cedarbrook Lodge - Tesla",
+        "Street Address": "18525 36th Ave S",
+        "City": "Seattle",
+        "ZIP": 98188,
+        "Station Phone": "206-901-9268  877-798-3752",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "TESLA",
+        "Latitude": 47.436906,
+        "Longitude": -122.28843400000001,
+        "NEMA520": false,
+        "J1772": false,
+        "CHADEMO": false,
+        "TESLA": true,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.28843400000001,
+          47.436906
+        ]
+      }
+    },
+    {
+      "id": "297",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Four Seasons Hotel Seattle - Tesla",
+        "Street Address": "99 Union St",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "206-749-7000  877-798-3752",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "TESLA",
+        "Latitude": 47.607378999999995,
+        "Longitude": -122.339155,
+        "NEMA520": false,
+        "J1772": false,
+        "CHADEMO": false,
+        "TESLA": true,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.339155,
+          47.607378999999995
+        ]
+      }
+    },
+    {
+      "id": "306",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Hotel Max - Tesla",
+        "Street Address": "620 Stewart St",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "866-986-8087  877-798-3752",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "TESLA",
+        "Latitude": 47.614216,
+        "Longitude": -122.336606,
+        "NEMA520": false,
+        "J1772": false,
+        "CHADEMO": false,
+        "TESLA": true,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.336606,
+          47.614216
+        ]
+      }
+    },
+    {
+      "id": "307",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Motif Seattle - Tesla",
+        "Street Address": "1415 5th Ave",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "206-971-8000  877-798-3752",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "TESLA",
+        "Latitude": 47.61002,
+        "Longitude": -122.33542,
+        "NEMA520": false,
+        "J1772": false,
+        "CHADEMO": false,
+        "TESLA": true,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33542,
+          47.61002
+        ]
+      }
+    },
+    {
+      "id": "310",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Seattle Marriott Waterfront - Tesla",
+        "Street Address": "2100 Alaskan Way",
+        "City": "Seattle",
+        "ZIP": 98121,
+        "Station Phone": "206-443-5000  877-798-3752",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "TESLA",
+        "Latitude": 47.610669,
+        "Longitude": -122.346572,
+        "NEMA520": false,
+        "J1772": false,
+        "CHADEMO": false,
+        "TESLA": true,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.346572,
+          47.610669
+        ]
+      }
+    },
+    {
+      "id": "311",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Shafer Baillie Mansion Bed and Breakfast - Tesla",
+        "Street Address": "907 14th Ave E",
+        "City": "Seattle",
+        "ZIP": 98112,
+        "Station Phone": "206-322-4654  877-798-3752",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "TESLA",
+        "Latitude": 47.627028,
+        "Longitude": -122.314916,
+        "NEMA520": false,
+        "J1772": false,
+        "CHADEMO": false,
+        "TESLA": true,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.314916,
+          47.627028
+        ]
+      }
+    },
+    {
+      "id": "316",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "The Fairmont Olympic Hotel - Tesla",
+        "Street Address": "411 University St",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "206-621-1700  877-798-3752",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "TESLA",
+        "Latitude": 47.608194,
+        "Longitude": -122.334953,
+        "NEMA520": false,
+        "J1772": false,
+        "CHADEMO": false,
+        "TESLA": true,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.334953,
+          47.608194
+        ]
+      }
+    },
+    {
+      "id": "322",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "MADISON GARAGE",
+        "Street Address": "1229 Madison St",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.610094000000004,
+        "Longitude": -122.322135,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.322135,
+          47.610094000000004
+        ]
+      }
+    },
+    {
+      "id": "323",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "GE WattStation",
+        "Street Address": "118  Republican St",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "855-443-3873",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.623279499999995,
+        "Longitude": -122.354922,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.354922,
+          47.623279499999995
+        ]
+      }
+    },
+    {
+      "id": "339",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Bedrooms & More",
+        "Street Address": "300 NE 45th St",
+        "City": "Seattle",
+        "ZIP": 98105,
+        "Station Phone": "206-633-4505",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.661590000000004,
+        "Longitude": -122.324877,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.324877,
+          47.661590000000004
+        ]
+      }
+    },
+    {
+      "id": "342",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "400 Fairview - Tesla",
+        "Street Address": "400 Fairview Ave N",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "623-810-4805  877-798-3752",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 3.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "TESLA",
+        "Latitude": 47.622547,
+        "Longitude": -122.33391200000001,
+        "NEMA520": false,
+        "J1772": false,
+        "CHADEMO": false,
+        "TESLA": true,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33391200000001,
+          47.622547
+        ]
+      }
+    },
+    {
+      "id": "359",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "SAFECO PLAZA",
+        "Street Address": "1001 4th Ave Safeco Plaza",
+        "City": "Seattle",
+        "ZIP": 98154,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6062177,
+        "Longitude": -122.33384199999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33384199999999,
+          47.6062177
+        ]
+      }
+    },
+    {
+      "id": "362",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Hotel 1000 - Tesla",
+        "Street Address": "1000 1st Ave",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "203-957-1000  877-798-3752",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "TESLA",
+        "Latitude": 47.605051,
+        "Longitude": -122.336105,
+        "NEMA520": false,
+        "J1772": false,
+        "CHADEMO": false,
+        "TESLA": true,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.336105,
+          47.605051
+        ]
+      }
+    },
+    {
+      "id": "377",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "1600 Seventh",
+        "Street Address": "1600 7th Ave",
+        "City": "Seattle",
+        "ZIP": 98191,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 3.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.61323529999999,
+        "Longitude": -122.3344034,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3344034,
+          47.61323529999999
+        ]
+      }
+    },
+    {
+      "id": "382",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "PSS CHARGEPOINT",
+        "Street Address": "801 Rainier Ave S",
+        "City": "Seattle",
+        "ZIP": 98144,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.5955459,
+        "Longitude": -122.31163000000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.31163000000001,
+          47.5955459
+        ]
+      }
+    },
+    {
+      "id": "383",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "PSS CHARGEPOINT",
+        "Street Address": "807 Rainier Ave S",
+        "City": "Seattle",
+        "ZIP": 98144,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.595392100000005,
+        "Longitude": -122.31150659999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.31150659999999,
+          47.595392100000005
+        ]
+      }
+    },
+    {
+      "id": "384",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "WEST 8TH",
+        "Street Address": "2001 8th Ave",
+        "City": "Seattle",
+        "ZIP": 98121,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 6.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.615571,
+        "Longitude": -122.336676,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.336676,
+          47.615571
+        ]
+      }
+    },
+    {
+      "id": "389",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "BMW SEATTLE",
+        "Street Address": "1002 Airport Way S",
+        "City": "Seattle",
+        "ZIP": 98134,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": null,
+        "EV DC Fast Count": 2.0,
+        "EV Connector Types": "J1772COMBO",
+        "Latitude": 47.59366,
+        "Longitude": -122.32451,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": true,
+        "Level 1": false,
+        "Level 2": false,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.32451,
+          47.59366
+        ]
+      }
+    },
+    {
+      "id": "396",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "DUAL EV",
+        "Street Address": "2616 NE 46th St",
+        "City": "Seattle",
+        "ZIP": 98105,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6614707,
+        "Longitude": -122.2992979,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2992979,
+          47.6614707
+        ]
+      }
+    },
+    {
+      "id": "397",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Washington State Convention Center Parking Garage",
+        "Street Address": "705 Pike ST",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.61137828,
+        "Longitude": -122.33144009999998,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33144009999998,
+          47.61137828
+        ]
+      }
+    },
+    {
+      "id": "398",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "KING COUNTY DOT",
+        "Street Address": "253-295 S Jackson St",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.599000200000006,
+        "Longitude": -122.3308044,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3308044,
+          47.599000200000006
+        ]
+      }
+    },
+    {
+      "id": "402",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "RPNW",
+        "Street Address": "1325 4th Ave",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.608732,
+        "Longitude": -122.335609,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.335609,
+          47.608732
+        ]
+      }
+    },
+    {
+      "id": "407",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "The Commons at Ballard",
+        "Street Address": "5621 22nd Avenue, NW",
+        "City": "Seattle",
+        "ZIP": 98107,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 8.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.66996339999999,
+        "Longitude": -122.3847489,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3847489,
+          47.66996339999999
+        ]
+      }
+    },
+    {
+      "id": "408",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Juxt",
+        "Street Address": "810 Dexter Ave., North",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.62668920000001,
+        "Longitude": -122.34193300000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.34193300000001,
+          47.62668920000001
+        ]
+      }
+    },
+    {
+      "id": "418",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Bigness",
+        "Street Address": "501 Westlake Avenue North",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 3.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.623118,
+        "Longitude": -122.3384388,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3384388,
+          47.623118
+        ]
+      }
+    },
+    {
+      "id": "419",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Apollo",
+        "Street Address": "325 9th Avenue North",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 3.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6216383,
+        "Longitude": -122.3401186,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3401186,
+          47.6216383
+        ]
+      }
+    },
+    {
+      "id": "427",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Thompson Hotel - Tesla",
+        "Street Address": "100 Stewart St",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "206-623-4600  877-798-3752",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "TESLA",
+        "Latitude": 47.610281,
+        "Longitude": -122.34136200000002,
+        "NEMA520": false,
+        "J1772": false,
+        "CHADEMO": false,
+        "TESLA": true,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.34136200000002,
+          47.610281
+        ]
+      }
+    },
+    {
+      "id": "440",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Fiona",
+        "Street Address": "500 Boren Avenue North",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6238939,
+        "Longitude": -122.3354537,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3354537,
+          47.6238939
+        ]
+      }
+    },
+    {
+      "id": "441",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Obidos/Rufus",
+        "Street Address": "550 Terry Avenue North",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.623872399999996,
+        "Longitude": -122.3368304,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3368304,
+          47.623872399999996
+        ]
+      }
+    },
+    {
+      "id": "442",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Cricket",
+        "Street Address": "440 Terry Avenue North",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.622868200000006,
+        "Longitude": -122.33655309999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33655309999999,
+          47.622868200000006
+        ]
+      }
+    },
+    {
+      "id": "443",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Ruby/Dawson",
+        "Street Address": "345 Boren Avenue North",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6217807,
+        "Longitude": -122.33649879999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33649879999999,
+          47.6217807
+        ]
+      }
+    },
+    {
+      "id": "444",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Wainwright",
+        "Street Address": "535 Terry Avenue North",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.62406729999999,
+        "Longitude": -122.33751059999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33751059999999,
+          47.62406729999999
+        ]
+      }
+    },
+    {
+      "id": "445",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Arizona",
+        "Street Address": "207 Boren Avenue North",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 6.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.620173,
+        "Longitude": -122.3362563,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3362563,
+          47.620173
+        ]
+      }
+    },
+    {
+      "id": "447",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "PREMIERE",
+        "Street Address": "1525 9th Ave",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6131604,
+        "Longitude": -122.3320902,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3320902,
+          47.6131604
+        ]
+      }
+    },
+    {
+      "id": "449",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Doppler",
+        "Street Address": "2021 7th Avenue",
+        "City": "Seattle",
+        "ZIP": 98121,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 12.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6153589,
+        "Longitude": -122.3379635,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3379635,
+          47.6153589
+        ]
+      }
+    },
+    {
+      "id": "450",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Day 1",
+        "Street Address": "2121 7th Avenue",
+        "City": "Seattle",
+        "ZIP": 98121,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 10.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6162311,
+        "Longitude": -122.3402054,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3402054,
+          47.6162311
+        ]
+      }
+    },
+    {
+      "id": "454",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Troy Block",
+        "Street Address": "300 Boren Avenue North",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 6.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6211672,
+        "Longitude": -122.33545009999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33545009999999,
+          47.6211672
+        ]
+      }
+    },
+    {
+      "id": "455",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Pike Place Market",
+        "Street Address": "1901 Western Avenue",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 9.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6091582,
+        "Longitude": -122.34184409999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.34184409999999,
+          47.6091582
+        ]
+      }
+    },
+    {
+      "id": "459",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "1201 Third",
+        "Street Address": "1201 Third Avenue\r\nSuite 520",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6072826,
+        "Longitude": -122.3360929,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3360929,
+          47.6072826
+        ]
+      }
+    },
+    {
+      "id": "462",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "ESSEX",
+        "Street Address": "524 1st Ave N",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6239136,
+        "Longitude": -122.3551183,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3551183,
+          47.6239136
+        ]
+      }
+    },
+    {
+      "id": "465",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "400 DEXTER AVE",
+        "Street Address": "400 Dexter Ave N",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.622309,
+        "Longitude": -122.341952,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.341952,
+          47.622309
+        ]
+      }
+    },
+    {
+      "id": "469",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "RPNW",
+        "Street Address": "1200 5th Ave",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.608418,
+        "Longitude": -122.33323899999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33323899999999,
+          47.608418
+        ]
+      }
+    },
+    {
+      "id": "470",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "City Investors XXIII LLC",
+        "Street Address": "505 Union Station, 505 5th Avenue South,",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.5975217,
+        "Longitude": -122.32767859999998,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.32767859999998,
+          47.5975217
+        ]
+      }
+    },
+    {
+      "id": "472",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "South Building",
+        "Street Address": "10215 Greenwood Ave. North",
+        "City": "Seattle",
+        "ZIP": 98133,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.7033895,
+        "Longitude": -122.35583629999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.35583629999999,
+          47.7033895
+        ]
+      }
+    },
+    {
+      "id": "473",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "North Building",
+        "Street Address": "211 N. 103rd ST",
+        "City": "Seattle",
+        "ZIP": 98133,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.703632,
+        "Longitude": -122.35650659999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.35650659999999,
+          47.703632
+        ]
+      }
+    },
+    {
+      "id": "486",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "WHITTAKER R",
+        "Street Address": "4755 Fauntleroy Way SW",
+        "City": "Seattle",
+        "ZIP": 98116,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.5602,
+        "Longitude": -122.382228,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.382228,
+          47.5602
+        ]
+      }
+    },
+    {
+      "id": "491",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "DUAL EV",
+        "Street Address": "2623 NE University Village St",
+        "City": "Seattle",
+        "ZIP": 98105,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6613614,
+        "Longitude": -122.29828400000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.29828400000001,
+          47.6613614
+        ]
+      }
+    },
+    {
+      "id": "492",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Tilt49 Office Tower",
+        "Street Address": "1812 Boren Avenue",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 10.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.617024799999996,
+        "Longitude": -122.33221809999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33221809999999,
+          47.617024799999996
+        ]
+      }
+    },
+    {
+      "id": "505",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Hampton Inn & Suites - Tesla",
+        "Street Address": "500 5th Ave N",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "206-282-0899  877-798-3752",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "TESLA",
+        "Latitude": 47.625675,
+        "Longitude": -122.34688600000001,
+        "NEMA520": false,
+        "J1772": false,
+        "CHADEMO": false,
+        "TESLA": true,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.34688600000001,
+          47.625675
+        ]
+      }
+    },
+    {
+      "id": "506",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Residence Inn - Tesla",
+        "Street Address": "4501 12th Ave NE",
+        "City": "Seattle",
+        "ZIP": 98105,
+        "Station Phone": "206-322-8887  877-798-3752",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "TESLA",
+        "Latitude": 47.661869,
+        "Longitude": -122.31541499999999,
+        "NEMA520": false,
+        "J1772": false,
+        "CHADEMO": false,
+        "TESLA": true,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.31541499999999,
+          47.661869
+        ]
+      }
+    },
+    {
+      "id": "511",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Four Points by Sheraton - Tesla",
+        "Street Address": "601 Roy St",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "206-282-2600  877-798-3752",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "TESLA",
+        "Latitude": 47.625378000000005,
+        "Longitude": -122.344596,
+        "NEMA520": false,
+        "J1772": false,
+        "CHADEMO": false,
+        "TESLA": true,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.344596,
+          47.625378000000005
+        ]
+      }
+    },
+    {
+      "id": "512",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "ELUMINOCITY",
+        "Street Address": "Fremont Ave N Hippo Parking Lot",
+        "City": "Seattle",
+        "ZIP": 98103,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": null,
+        "EV DC Fast Count": 2.0,
+        "EV Connector Types": "CHADEMO J1772COMBO",
+        "Latitude": 47.66547070000001,
+        "Longitude": -122.35042299999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": true,
+        "Level 1": false,
+        "Level 2": false,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.35042299999999,
+          47.66547070000001
+        ]
+      }
+    },
+    {
+      "id": "513",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "1918 EIGHTH AVENUE ACQUISITION, LLC",
+        "Street Address": "1918 8th Avenue, Suite 300",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 6.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.61549229999999,
+        "Longitude": -122.3356412,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3356412,
+          47.61549229999999
+        ]
+      }
+    },
+    {
+      "id": "517",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "818 Stewart Street Acquisition, LLC",
+        "Street Address": "818 Stewart Street",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6156451,
+        "Longitude": -122.33505840000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33505840000001,
+          47.6156451
+        ]
+      }
+    },
+    {
+      "id": "520",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "SECURITIES BLDG",
+        "Street Address": "1913 4th Ave",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.612406799999995,
+        "Longitude": -122.3394264,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3394264,
+          47.612406799999995
+        ]
+      }
+    },
+    {
+      "id": "521",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "ELUMINOCITY",
+        "Street Address": "1609 Harvard Ave",
+        "City": "Seattle",
+        "ZIP": 98122,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": null,
+        "EV DC Fast Count": 2.0,
+        "EV Connector Types": "CHADEMO J1772COMBO",
+        "Latitude": 47.615493799999996,
+        "Longitude": -122.3229125,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": true,
+        "Level 1": false,
+        "Level 2": false,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3229125,
+          47.615493799999996
+        ]
+      }
+    },
+    {
+      "id": "528",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "REI",
+        "Street Address": "222 Yale Ave N",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "877-455-3833",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": 4.0,
+        "EV Connector Types": "CHADEMO J1772 J1772COMBO",
+        "Latitude": 47.620663,
+        "Longitude": -122.329521,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": true,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.329521,
+          47.620663
+        ]
+      }
+    },
+    {
+      "id": "533",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Northgate Mall",
+        "Street Address": "401 NE Northgate Way",
+        "City": "Seattle",
+        "ZIP": 98125,
+        "Station Phone": "877-455-3833",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 3.0,
+        "EV DC Fast Count": 2.0,
+        "EV Connector Types": "CHADEMO J1772 J1772COMBO",
+        "Latitude": 47.7033,
+        "Longitude": -122.32518999999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": true,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.32518999999999,
+          47.7033
+        ]
+      }
+    },
+    {
+      "id": "534",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Harvard Market",
+        "Street Address": "1406 Harvard Ave",
+        "City": "Seattle",
+        "ZIP": 98122,
+        "Station Phone": "877-455-3833",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": null,
+        "EV DC Fast Count": 2.0,
+        "EV Connector Types": "CHADEMO J1772COMBO",
+        "Latitude": 47.613457000000004,
+        "Longitude": -122.321919,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": true,
+        "Level 1": false,
+        "Level 2": false,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.321919,
+          47.613457000000004
+        ]
+      }
+    },
+    {
+      "id": "549",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "ELUMINOCITY",
+        "Street Address": "200 Denny Way",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": null,
+        "EV DC Fast Count": 2.0,
+        "EV Connector Types": "CHADEMO J1772COMBO",
+        "Latitude": 47.6186971,
+        "Longitude": -122.3523486,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": true,
+        "Level 1": false,
+        "Level 2": false,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3523486,
+          47.6186971
+        ]
+      }
+    },
+    {
+      "id": "550",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "ELUMINOCITY",
+        "Street Address": "6701 Corson Ave S",
+        "City": "Seattle",
+        "ZIP": 98108,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 3.0,
+        "EV DC Fast Count": 2.0,
+        "EV Connector Types": "CHADEMO J1772 J1772COMBO",
+        "Latitude": 47.541946,
+        "Longitude": -122.32432800000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": true,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.32432800000001,
+          47.541946
+        ]
+      }
+    },
+    {
+      "id": "553",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "RPNW",
+        "Street Address": "319 University St",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.607547,
+        "Longitude": -122.335981,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.335981,
+          47.607547
+        ]
+      }
+    },
+    {
+      "id": "557",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "7th & Pike Garage",
+        "Street Address": "1508 7th Avenue",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6117035,
+        "Longitude": -122.3334138,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3334138,
+          47.6117035
+        ]
+      }
+    },
+    {
+      "id": "570",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Hotel Vintage Park Kimpton",
+        "Street Address": "1100 5th Ave",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.607331,
+        "Longitude": -122.33241000000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33241000000001,
+          47.607331
+        ]
+      }
+    },
+    {
+      "id": "572",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Fairmont Olympic Parking Garage",
+        "Street Address": "415 Seneca",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.607529,
+        "Longitude": -122.333118,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.333118,
+          47.607529
+        ]
+      }
+    },
+    {
+      "id": "575",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Hilton Seattle Airport",
+        "Street Address": "17620 International Blvd",
+        "City": "Seattle",
+        "ZIP": 98188,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.444328999999996,
+        "Longitude": -122.29553500000002,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.29553500000002,
+          47.444328999999996
+        ]
+      }
+    },
+    {
+      "id": "576",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "FRED MEYER - #608 Ballard",
+        "Street Address": "915 NW 45th St",
+        "City": "Seattle",
+        "ZIP": 98107,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.660259,
+        "Longitude": -122.369174,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.369174,
+          47.660259
+        ]
+      }
+    },
+    {
+      "id": "591",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "W Hotel",
+        "Street Address": "1112 Fourth Ave",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.607376,
+        "Longitude": -122.333638,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.333638,
+          47.607376
+        ]
+      }
+    },
+    {
+      "id": "593",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "2200 Westlake",
+        "Street Address": "2200 Westlake Ave",
+        "City": "Seattle",
+        "ZIP": 98121,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 3.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.617712,
+        "Longitude": -122.337994,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.337994,
+          47.617712
+        ]
+      }
+    },
+    {
+      "id": "594",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Alley 24 East",
+        "Street Address": "221 Yale Ave N",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.619775,
+        "Longitude": -122.331111,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.331111,
+          47.619775
+        ]
+      }
+    },
+    {
+      "id": "604",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "First Hill Medical Building",
+        "Street Address": "515 Minor Ave",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.606359999999995,
+        "Longitude": -122.32163899999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.32163899999999,
+          47.606359999999995
+        ]
+      }
+    },
+    {
+      "id": "611",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Seattle Children's Hospital King County Van Pool",
+        "Street Address": "4800 Sand Point Way NE",
+        "City": "Seattle",
+        "ZIP": 98105,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.662728,
+        "Longitude": -122.280128,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.280128,
+          47.662728
+        ]
+      }
+    },
+    {
+      "id": "615",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "South Lake Union Discovery Center",
+        "Street Address": "101 Westlake Ave N",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.619184999999995,
+        "Longitude": -122.33888,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33888,
+          47.619184999999995
+        ]
+      }
+    },
+    {
+      "id": "618",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Columbia Center Tower",
+        "Street Address": "701 5th Ave, Suite 3530",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.604817,
+        "Longitude": -122.330568,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.330568,
+          47.604817
+        ]
+      }
+    },
+    {
+      "id": "620",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "4th & Madison",
+        "Street Address": "925 4th Avenue, Suite 400",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.605838,
+        "Longitude": -122.332895,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.332895,
+          47.605838
+        ]
+      }
+    },
+    {
+      "id": "621",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Safeco Field",
+        "Street Address": "1250 First Ave So",
+        "City": "Seattle",
+        "ZIP": 98134,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.589636999999996,
+        "Longitude": -122.33289199999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33289199999999,
+          47.589636999999996
+        ]
+      }
+    },
+    {
+      "id": "625",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Seola Gardens",
+        "Street Address": "11195 5th Ave SW",
+        "City": "Seattle",
+        "ZIP": 98146,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.502354,
+        "Longitude": -122.34111999999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.34111999999999,
+          47.502354
+        ]
+      }
+    },
+    {
+      "id": "630",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Harborview Medical Center",
+        "Street Address": "908 Jefferson",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 6.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.605477,
+        "Longitude": -122.323427,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.323427,
+          47.605477
+        ]
+      }
+    },
+    {
+      "id": "632",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "401 Elliott Ave  W - F5 Networks",
+        "Street Address": "401 Elliott Avenue West",
+        "City": "Seattle",
+        "ZIP": 98119,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 7.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.622276,
+        "Longitude": -122.36385200000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.36385200000001,
+          47.622276
+        ]
+      }
+    },
+    {
+      "id": "633",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Harvard Market",
+        "Street Address": "1401 Broadway",
+        "City": "Seattle",
+        "ZIP": 98122,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.613498,
+        "Longitude": -122.320931,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.320931,
+          47.613498
+        ]
+      }
+    },
+    {
+      "id": "634",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Seattle Cancer Care Alliance",
+        "Street Address": "825 Eastlake Ave E, LA-104",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6264266,
+        "Longitude": -122.32937199999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.32937199999999,
+          47.6264266
+        ]
+      }
+    },
+    {
+      "id": "637",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "George F. Russell Jr. Hall",
+        "Street Address": "1414 NE 42nd Street",
+        "City": "Seattle",
+        "ZIP": 98105,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 3.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.658557,
+        "Longitude": -122.31214299999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.31214299999999,
+          47.658557
+        ]
+      }
+    },
+    {
+      "id": "642",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Plymouth Congregational Church",
+        "Street Address": "1217 6th Avenue",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.608875,
+        "Longitude": -122.33284499999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33284499999999,
+          47.608875
+        ]
+      }
+    },
+    {
+      "id": "644",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "520 Pike Tower",
+        "Street Address": "520 Pike St.",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.611102,
+        "Longitude": -122.334893,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.334893,
+          47.611102
+        ]
+      }
+    },
+    {
+      "id": "652",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "FRED MEYER - #179 Lake City Way",
+        "Street Address": "13000 Lake City Way NE",
+        "City": "Seattle",
+        "ZIP": 98125,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": 2.0,
+        "EV Connector Types": "CHADEMO J1772",
+        "Latitude": 47.723689,
+        "Longitude": -122.292383,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.292383,
+          47.723689
+        ]
+      }
+    },
+    {
+      "id": "656",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "McKinstry Innovation Center",
+        "Street Address": "210 S Hudson St",
+        "City": "Seattle",
+        "ZIP": 98134,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.557995,
+        "Longitude": -122.331026,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.331026,
+          47.557995
+        ]
+      }
+    },
+    {
+      "id": "657",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Lake Union Building",
+        "Street Address": "1700 Westlake Ave N",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.633992,
+        "Longitude": -122.339684,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.339684,
+          47.633992
+        ]
+      }
+    },
+    {
+      "id": "658",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "East Madison Garage",
+        "Street Address": "1222 East Madison",
+        "City": "Seattle",
+        "ZIP": 98122,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.613575,
+        "Longitude": -122.31575600000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.31575600000001,
+          47.613575
+        ]
+      }
+    },
+    {
+      "id": "669",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "2201 Westlake ENSO",
+        "Street Address": "2201 Westlake Ave",
+        "City": "Seattle",
+        "ZIP": 98121,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.617728,
+        "Longitude": -122.338729,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.338729,
+          47.617728
+        ]
+      }
+    },
+    {
+      "id": "670",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "ELUMINOCITY",
+        "Street Address": "6000 16th Ave SW",
+        "City": "Seattle",
+        "ZIP": 98106,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": null,
+        "EV DC Fast Count": 2.0,
+        "EV Connector Types": "CHADEMO J1772COMBO",
+        "Latitude": 47.5462596,
+        "Longitude": -122.35226840000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": true,
+        "Level 1": false,
+        "Level 2": false,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.35226840000001,
+          47.5462596
+        ]
+      }
+    },
+    {
+      "id": "684",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Seattle-Tacoma International Airport - Terminal Direct Parking",
+        "Street Address": "17801 Pacific Hwy S",
+        "City": "Seattle",
+        "ZIP": 98188,
+        "Station Phone": "206-433-5308",
+        "EV Level1 EVSE Num": 12.0,
+        "EV Level2 EVSE Num": null,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "NEMA520",
+        "Latitude": 47.443363,
+        "Longitude": -122.296428,
+        "NEMA520": true,
+        "J1772": false,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": true,
+        "Level 2": false,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.296428,
+          47.443363
+        ]
+      }
+    },
+    {
+      "id": "686",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "STADIUMPLACE",
+        "Street Address": "530 Occidental Ave S",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 7.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.597953000000004,
+        "Longitude": -122.333068,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.333068,
+          47.597953000000004
+        ]
+      }
+    },
+    {
+      "id": "687",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "STADIUMPLACE",
+        "Street Address": "530 Occidental Ave S",
+        "City": "Seattle",
+        "ZIP": 98134,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.597963299999996,
+        "Longitude": -122.3325727,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3325727,
+          47.597963299999996
+        ]
+      }
+    },
+    {
+      "id": "689",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "ELUMINOCITY",
+        "Street Address": "9600 College Way N",
+        "City": "Seattle",
+        "ZIP": 98103,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": null,
+        "EV DC Fast Count": 2.0,
+        "EV Connector Types": "CHADEMO J1772COMBO",
+        "Latitude": 47.6993143,
+        "Longitude": -122.334477,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": true,
+        "Level 1": false,
+        "Level 2": false,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.334477,
+          47.6993143
+        ]
+      }
+    },
+    {
+      "id": "728",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Greenlots - 53004",
+        "Street Address": "2535 16th Ave S",
+        "City": "Seattle",
+        "ZIP": 98144,
+        "Station Phone": "855-900-7584",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": null,
+        "EV DC Fast Count": 4.0,
+        "EV Connector Types": "CHADEMO J1772COMBO",
+        "Latitude": 47.579971,
+        "Longitude": -122.31233300000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": true,
+        "Level 1": false,
+        "Level 2": false,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.31233300000001,
+          47.579971
+        ]
+      }
+    },
+    {
+      "id": "743",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "WAC Parking",
+        "Street Address": "1409 6th Ave",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 3.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.610236900000004,
+        "Longitude": -122.3336405,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3336405,
+          47.610236900000004
+        ]
+      }
+    },
+    {
+      "id": "750",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "ELUMINOCITY",
+        "Street Address": "601 N 59th St",
+        "City": "Seattle",
+        "ZIP": 98103,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.67153,
+        "Longitude": -122.351431,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.351431,
+          47.67153
+        ]
+      }
+    },
+    {
+      "id": "751",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "ELUMINOCITY",
+        "Street Address": "338 Weller St Bridge",
+        "City": "Seattle",
+        "ZIP": 98134,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": null,
+        "EV DC Fast Count": 4.0,
+        "EV Connector Types": "CHADEMO J1772COMBO",
+        "Latitude": 47.5973354,
+        "Longitude": -122.33044299999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": true,
+        "Level 1": false,
+        "Level 2": false,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33044299999999,
+          47.5973354
+        ]
+      }
+    },
+    {
+      "id": "755",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Starbucks Center",
+        "Street Address": "2401  Utah Ave South",
+        "City": "Seattle",
+        "ZIP": 98134,
+        "Station Phone": "888-998-2546",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 3.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.581033000000005,
+        "Longitude": -122.334925,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.334925,
+          47.581033000000005
+        ]
+      }
+    },
+    {
+      "id": "757",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Port of Seattle, Fishermen's Terminal, West Wall BLDG",
+        "Street Address": "4005 20th Avenue West",
+        "City": "Seattle",
+        "ZIP": 98199,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.65588111,
+        "Longitude": -122.3827633,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3827633,
+          47.65588111
+        ]
+      }
+    },
+    {
+      "id": "791",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "PONTEDERA",
+        "Street Address": "827 Hiawatha Pl S",
+        "City": "Seattle",
+        "ZIP": 98144,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": 1.0,
+        "EV Level2 EVSE Num": 1.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772 NEMA520",
+        "Latitude": 47.595356,
+        "Longitude": -122.30982970000001,
+        "NEMA520": true,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": true,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.30982970000001,
+          47.595356
+        ]
+      }
+    },
+    {
+      "id": "794",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "ELUMINOCITY",
+        "Street Address": "9800 4th Ave NE",
+        "City": "Seattle",
+        "ZIP": 98115,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": null,
+        "EV DC Fast Count": 4.0,
+        "EV Connector Types": "CHADEMO J1772COMBO",
+        "Latitude": 47.69997,
+        "Longitude": -122.32405800000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": true,
+        "Level 1": false,
+        "Level 2": false,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.32405800000001,
+          47.69997
+        ]
+      }
+    },
+    {
+      "id": "799",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "FACEBOOK SEA",
+        "Street Address": "1101 Dexter Ave N",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 12.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.628786,
+        "Longitude": -122.34272,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.34272,
+          47.628786
+        ]
+      }
+    },
+    {
+      "id": "800",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "1101 WESTLAKE",
+        "Street Address": "1101 Westlake Ave N",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.628887,
+        "Longitude": -122.34140500000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.34140500000001,
+          47.628887
+        ]
+      }
+    },
+    {
+      "id": "823",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "Hill 7 Station",
+        "Street Address": "1099 Stewart Street",
+        "City": "Seattle",
+        "ZIP": 98101,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 7.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.61649179999999,
+        "Longitude": -122.33248789999999,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33248789999999,
+          47.61649179999999
+        ]
+      }
+    },
+    {
+      "id": "824",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "450 Alaskan Garage",
+        "Street Address": "450 Alaskan Way",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 3.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.5987016,
+        "Longitude": -122.3351902,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3351902,
+          47.5987016
+        ]
+      }
+    },
+    {
+      "id": "825",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "505 First Garage",
+        "Street Address": "505 1st Avenue South",
+        "City": "Seattle",
+        "ZIP": 98104,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.5974244,
+        "Longitude": -122.33471740000002,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.33471740000002,
+          47.5974244
+        ]
+      }
+    },
+    {
+      "id": "830",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "AMLI MARK 24",
+        "Street Address": "2428 NW Market St",
+        "City": "Seattle",
+        "ZIP": 98107,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6689554,
+        "Longitude": -122.3888077,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3888077,
+          47.6689554
+        ]
+      }
+    },
+    {
+      "id": "834",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "ELUMINOCITY",
+        "Street Address": "11536 Lake City Way NE",
+        "City": "Seattle",
+        "ZIP": 98125,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": null,
+        "EV DC Fast Count": 2.0,
+        "EV Connector Types": "CHADEMO J1772COMBO",
+        "Latitude": 47.713325,
+        "Longitude": -122.29816840000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": true,
+        "Level 1": false,
+        "Level 2": false,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.29816840000001,
+          47.713325
+        ]
+      }
+    },
+    {
+      "id": "835",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "ELUMINOCITY",
+        "Street Address": "200 2nd Ave N",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": null,
+        "EV DC Fast Count": 2.0,
+        "EV Connector Types": "CHADEMO J1772COMBO",
+        "Latitude": 47.6187128,
+        "Longitude": -122.35214350000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": true,
+        "TESLA": false,
+        "J1772COMBO": true,
+        "Level 1": false,
+        "Level 2": false,
+        "DC Fast": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.35214350000001,
+          47.6187128
+        ]
+      }
+    },
+    {
+      "id": "836",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "531612 : PRISA Market Place Tower WA, LLC c/o CBRE",
+        "Street Address": "2025 1st Avenue",
+        "City": "Seattle",
+        "ZIP": 98121,
+        "Station Phone": "800-663-5633",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 6.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.6113722,
+        "Longitude": -122.343703,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.343703,
+          47.6113722
+        ]
+      }
+    },
+    {
+      "id": "837",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "UWMC SURGERY",
+        "Street Address": "1959 NE Pacific St",
+        "City": "Seattle",
+        "ZIP": 98195,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 4.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.650328,
+        "Longitude": -122.307574,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.307574,
+          47.650328
+        ]
+      }
+    },
+    {
+      "id": "838",
+      "type": "Feature",
+      "properties": {
+        "Station Name": "BMGF",
+        "Street Address": "500 5th Ave N",
+        "City": "Seattle",
+        "ZIP": 98109,
+        "Station Phone": "888-758-4389",
+        "EV Level1 EVSE Num": null,
+        "EV Level2 EVSE Num": 2.0,
+        "EV DC Fast Count": null,
+        "EV Connector Types": "J1772",
+        "Latitude": 47.624210600000005,
+        "Longitude": -122.34621820000001,
+        "NEMA520": false,
+        "J1772": true,
+        "CHADEMO": false,
+        "TESLA": false,
+        "J1772COMBO": false,
+        "Level 1": false,
+        "Level 2": true,
+        "DC Fast": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.34621820000001,
+          47.624210600000005
+        ]
+      }
+    }
+  ]
+}

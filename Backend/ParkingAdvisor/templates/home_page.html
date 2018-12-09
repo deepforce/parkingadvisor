@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ParkingAdvisor</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+  <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+  <script src="{% static "js/jquery.min.js" %}"></script>
+  <script src="{% static "js/bootstrap.min.js" %}"></script>
+  <style>
+  body {
+      position: relative; 
+  }
+  #section1 {padding-top:80px;height:740px;color: #fff; background-color: #1E88E5;}
+  #section2 {padding-top:80px;height:740px;color: #fff; background-color: #1E88E5;}
+  #section3 {padding-top:80px;height:740px;color: #fff; background-color: white;}
+  #section41 {padding-top:80px;height:740px;color: #fff; background-color: #673ab7;}
+  #section42 {padding-top:80px;height:740px;color: #fff; background-color: #1E88E5;}
+  
+  .pic1{
+    background:url("{% static "images/homepage/u0_state0.jpg" %}");
+    margin-left: 0px;
+    margin-right: 0px;
+    background-position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: center;
+  }
+  
+
+  .picshow{
+    position: relative; 
+    width: 600px;
+    height:400px;
+    background-color: lightgrey;
+    border: 2px solid gray;
+    box-shadow: 5px 5px 8px #888888;
+  }
+
+
+
+.column {
+  margin: 15px 15px 0;
+  padding: 0;
+}
+.column:last-child {
+  padding-bottom: 60px;
+}
+.column::after {
+  content: '';
+  clear: both;
+  display: block;
+}
+.column div {
+  position: relative;
+  float: left;
+  width: 300px;
+  height: 200px;
+  margin: 0 0 0 25px;
+  padding: 0;
+}
+.column div:first-child {
+  margin-left: 0;
+}
+.column div span {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  z-index: -1;
+  display: block;
+  width: 300px;
+  margin: 0;
+  padding: 0;
+  color: #444;
+  font-size: 18px;
+  text-decoration: none;
+  text-align: center;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  opacity: 0.01;
+}
+
+figure {
+  width: 450px;
+  height: 270px;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  overflow: hidden;
+}
+figure:hover+span {
+  bottom: -170px;
+  text-align: center;
+  opacity: 1;
+}
+div.linktolaunch:hover{
+    background-color:#1E88E5;
+    
+}
+
+
+.memname{
+  text-align: center;
+  font-family: Georgia;
+  font-size: 40px;
+}
+
+.profilepic{
+  height: 100%;
+  border-radius:50%;
+  border: 1px solid #ccc;
+}
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid" style="background-color: white;">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+      <img class="img" id="nav_img" style="height:70px;padding: 5px;" src="{% static "images/homepage/u41.png" %}"/>
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#section1">About</a></li>
+          <li><a href="#section2">Features</a></li>
+          <li><a href="#section3">Members</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>    
+
+<div id="section1" class="container-fluid pic1" style=";">
+  <div style="margin-top: 80px;margin-left: 400px;"><p style="font-size: 50px; color:white; font-family:Times New Roman;"><b>Suffering from parking in Seattle Downtown?</b></p>
+  </div>
+  <div style="margin-top: 110px; margin-left: 650px"><p style="display: inline;font-size: 50px; color:white; font-family:Times New Roman;"><b>TRY OUR</b></p>
+  </div> 
+  <div>
+  <a style="color: white; text-decoration: none" href="./launch_page"><div class="linktolaunch" style="margin-top: -80px; margin-left: 920px; margin-right: 80px"><p style="font-size: 55px; color: white"><b>ParkingAdvisor</b></p></div></a>
+</div>
+</div>
+
+
+<div id="section2" class="container-fluid">
+  <div class="picshow" style="margin-top: 120px; margin-left: 25px;"><img style="height: 100%; width: 100%;" src="{% static "images/homepage/best.gif" %}"/></div>
+  <div style="margin-top: -330px; margin-left: 680px;"><h2 style="font-size: 40px; color:white; font-family:Times New Roman;"><b>The best on-street parking spot for you.</b></h2>
+  </div>
+  <div style="margin-top: 30px; margin-left: 680px; text-align:justify; margin-right: 60px;line-height:35px;"><p style="display: inline;font-size: 35px; color:white; font-family:Times New Roman;"><span style="font-family:'Akkurat';font-weight:400;font-size: 26px;line;">Given your destination and your arrival time, </span><span style="font-family:'Akkurat Bold', 'Akkurat Regular', 'Akkurat';font-weight:700;font-size: 26px;">ParkingAdvisor</span><span style="font-family:'Akkurat';font-weight:400;font-size: 26px;"> gives you the recommendation based on the distance, rate and occupancy.</span><span style="font-family:'Arial';font-weight:400;font-size: 26px;"> </span></p>
+  </div>
+</div>
+
+<div id="section41" class="container-fluid">
+    <div class="picshow" style="margin-top: 120px; margin-left: 680px;"><img style="max-height: 100%; width: 100%;" src="{% static "images/homepage/info.png" %}"/></div>
+    <div style="margin-top: -360px; margin-left: 25px;margin-right: 800px;"><h2 style="font-size: 40px; color:white; font-family:Times New Roman;"><b>The detailed information before you arrive.</b></h2>
+    </div>
+    <div style="margin-top: 30px; margin-left: 25px; text-align:justify; margin-right: 800px;line-height:35px;"><p style="display: inline;font-size: 35px; color:white; font-family:Times New Roman;"><span style="font-family:'Akkurat';font-weight:400;font-size: 26px;line;"><b>ParkingAdvisor</b></span><span style="font-family:'Akkurat';font-weight:400;font-size: 26px;"> rovides you the parking rate, hour limit, and the peak hour in advance. So, you can make a nice parking plan.</span><span style="font-family:'Arial';font-weight:400;font-size: 26px;"> </span></p>
+    </div>
+</div>
+
+<div id="section42" class="container-fluid">
+    <div class="picshow" style="margin-top: 120px; margin-left: 25px;"><img style="height: 100%;" src="{% static "images/homepage/ev.png" %}"/></div>
+    <div style="margin-top: -330px; margin-left: 680px;"><h2 style="font-size: 40px; color:white; font-family:Times New Roman;"><b>Charge your EV car easily</b></h2>
+    </div>
+    <div style="margin-top: 50px; margin-left: 680px; text-align:justify; margin-right: 60px;line-height:35px;"><p style="display: inline;font-size: 35px; color:white; font-family:Times New Roman;"><span style="font-family:'Akkurat';font-weight:400;font-size: 26px;line;"><b>ParkingAdvisor</b></span><span style="font-family:'Akkurat';font-weight:400;font-size: 26px;"> helps you find the nearby EV charger stations which suits for your car.</span><span style="font-family:'Arial';font-weight:400;font-size: 26px;"> </span></p>
+    </div>
+    </div>
+ </div>
+
+
+<div id="section3" class="container-fluid">
+  <h1>Section 3</h1>
+  <p>Click on the different Section links in the navbar to see the smooth scrolling effect.</p>
+  <div class="profile">
+    
+    <div class="column">
+      <div style="margin-top: -50px;">
+        <figure><img class="profilepic" src="{% static "images/homepage/guo.png" %}" style="margin-left:40px;"/></figure>
+        <span style="z-index: 6"><p class="memname" style="float:left; margin-left:70px;color: #6E6E6E; margin-top:10px;">Jiajie Guo</p><p style="text-align: center; font-family: Georgia; float:left; margin-left:70px;color: #6E6E6E; margin-top:0px;font-size: 22px;">Molecular Engineering</p></span>
+      </div>
+
+      <div style="margin-top: 200px;">
+        <figure style="margin-inline-start:40px;"><img class="profilepic" src="{% static "images/homepage/ju.jpg" %}" style="float:left; left:300px;"/></figure>
+        <span style="z-index: 6;top:-150px;bottom:0px;"><p class="memname" style="float:left; margin-left:70px;color: #6E6E6E; margin-top:10px;">Zhicheng Ju</p><p style="text-align: center; font-family: Georgia; float:left; margin-left:70px;color: #6E6E6E; margin-top:0px;font-size: 22px;">Mechanical Engineering</p></span>
+      </div>
+
+      <div style="margin-top: -50px;">
+        <figure style="margin-inline-start:70px;"><img class="profilepic" src="{% static "images/homepage/wang.png" %}"/></figure>
+        <span style="z-index: 6"><p class="memname" style="float:left; margin-left:70px;color: #6E6E6E; margin-top:10px;">Yue Wang</p><p style="text-align: center; font-family: Georgia; float:left; margin-left:70px;color: #6E6E6E; margin-top:0px;font-size: 22px;">Electrical Engineering</p></span>
+      </div>
+
+      <div style="margin-top: 200px;">
+        <figure style="margin-inline-start: 40px;"><img class="profilepic" src="{% static "images/homepage/zheng.gif" %}" style="margin-left:40px;"/></figure>
+        <span style="z-index: 6; top:-150px;bottom:0px;"><p class="memname" style="float:left; margin-left:80px;color: #6E6E6E; margin-top:10px;">Yuqi Zheng</p><p style="text-align: center; font-family: Georgia; float:left; margin-left:70px;color: #6E6E6E; margin-top:0px;font-size: 22px;">Information School</p></span>
+      </div>
+    </div>
+
+
+</div>
+
+</div>
+<div class="footer" style="background-color: #2C5C94;margin-left: auto;margin-right: auto;height: 60px;background-position: fixed;background-repeat: no-repeat;background-size: cover; position: auto; ">
+  <p style="text-align: center;font-size: 30px;color: white;padding-top: 10px">ParkingAdvisor</p>
+</div>
+
+
+
+
+
+
+<script>
+$(document).ready(function(){
+  // Add scrollspy to <body>
+  $('body').scrollspy({target: ".navbar", offset: 50});   
+
+  // Add smooth scrolling on all links inside the navbar
+  $("#myNavbar a").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    }  // End if
+  });
+});
+</script>
+
+</body>
+</html>
