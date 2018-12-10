@@ -1,9 +1,8 @@
 #%%
-import filter as f
-import datetime as d
+import pandas as pd
 
-now = d.datetime.now()
-f.recomm_layer(date_time=now, dest=[47.6060,-122.3322])
+TEST_STREET_NAME = '10TH AVE BETWEEN E MADISON ST AND E SENECA ST'
 
-
+test_data = pd.DataFrame(index=[0], data={'UNITDESC': TEST_STREET_NAME, 'WKD_RATE3': 2}, columns=['UNIDESC', 'WKD_RATE3'])
 #%%
+test_data.WKD_RATE3.values[0]

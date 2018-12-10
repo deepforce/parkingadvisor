@@ -2,7 +2,7 @@
 This module contains all methods to filter the data to visualization
 and calculation.
 """
-#%%
+#%%py
 import pkg_resources
 
 import pandas as pd
@@ -98,6 +98,7 @@ def _create_smooth_flow_file(file_flow=_FLOW_RAW):
 
     return data_time
 
+_create_smooth_flow_file()
 
 def _loc_period(df_selected_day, hour):
     """
@@ -121,12 +122,14 @@ def _loc_period(df_selected_day, hour):
     df_rate: DataFrame
         the rate for all streets at the given time
     """
-    # get the key timepoint number
-    n_time = int(df_selected_day.shape[1] / 2)
-
-    # Insert the rate of free timezone
-    df_selected_day.insert(n_time + 1, 'SEC0', 0)
-    df_selected_day['LAST_SEC'] = 0
+    if 'SEC0' not in df_selected_day.columns:
+        # Get the key timepoint number
+        n_time = int(df_selected_day.shape[1] / 2)
+        # Insert the rate of free timezone    
+        df_selected_day.insert(n_time + 1, 'SEC0', 0)
+        df_selected_day['LAST_SEC'] = 0
+    else:
+        n_time = int(df_selected_day.shape[1] / 2) -1
 
     # Fill NaN by np.inf
     df_selected_day = df_selected_day.fillna(np.inf)
@@ -272,11 +275,11 @@ class Street():
     def __init__(self, street_name):
         self.name = street_name
 
-        df_flow = pd.read_csv(_FLOW_FILE)
+        df_flow = pd.read_csv(_FLOW_FILE, index_col=0)
         self._flow_df = select_street(self.name, df_flow)
         self.plot = plt.figure()
 
-        df_rate = pd.read_csv(_RATE_FILE)
+        df_rate = pd.read_csv(_RATE_FILE, index_col=0)
         self._rate_df = select_street(self.name, df_rate)
         self.rate = pd.DataFrame()
         self.limit = 0
@@ -287,12 +290,12 @@ class Street():
 
     def get_rate(self):
         "Get rate table"
-        self.rate = self._rate_df[:-1]
+        self.rate = self._rate_df.drop('PARKING_TIME_LIMIT', axis=1)
         return self.rate
 
     def get_limit(self):
         "Get parking limit in hour"
-        self.limit = self._rate_df[-1]/60 # convert into hour
+        self.limit = self._rate_df.iloc[0, -1]/60 # convert into hour
         return self.limit
 
     def get_flow_plot(self):
@@ -430,7 +433,3 @@ def recomm_layer(dest, date_time, factor=RECOMM_FACTOR):
     return df_recomm
 
 
-#%%
-import datetime
-now = datetime.datetime.now()
-recomm_layer(date_time=now, dest=[47.6060,-122.3322])
