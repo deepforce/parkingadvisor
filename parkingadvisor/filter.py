@@ -2,7 +2,8 @@
 This module contains all methods to filter the data to visualization
 and calculation.
 """
-#%%py
+
+
 import pkg_resources
 
 import pandas as pd
@@ -16,11 +17,10 @@ from geopy.distance import geodesic
 PACKAGE_NAME = __name__
 DATA_PATH = pkg_resources.resource_filename(PACKAGE_NAME, 'data/')
 
-_RATE_FILE = DATA_PATH + 'Rate_limit.csv'
+RATE_FILE = DATA_PATH + 'Rate_limit.csv'
 _FLOW_RAW = DATA_PATH + 'Occupancy_per_hour.csv'
-_FLOW_FILE = DATA_PATH + 'flow_all_streets.csv'
-_GIS_FILE = DATA_PATH + 'Streets_gis.json'
-_EV_FILE = DATA_PATH + 'EV Charger.json'
+FLOW_FILE = DATA_PATH + 'flow_all_streets.csv'
+GIS_FILE = DATA_PATH + 'Streets_gis.json'
 
 _INTERPOLATION_NUM = 241
 RECOMM_FACTOR = (0.3, 0.4, 0.3)
@@ -50,8 +50,6 @@ def _model_flow(d_flow_hour):
     flow = f_flow(t_new)
     # Create smoothed flow DataFrame
     d_flow = pd.DataFrame({'TIME': t_new, 'OCCUPANCY': flow})
-    # d_flow['TIME'] = d_flow['TIME'].astype('category')
-
     d_flow.OCCUPANCY.loc[d_flow.OCCUPANCY < 0] = 0
 
     return d_flow
@@ -93,6 +91,7 @@ def _create_smooth_flow_file(file_flow=_FLOW_RAW):
 
         idx_start += _INTERPOLATION_NUM
 
+    # Save the smooth file in data folder
     data_time['UNITDESC'] = new_index
     data_time.to_csv(r'.\data\flow_all_streets.csv')
 
@@ -124,10 +123,11 @@ def _loc_period(df_selected_day, hour):
     if 'SEC0' not in df_selected_day.columns:
         # Get the key timepoint number
         n_time = int(df_selected_day.shape[1] / 2)
-        # Insert the rate of free timezone    
+        # Insert the rate of free timezone
         df_selected_day.insert(n_time + 1, 'SEC0', 0)
         df_selected_day['LAST_SEC'] = 0
     else:
+        # Have inserted the free time region columns
         n_time = int(df_selected_day.shape[1] / 2) -1
 
     # Fill NaN by np.inf
@@ -160,7 +160,7 @@ def _loc_period(df_selected_day, hour):
     return df_rate
 
 
-def _calc_distance(gis_data, street_geojson=_GIS_FILE):
+def _calc_distance(gis_data, street_geojson=GIS_FILE):
     """
     Calculates the distance from a given location to all streets
     (midpoint of linestring)
@@ -274,11 +274,11 @@ class Street():
     def __init__(self, street_name):
         self.name = street_name
 
-        df_flow = pd.read_csv(_FLOW_FILE, index_col=0)
+        df_flow = pd.read_csv(FLOW_FILE, index_col=0)
         self._flow_df = select_street(self.name, df_flow)
         self.plot = plt.figure()
 
-        df_rate = pd.read_csv(_RATE_FILE, index_col=0)
+        df_rate = pd.read_csv(RATE_FILE, index_col=0)
         self._rate_df = select_street(self.name, df_rate)
         self.rate = pd.DataFrame()
         self.limit = 0
@@ -304,7 +304,7 @@ class Street():
 
 
 # Folium map plot layers
-def flow_layer(date_time, file_time=_FLOW_FILE):
+def flow_layer(date_time, file_time=FLOW_FILE):
     """
     Generate a dataframe of occupancy for all streets at a specific
     time point for folium map plot
@@ -338,7 +338,7 @@ def flow_layer(date_time, file_time=_FLOW_FILE):
     return df_flow
 
 
-def rate_layer(date_time, file_rate=_RATE_FILE):
+def rate_layer(date_time, file_rate=RATE_FILE):
     """
     Generate a dataframe of parking rate for all streets at a specific
     datetime
@@ -422,17 +422,17 @@ def recomm_layer(dest, date_time, factor=RECOMM_FACTOR):
     df_recomm['RECOMM'] = np.nan
     df_recomm['RECOMM'].values[:] = np.dot(
         df_recomm.iloc[:, 1:-1].values, factor)[:]
-    
+
     # Normalize the recommand score
-    max = np.max(df_recomm['RECOMM'])
-    min = np.min(df_recomm['RECOMM'])
+    r_max = np.max(df_recomm['RECOMM'])
+    r_min = np.min(df_recomm['RECOMM'])
     df_recomm['RECOMM'] = df_recomm['RECOMM'].apply(
-        lambda x: (max - x)/(max - min))
+        lambda x: (r_max - x)/(r_max - r_min))
 
     return df_recomm
 
 
-def link_to_gis(df_properties, street_geojson=_GIS_FILE):
+def link_to_gis(df_properties, street_geojson=GIS_FILE):
     """
     Add GIS info to properties datafram
 
@@ -448,6 +448,6 @@ def link_to_gis(df_properties, street_geojson=_GIS_FILE):
 
     gis = gpd.read_file(street_geojson)
     df_properties = pd.merge(df_properties, gis[['UNITDESC', 'geometry']], on='UNITDESC')
-    df_gis = gpd.GeoDataFrame(df_properties, crs= {'init' :'epsg:4326'}, geometry='geometry')
+    df_gis = gpd.GeoDataFrame(df_properties, crs={'init' :'epsg:4326'}, geometry='geometry')
 
     return df_gis

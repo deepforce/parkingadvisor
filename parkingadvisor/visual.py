@@ -2,6 +2,10 @@
 Create colormap based on rank mode
 """
 import branca.colormap as cm
+import folium
+import geopandas as gpd
+from .filter import rate_layer, recomm_layer, flow_layer, link_to_gis
+
 
 def color_bar(mode):
     """
@@ -26,3 +30,68 @@ def color_bar(mode):
 
     return colormap
 
+
+def switch_layer(mode):
+    """
+    Switch the function to call to deal with dataset and the property
+    based on the ranking mode
+
+    Attributes:
+    -------------
+    mode:   int
+        1: Rate
+        2: Occupancy
+        3: Recommanded
+
+    Returns
+    -------------
+    layer_func:  `function`
+        The function to deal with dataset
+    property:   str
+        The property key to read
+    """
+    layer_func = {1: rate_layer,
+                  2: flow_layer,
+                  3: recomm_layer}
+    prop = {1: 'RATE', 2: 'OCCUPANCY', 3: 'RECOMM'}
+    return layer_func[mode], prop[mode]
+
+
+class MapLayer(folium.Map):
+    """
+    Create a MayLAyer baseed on desticnation, parking lime
+    """
+
+    def __init__(self, mode, date_time, dest):
+        self.mode = mode
+        self.time = date_time
+        self.dest = dest
+
+        super(MapLayer, self).__init__(location=self.dest,
+                                       tiles='cartodbpositron',
+                                       zoom_start=14)
+        self.colormap = color_bar(mode)
+        self.style_func = None
+        self.layer_func, self.prop = switch_layer(mode)
+
+        self.gdf = gpd.GeoDataFrame()
+
+    def add_layer(self):
+        """
+        Add the colorful layer baedd on rank mode
+        """
+        if self.mode == 3:
+            df_temp = self.layer_func(self.dest, self.time)
+        else:
+            df_temp = self.layer_func(self.time)
+        self.gdf = link_to_gis(df_temp)
+
+        folium.Marker(location=self.dest).add_to(self)
+        self.colormap.add_to(self)
+
+        self.style_func = lambda x: {'color': self.colormap(x['properties'][self.prop]),
+                                     'weight': 5}
+
+        folium.GeoJson(self.gdf.to_json(), style_function=self.style_func,
+                       name=self.prop).add_to(self)
+        folium.LayerControl().add_to(self)
