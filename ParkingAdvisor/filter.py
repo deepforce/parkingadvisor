@@ -2,15 +2,30 @@
 This module contains all methods to filter the data to visualization
 and calculation.
 """
+import pkg_resources
+
 import pandas as pd
 from scipy.interpolate import interp1d
 import numpy as np
 import geopandas as gpd
+import matplotlib.pyplot as plt
 from geopy.distance import geodesic
 
 
+PACKAGE_NAME = __name__
+DATA_PATH = pkg_resources.resource_filename(PACKAGE_NAME, 'data/')
+
+_RATE_FILE = DATA_PATH + 'Rate_limit.csv'
+_FLOW_RAW = DATA_PATH + 'Occupancy_per_hour.csv'
+_FLOW_FILE = DATA_PATH + 'flow_all_streets.csv'
+_GIS_FILE = DATA_PATH + 'Streets_gis.json'
+_EV_FILE = DATA_PATH + 'EV Charger.json'
+
+_INTERPOLATION_NUM = 241
+RECOMM_FACTOR = (0.3, 0.4, 0.3)
+
 # Calculations processing on clean datasets
-def _model_flow(d_flow_hour): # DONE
+def _model_flow(d_flow_hour):
     '''
     Smooth the occupancy profile by interpolation ('cubic') to fix the
     missing data point issue and provide pretty profile graphs later
@@ -30,7 +45,7 @@ def _model_flow(d_flow_hour): # DONE
         d_flow_hour['HOUR'], d_flow_hour['OCCUPANCY'], kind='cubic',
         fill_value='extrapolate')
 
-    t_new = np.linspace(8, 24, num=161, endpoint=True)
+    t_new = np.linspace(0, 24, num=_INTERPOLATION_NUM, endpoint=True)
     flow = f_flow(t_new)
     # Create smoothed flow DataFrame
     d_flow = pd.DataFrame({'TIME': t_new, 'OCCUPANCY': flow})
@@ -41,7 +56,7 @@ def _model_flow(d_flow_hour): # DONE
     return d_flow
 
 
-def _create_smooth_flow_file(file_flow): # DONE
+def _create_smooth_flow_file(file_flow=_FLOW_RAW):
     '''
     Generates the parking utilities of all streets by interpolation
     and save a .csv file
@@ -63,9 +78,9 @@ def _create_smooth_flow_file(file_flow): # DONE
     # Create an empty dataframe to store smoothed flow data
     num = len(df_flow['UNITDESC'].cat.categories)
 
-    data_time = pd.DataFrame(pd.np.empty((161*num, 2)) * pd.np.nan,
+    data_time = pd.DataFrame(pd.np.empty((_INTERPOLATION_NUM * num, 2)) * pd.np.nan,
                              columns=['TIME', 'OCCUPANCY'])
-    new_index = np.repeat(df_flow['UNITDESC'].cat.categories, 161)
+    new_index = np.repeat(df_flow['UNITDESC'].cat.categories, _INTERPOLATION_NUM)
 
     # Group by street name as index
     idx_start = 0
@@ -73,9 +88,9 @@ def _create_smooth_flow_file(file_flow): # DONE
         d_street = df_flow.loc[df_flow['UNITDESC'] == cat]
         d_smooth = _model_flow(d_street)
 
-        data_time.iloc[idx_start:idx_start+161].values[:] = d_smooth.values[:]
+        data_time.iloc[idx_start:(idx_start + _INTERPOLATION_NUM)].values[:] = d_smooth.values[:]
 
-        idx_start += 161
+        idx_start += _INTERPOLATION_NUM
 
     data_time['UNITDESC'] = new_index
     data_time.to_csv(r'.\data\flow_all_streets.csv')
@@ -83,7 +98,7 @@ def _create_smooth_flow_file(file_flow): # DONE
     return data_time
 
 
-def _loc_period(df_selected_day, hour): # DONE
+def _loc_period(df_selected_day, hour):
     """
     Determine the given hour number in which time section
     and get the corresponding rate
@@ -137,11 +152,12 @@ def _loc_period(df_selected_day, hour): # DONE
         rate = np.append(rate, temp2)
     df_rate = pd.DataFrame({'UNITDESC': streets, 'RATE': rate})
     df_rate.replace(to_replace=np.inf, value=0, inplace=True)
+    df_rate.RATE.astype('float')
 
     return df_rate
 
 
-def _calc_distance(street_geojson, gis_data): # DONE
+def _calc_distance(gis_data, street_geojson=_GIS_FILE):
     """
     Calculates the distance from a given location to all streets
     (midpoint of linestring)
@@ -176,72 +192,124 @@ def _calc_distance(street_geojson, gis_data): # DONE
 
     return df_dist
 
+def select_street(street_name, df_entire):
+    """
+    Select a specific street info from entire dataframe
 
-def read_street_file(file_flow, file_rate, street_name): # DONE
-    '''
-    Select the parking utilities of a certain street
-    for sider bar display
-
-    Attributes:
-    -------------------
-    file_flow: file
-        The entire flow file
-    file_rate: file
-        The entire rate file
-    street_name: str
-        The name of the certain street
+    Attibute:
+    --------------------
+    street_name:
+        The given street name
+    df_entire:
+        The dataframe containing all streets
 
     Return:
-    --------------------
-    df_flow: DataFrame
-        The occupancy per hour of the day
-    df_rate: Series
-        The rate info of the street
-
-    Examples:
     -------------------
-    >>> df_flow, df_rate = select_street(
-            file_flow='..\\data\\Occupancy_per_hour.csv',
-            file_rate='..\\data\\Rate_limit.csv',
-            street_name='10TH AVE BETWEEN E PIKE ST AND E PINE ST')
+    info:   DataFrame.Series
+    """
 
-    >>> df_flow.head()
-    >>>    TIME	OCCUPANCY
-        0	8.0	0.493407
-        1	8.1	0.503239
-        2	8.2	0.513154
-        3	8.3	0.523411
-        4	8.4	0.534272
-    >>> df_rate
-    '''
+    info = df_entire.loc[df_entire['UNITDESC'] == street_name]
+    return info
 
-    df_flow = pd.read_csv(file_flow, index_col=0)
-    df_flow = df_flow['UNITDESC'].astype('category')
-    street = df_flow.loc[df_flow.UNITDESC == street_name]
-    df_flow_hour = pd.DataFrame({'HOUR': street['HOUR'],
-                                 'OCCUPANCY': street['OCCUPANCY']})
-    df_flow = _model_flow(df_flow_hour)
+def plot_flow(df_smooth_flow):
+    """
+    Plot the flow figure for a single street
 
-    df_rate = pd.read_csv(file_rate, index_col=0)
-    df_flow = df_flow['UNITDESC'].astype('category')
-    df_rate = df_rate.loc[df_rate.UNITDESC == street_name]
+    Attribute:
+    --------------
+    df_smooth_flow: dataframe
+        The smoothed flow data of a dingle street
 
-    return df_flow, df_rate
+    Return:
+    --------------
+    fig:    matplotlib.pyplot.Figure
+    """
+    time = df_smooth_flow['TIME']
+    flow = df_smooth_flow['OCCUPANCY']
+
+    fig = plt.figure(figsize=(4, 2.5), frameon=False, facecolor=None)
+    plt.fill_between(time, flow, alpha=0.5, edgecolor='#1B5C99',
+                     facecolor='#84B5D1', lw=2)
+
+    # Change tick labels
+    plt.xticks([8, 12, 16, 20, 24], ['8 AM', '12 PM', '4 PM', '8 PM', '12 AM'])
+    plt.yticks([0, 0.5, 1], ['0', '50', '100 %'])
+    # Set axis limit
+    plt.xlim([8, 24])
+    plt.ylim([0, 1])
+    # Delete y axis
+    ax = plt.gca()
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
+    ax.spines['left'].set_visible(False)
+
+    # Only show labels on left spines
+    ax.tick_params(left=False, labelleft=True, axis='both', which='major', labelsize=12)
+    ax.tick_params(axis='x', pad=8)
+    ax.xaxis.set_ticks_position('bottom')
+    # Show girds
+    plt.grid(color='dimgrey', alpha=0.5)
+
+    return fig
+
+class Street():
+    """
+    The class `Street` contains all information of a on-street parking
+    spot for future details display.
+
+    Attributes:
+    ---------------------
+    name:   The street name
+    plot:   Occupancy over time figure
+    rate:   Parking rate table
+    limit:  Parking limit (in hour)
+    """
+
+    def __init__(self, street_name):
+        self.name = street_name
+
+        df_flow = pd.read_csv(_FLOW_FILE)
+        self._flow_df = select_street(self.name, df_flow)
+        self.plot = plt.figure()
+
+        df_rate = pd.read_csv(_RATE_FILE)
+        self._rate_df = select_street(self.name, df_rate)
+        self.rate = pd.DataFrame()
+        self.limit = 0
+
+    def get_name(self):
+        "Street name"
+        return self.name
+
+    def get_rate(self):
+        "Get rate table"
+        self.rate = self._rate_df[:-1]
+        return self.rate
+
+    def get_limit(self):
+        "Get parking limit in hour"
+        self.limit = self._rate_df[-1]/60 # convert into hour
+        return self.limit
+
+    def get_flow_plot(self):
+        "Get the flow analysis figure"
+        self.plot = plot_flow(self._flow_df)
+        return self.plot
 
 
 # Folium map plot layers
-def flow_layer(file_time, date_time): # DONE
+def flow_layer(date_time, file_time=_FLOW_FILE):
     """
     Generate a dataframe of occupancy for all streets at a specific
     time point for folium map plot
 
     Attribute
     ----------------
+    date_time:   `datatime` object
+        The start time of parking
     file_time: file
         The path of the raw file which containing all smoothed
         occupancy data (i.e. 'flow_all_streets.csv')
-    date_time:   `datatime` object
-        The start time of parking
 
     Return
     -----------------
@@ -264,21 +332,21 @@ def flow_layer(file_time, date_time): # DONE
     return df_flow
 
 
-def rate_layer(file_rate, date_time): # DONE
+def rate_layer(date_time, file_rate=_RATE_FILE):
     """
     Generate a dataframe of parking rate for all streets at a specific
     datetime
 
     Attributes:
     -----------------
-    file_rate: file
-        The entire rate file (i.e. 'Rate_limit.csv')
     date_time: `datatime` Object
         the start time of parking
+    file_rate: file
+        The entire rate file (i.e. 'Rate_limit.csv')
 
     Returns:
     -------------------
-    df_rate
+    df_rate:    dataframe
     """
     raw = pd.read_csv(file_rate)
     raw.apply(pd.to_numeric, errors='ignore')
@@ -303,13 +371,16 @@ def rate_layer(file_rate, date_time): # DONE
     return df_rate
 
 
-def recomm_layer(file_time, file_rate, street_geojson,
-                 date_time, dest, factor):
+def recomm_layer(dest, date_time, factor=RECOMM_FACTOR):
     """
     Generates a dataframe with recommanded score for all streets
 
     Attributes:
     -------------------
+    dest: tuple-like (lat,long)
+        The destination coordinates
+    date_time: `datetime` object
+        The start time point
     file_time: file
         The path of the raw file which containing all smoothed
         occupancy data (i.e. 'flow_all_streets.csv')
@@ -317,10 +388,7 @@ def recomm_layer(file_time, file_rate, street_geojson,
         The entire rate file (i.e. 'Rate_limit.csv')
     street_geojson: JSON file
         The GeoJSON file of all streets (i.e. Streets_gis.json)
-    date_time: `datetime` object
-        The start time point
-    dest: tuple (lat,long)
-        The destination coordinates
+
     factor: list (order: 'RATE', 'FLOW', 'DISTANCE')
         The score factor to calculate recommanded score
 
@@ -329,18 +397,25 @@ def recomm_layer(file_time, file_rate, street_geojson,
     df_recomm:  DataFrame
         dataframe of recommanded scores
     """
+    # Get all properties
+    df_rate = rate_layer(date_time)
+    df_flow = flow_layer(date_time)
+    df_dist = _calc_distance(dest)
 
-    df_rate = rate_layer(file_rate, date_time)
-    df_flow = flow_layer(file_time, date_time)
-    df_dist = _calc_distance(street_geojson, dest)
-
+    # Merge into one DataFrame
     df_recomm = pd.merge(df_rate, df_flow, on='UNITDESC')
     df_recomm = pd.merge(df_recomm, df_dist, on='UNITDESC')
     df_recomm = df_recomm.drop(['TIME'], axis=1)
-    df_recomm['RECOMM'] = np.nan
+
+    # Normalize each column
     df_recomm['DISTANCE'] = df_recomm['DISTANCE'].apply(np.log10)
 
-    df_recomm['RECOMM'].values[:] = np.dot(df_recomm.iloc[:, 1:-1].values, factor)[:]
-    df_recomm['RECOMM'] = - df_recomm['RECOMM']
+    df_recomm.iloc[:, 1:4] = df_recomm.iloc[:, 1:4].apply(
+        lambda x: (x - np.min(x))/(np.max(x) - np.min(x)) if x.any() else x)
+
+    df_recomm['RECOMM'] = np.nan
+    df_recomm['RECOMM'].values[:] = np.dot(
+        df_recomm.iloc[:, 1:-1].values, factor)[:]
+    df_recomm['RECOMM'] = 1 - df_recomm['RECOMM']
 
     return df_recomm
