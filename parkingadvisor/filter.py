@@ -2,6 +2,7 @@
 This module contains all methods to filter the data to visualization
 and calculation.
 """
+#%%
 import pkg_resources
 
 import pandas as pd
@@ -192,6 +193,7 @@ def _calc_distance(gis_data, street_geojson=_GIS_FILE):
 
     return df_dist
 
+
 def select_street(street_name, df_entire):
     """
     Select a specific street info from entire dataframe
@@ -210,6 +212,7 @@ def select_street(street_name, df_entire):
 
     info = df_entire.loc[df_entire['UNITDESC'] == street_name]
     return info
+
 
 def plot_flow(df_smooth_flow):
     """
@@ -251,6 +254,7 @@ def plot_flow(df_smooth_flow):
     plt.grid(color='dimgrey', alpha=0.5)
 
     return fig
+
 
 class Street():
     """
@@ -416,7 +420,17 @@ def recomm_layer(dest, date_time, factor=RECOMM_FACTOR):
     df_recomm['RECOMM'] = np.nan
     df_recomm['RECOMM'].values[:] = np.dot(
         df_recomm.iloc[:, 1:-1].values, factor)[:]
+    
+    # Normalize the recommand score
+    max = np.max(df_recomm['RECOMM'])
+    min = np.min(df_recomm['RECOMM'])
     df_recomm['RECOMM'] = df_recomm['RECOMM'].apply(
-        lambda x: 1 - ((x - np.min(x))/(np.max(x) - np.min(x))))
+        lambda x: (max - x)/(max - min))
 
     return df_recomm
+
+
+#%%
+import datetime
+now = datetime.datetime.now()
+recomm_layer(date_time=now, dest=[47.6060,-122.3322])

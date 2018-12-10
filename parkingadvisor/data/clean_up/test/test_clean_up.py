@@ -3,12 +3,12 @@
 
 '''This is a unittest for parking_info.py'''
 import unittest
+import pytest
+
 import pandas as pd
 import numpy as np
 
-import sys
-sys.path.append("..")
-import data.clean_up as cln
+import clean_up as cln
 
 
 class UnitTests(unittest.TestCase):
