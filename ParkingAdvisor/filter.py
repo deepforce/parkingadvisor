@@ -416,6 +416,7 @@ def recomm_layer(dest, date_time, factor=RECOMM_FACTOR):
     df_recomm['RECOMM'] = np.nan
     df_recomm['RECOMM'].values[:] = np.dot(
         df_recomm.iloc[:, 1:-1].values, factor)[:]
-    df_recomm['RECOMM'] = 1 - df_recomm['RECOMM']
+    df_recomm['RECOMM'] = df_recomm['RECOMM'].apply(
+        lambda x: 1 - ((x - np.min(x))/(np.max(x) - np.min(x))))
 
     return df_recomm
