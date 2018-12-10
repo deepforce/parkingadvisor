@@ -1,22 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[32]:
-
-
 '''This is a unittest for parking_info.py'''
 import unittest
 import pandas as pd
 import numpy as np
 
-
-# In[33]:
 import sys
 sys.path.append("..")
 import data.clean_up as cln
-
-
-# In[ ]:
 
 
 class UnitTests(unittest.TestCase):
