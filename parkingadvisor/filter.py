@@ -98,7 +98,6 @@ def _create_smooth_flow_file(file_flow=_FLOW_RAW):
 
     return data_time
 
-_create_smooth_flow_file()
 
 def _loc_period(df_selected_day, hour):
     """
@@ -433,3 +432,22 @@ def recomm_layer(dest, date_time, factor=RECOMM_FACTOR):
     return df_recomm
 
 
+def link_to_gis(df_properties, street_geojson=_GIS_FILE):
+    """
+    Add GIS info to properties datafram
+
+    Attributes:
+    -------------
+    df_properties: DataFrame
+        the DataFrame of properties
+
+    Returns
+    -------------
+    df_gis: geopandas.geodataframe
+    """
+
+    gis = gpd.read_file(street_geojson)
+    df_properties = pd.merge(df_properties, gis[['UNITDESC', 'geometry']], on='UNITDESC')
+    df_gis = gpd.GeoDataFrame(df_properties, crs= {'init' :'epsg:4326'}, geometry='geometry')
+
+    return df_gis
