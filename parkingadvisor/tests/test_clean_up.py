@@ -8,7 +8,7 @@ import pytest
 import pandas as pd
 import numpy as np
 
-import clean_up as cln
+import parkingadvisor.clean_up as cln
 
 
 class UnitTests(unittest.TestCase):
@@ -63,9 +63,10 @@ class UnitTests(unittest.TestCase):
         
     def test_ev_connector_tf(self):
         '''check the value of specific column'''
-        df = pd.DataFrame({'EV Connector Types' : ['Type1 Type2 Type3 Type4', 'Type1 Type3 Type2', 
-                                          'Type2 Type1 Type3', 'Type1', 'Type4 Type1', 'Type3 Type1',
-                                           'Type3 Type1']})
+        df = pd.DataFrame({
+            'EV Connector Types' : ['Type1 Type2 Type3 Type4', 'Type1 Type3 Type2', 
+                                    'Type2 Type1 Type3', 'Type1', 'Type4 Type1',
+                                    'Type3 Type1', 'Type3 Type1']})
         df = cln.ev_connector_tf(df, ['Type1', 'Type2', 'Type3', 'Type4'])
         self.assertEqual(df.loc[1]['Type1'], True)
         self.assertEqual(df.loc[3]['Type2'], False)

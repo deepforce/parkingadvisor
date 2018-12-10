@@ -99,7 +99,7 @@ def convert_to_geojson(dataframe, filename):
     if not 'geometry' in dataframe.columns:
         dataframe['geometry'] = dataframe.apply(lambda z: Point(z.Longitude, z.Latitude), axis=1)
         dataframe.drop(['Latitude', 'Longitude'], axis=1)
-    
+
     dataframe_geo = gpd.GeoDataFrame(dataframe)
     geojson = open(filename, "w")
     geojson.write(dataframe_geo.to_json(indent=2) + '\n')
