@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>filter &mdash; parking_advisor 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> parking_advisor
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Data_clean_up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../filter.html">filter module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visual.html">visual module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">parking_advisor</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>filter</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for filter</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module contains all methods to filter the data to visualization</span>
+<span class="sd">and calculation.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">pkg_resources</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="k">import</span> <span class="n">interp1d</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">geopy.distance</span> <span class="k">import</span> <span class="n">geodesic</span>
+
+
+<span class="n">PACKAGE_NAME</span> <span class="o">=</span> <span class="vm">__name__</span>
+<span class="n">DATA_PATH</span> <span class="o">=</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">resource_filename</span><span class="p">(</span><span class="n">PACKAGE_NAME</span><span class="p">,</span> <span class="s1">&#39;data/&#39;</span><span class="p">)</span>
+
+<span class="n">RATE_FILE</span> <span class="o">=</span> <span class="n">DATA_PATH</span> <span class="o">+</span> <span class="s1">&#39;Rate_limit.csv&#39;</span>
+<span class="n">_FLOW_RAW</span> <span class="o">=</span> <span class="n">DATA_PATH</span> <span class="o">+</span> <span class="s1">&#39;Occupancy_per_hour.csv&#39;</span>
+<span class="n">FLOW_FILE</span> <span class="o">=</span> <span class="n">DATA_PATH</span> <span class="o">+</span> <span class="s1">&#39;flow_all_streets.csv&#39;</span>
+<span class="n">GIS_FILE</span> <span class="o">=</span> <span class="n">DATA_PATH</span> <span class="o">+</span> <span class="s1">&#39;Streets_gis.json&#39;</span>
+<span class="n">EV_FILE</span> <span class="o">=</span> <span class="n">DATA_PATH</span> <span class="o">+</span> <span class="s1">&#39;EV Charger.json&#39;</span>
+
+<span class="n">_INTERPOLATION_NUM</span> <span class="o">=</span> <span class="mi">241</span>
+<span class="n">RECOMM_FACTOR</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># Calculations processing on clean datasets</span>
+<span class="k">def</span> <span class="nf">_model_flow</span><span class="p">(</span><span class="n">d_flow_hour</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Smooth the occupancy profile by interpolation (&#39;cubic&#39;) to fix the</span>
+<span class="sd">    missing data point issue and provide pretty profile graphs later</span>
+
+<span class="sd">    :param d_flow_hour: The hourly flow data of certain street</span>
+<span class="sd">    :type d_flow_hour: dataframe</span>
+
+<span class="sd">    :returns: Smoothed flow dataframe by interpolation</span>
+<span class="sd">    :rtype: dataframe</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Cubic interpolation</span>
+    <span class="n">f_flow</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span>
+        <span class="n">d_flow_hour</span><span class="p">[</span><span class="s1">&#39;HOUR&#39;</span><span class="p">],</span> <span class="n">d_flow_hour</span><span class="p">[</span><span class="s1">&#39;OCCUPANCY&#39;</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">,</span>
+        <span class="n">fill_value</span><span class="o">=</span><span class="s1">&#39;extrapolate&#39;</span><span class="p">)</span>
+
+    <span class="n">t_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">_INTERPOLATION_NUM</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">flow</span> <span class="o">=</span> <span class="n">f_flow</span><span class="p">(</span><span class="n">t_new</span><span class="p">)</span>
+    <span class="c1"># Create smoothed flow DataFrame</span>
+    <span class="n">d_flow</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;TIME&#39;</span><span class="p">:</span> <span class="n">t_new</span><span class="p">,</span> <span class="s1">&#39;OCCUPANCY&#39;</span><span class="p">:</span> <span class="n">flow</span><span class="p">})</span>
+    <span class="n">d_flow</span><span class="o">.</span><span class="n">OCCUPANCY</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">d_flow</span><span class="o">.</span><span class="n">OCCUPANCY</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">return</span> <span class="n">d_flow</span>
+
+
+<span class="k">def</span> <span class="nf">_create_smooth_flow_file</span><span class="p">(</span><span class="n">file_flow</span><span class="o">=</span><span class="n">_FLOW_RAW</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Generates the parking utilities of all streets by interpolation</span>
+<span class="sd">    and save a .csv file</span>
+
+<span class="sd">    :param file_flow: The entire flow dataset file</span>
+<span class="sd">    :type file_flow: str</span>
+
+<span class="sd">    :returns: The entire flow dataset file</span>
+<span class="sd">    :rtype: dataframe</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">df_flow</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_flow</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">df_flow</span><span class="p">[</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_flow</span><span class="p">[</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Create an empty dataframe to store smoothed flow data</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_flow</span><span class="p">[</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">)</span>
+
+    <span class="n">data_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">_INTERPOLATION_NUM</span> <span class="o">*</span> <span class="n">num</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+                             <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;TIME&#39;</span><span class="p">,</span> <span class="s1">&#39;OCCUPANCY&#39;</span><span class="p">])</span>
+    <span class="n">new_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">df_flow</span><span class="p">[</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">,</span> <span class="n">_INTERPOLATION_NUM</span><span class="p">)</span>
+
+    <span class="c1"># Group by street name as index</span>
+    <span class="n">idx_start</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="n">df_flow</span><span class="p">[</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">:</span>
+        <span class="n">d_street</span> <span class="o">=</span> <span class="n">df_flow</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_flow</span><span class="p">[</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">cat</span><span class="p">]</span>
+        <span class="n">d_smooth</span> <span class="o">=</span> <span class="n">_model_flow</span><span class="p">(</span><span class="n">d_street</span><span class="p">)</span>
+
+        <span class="n">data_time</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx_start</span><span class="p">:(</span><span class="n">idx_start</span> <span class="o">+</span> <span class="n">_INTERPOLATION_NUM</span><span class="p">)]</span><span class="o">.</span><span class="n">values</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">d_smooth</span><span class="o">.</span><span class="n">values</span><span class="p">[:]</span>
+
+        <span class="n">idx_start</span> <span class="o">+=</span> <span class="n">_INTERPOLATION_NUM</span>
+
+    <span class="c1"># Save the smooth file in data folder</span>
+    <span class="n">data_time</span><span class="p">[</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_index</span>
+    <span class="n">data_time</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;.\data\flow_all_streets.csv&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data_time</span>
+
+
+<span class="k">def</span> <span class="nf">_loc_period</span><span class="p">(</span><span class="n">df_selected_day</span><span class="p">,</span> <span class="n">hour</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determine the given hour number in which time section</span>
+<span class="sd">    and get the corresponding rate.</span>
+<span class="sd">    NOTE</span>
+<span class="sd">        -----------time1--------time2--------time3----------time4(n)----------</span>
+<span class="sd">        |----SEC0----|----SEC1----|----SEC2---|-----SEC3-----|----SEC4----|</span>
+<span class="sd">                     |   --------------input---------------  |</span>
+
+<span class="sd">    :param df_selected_day: the rate info dataframe with columns [key timepoint (n), rate_list (n-1)] </span>
+<span class="sd">                            for each section</span>
+<span class="sd">    :type df_selected_day: dataframe</span>
+
+<span class="sd">    :param hour: the number of datetime hour</span>
+<span class="sd">    :type hour: int</span>
+
+<span class="sd">    :returns: the rate for all streets at the given time</span>
+<span class="sd">    :rtype: dataframe</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="s1">&#39;SEC0&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df_selected_day</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="c1"># Get the key timepoint number</span>
+        <span class="n">n_time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">df_selected_day</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># Insert the rate of free timezone</span>
+        <span class="n">df_selected_day</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">n_time</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;SEC0&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">df_selected_day</span><span class="p">[</span><span class="s1">&#39;LAST_SEC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Have inserted the free time region columns</span>
+        <span class="n">n_time</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">df_selected_day</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="c1"># Fill NaN by np.inf</span>
+    <span class="n">df_selected_day</span> <span class="o">=</span> <span class="n">df_selected_day</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+
+    <span class="c1"># Initial the streets and rate array</span>
+    <span class="n">streets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+    <span class="n">rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+
+    <span class="c1"># Group by the timezone condition</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">df_selected_day</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df_selected_day</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="n">n_time</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">group</span><span class="p">))</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+        <span class="c1"># Get the array of timepoints. (e.g. [8, 11, 17, 20])</span>
+        <span class="c1"># And substrate the given hour number (e.g. [0, 3, 9, 12] when hour=8)</span>
+        <span class="n">sub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">-</span><span class="n">hour</span>
+
+        <span class="c1"># Count the non-positive values, which refers ot the section num</span>
+        <span class="c1"># (e.g. sec = 1. So hour=8 in SEC1)</span>
+        <span class="n">sec</span> <span class="o">=</span> <span class="p">(</span><span class="n">sub</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+        <span class="n">temp1</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">temp2</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">n_time</span> <span class="o">+</span> <span class="n">sec</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">streets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">streets</span><span class="p">,</span> <span class="n">temp1</span><span class="p">)</span>
+        <span class="n">rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="n">temp2</span><span class="p">)</span>
+    <span class="n">df_rate</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">:</span> <span class="n">streets</span><span class="p">,</span> <span class="s1">&#39;RATE&#39;</span><span class="p">:</span> <span class="n">rate</span><span class="p">})</span>
+    <span class="n">df_rate</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df_rate</span><span class="o">.</span><span class="n">RATE</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_rate</span>
+
+
+<span class="k">def</span> <span class="nf">_calc_distance</span><span class="p">(</span><span class="n">gis_data</span><span class="p">,</span> <span class="n">street_geojson</span><span class="o">=</span><span class="n">GIS_FILE</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the distance from a given location to all streets</span>
+<span class="sd">    (midpoint of linestring)</span>
+
+<span class="sd">    :param gis_data: The given point coordinate, including longitude and latitude</span>
+<span class="sd">    :type gis_data: list</span>
+
+<span class="sd">    :param street_geojson: The GeoJSON file of all streets (i.e. Streets_gis.json)</span>
+<span class="sd">    :type street_geojson: str</span>
+
+<span class="sd">    :returns: a dataframe of distance of a given point to all streets</span>
+<span class="sd">    :rtype: dataframe</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">street_df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">street_geojson</span><span class="p">)</span>
+    <span class="n">coord</span> <span class="o">=</span> <span class="n">street_df</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span> <span class="c1"># (long, lat)</span>
+
+    <span class="c1"># Calculates the midpoint of each street line</span>
+    <span class="n">m_list</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># (lat, long)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">coord</span><span class="p">:</span>
+        <span class="n">m_list</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="c1"># Calculates the distance</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">m_list</span><span class="p">:</span>
+        <span class="n">distance</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">geodesic</span><span class="p">(</span><span class="n">gis_data</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">miles</span><span class="p">)</span>
+
+    <span class="n">street_df</span><span class="p">[</span><span class="s1">&#39;DISTANCE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span>
+    <span class="n">df_dist</span> <span class="o">=</span> <span class="n">street_df</span><span class="p">[[</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">,</span> <span class="s1">&#39;DISTANCE&#39;</span><span class="p">]]</span>
+
+    <span class="k">return</span> <span class="n">df_dist</span>
+
+
+<div class="viewcode-block" id="select_street"><a class="viewcode-back" href="../filter.html#filter.select_street">[docs]</a><span class="k">def</span> <span class="nf">select_street</span><span class="p">(</span><span class="n">street_name</span><span class="p">,</span> <span class="n">df_entire</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Select a specific street info from entire dataframe</span>
+
+<span class="sd">    :param street_name: The given street name</span>
+<span class="sd">    :type street_name: str</span>
+
+<span class="sd">    :param df_entire: The dataframe containing all streets</span>
+<span class="sd">    :type df_entire: dataframe</span>
+
+<span class="sd">    :returns: info of specific street name</span>
+<span class="sd">    :rtype: dataframe</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">info</span> <span class="o">=</span> <span class="n">df_entire</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_entire</span><span class="p">[</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">street_name</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">info</span></div>
+
+
+<div class="viewcode-block" id="plot_flow"><a class="viewcode-back" href="../filter.html#filter.plot_flow">[docs]</a><span class="k">def</span> <span class="nf">plot_flow</span><span class="p">(</span><span class="n">df_smooth_flow</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot the flow figure for a single street</span>
+
+<span class="sd">    :param df_smooth_flow: The smoothed flow data of a dingle street</span>
+<span class="sd">    :type df_smooth_flow: dataframe</span>
+
+<span class="sd">    :returns: a figure containing the info of a dataframe</span>
+<span class="sd">    :rtype: matplotlib.pyplot.Figure</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">df_smooth_flow</span><span class="p">[</span><span class="s1">&#39;TIME&#39;</span><span class="p">]</span>
+    <span class="n">flow</span> <span class="o">=</span> <span class="n">df_smooth_flow</span><span class="p">[</span><span class="s1">&#39;OCCUPANCY&#39;</span><span class="p">]</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">),</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">flow</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;#1B5C99&#39;</span><span class="p">,</span>
+                     <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#84B5D1&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Change tick labels</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;8 AM&#39;</span><span class="p">,</span> <span class="s1">&#39;12 PM&#39;</span><span class="p">,</span> <span class="s1">&#39;4 PM&#39;</span><span class="p">,</span> <span class="s1">&#39;8 PM&#39;</span><span class="p">,</span> <span class="s1">&#39;12 AM&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;100 %&#39;</span><span class="p">])</span>
+    <span class="c1"># Set axis limit</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">24</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="c1"># Delete y axis</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Only show labels on left spines</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelleft</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+    <span class="c1"># Show girds</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;dimgrey&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fig</span></div>
+
+
+<div class="viewcode-block" id="Street"><a class="viewcode-back" href="../filter.html#filter.Street">[docs]</a><span class="k">class</span> <span class="nc">Street</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The class `Street` contains all information of a on-street parking</span>
+<span class="sd">    spot for future details display.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">    ---------------------</span>
+<span class="sd">    name:   The street name.</span>
+<span class="sd">    plot:   Occupancy over time figure.</span>
+<span class="sd">    rate:   Parking rate table.</span>
+<span class="sd">    limit:  Parking limit (in hour).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">street_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param street_name: The given street name</span>
+<span class="sd">        :type street_name: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">street_name</span>
+
+        <span class="n">df_flow</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">FLOW_FILE</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_flow_df</span> <span class="o">=</span> <span class="n">select_street</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">df_flow</span><span class="p">)</span>
+
+        <span class="n">df_rate</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">RATE_FILE</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rate_df</span> <span class="o">=</span> <span class="n">select_street</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">df_rate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DAYS&#39;</span><span class="p">,</span> <span class="s1">&#39;SEC1&#39;</span><span class="p">,</span> <span class="s1">&#39;SEC2&#39;</span><span class="p">,</span> <span class="s1">&#39;SEC3&#39;</span><span class="p">])</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="mi">0</span>
+
+<div class="viewcode-block" id="Street.get_name"><a class="viewcode-back" href="../filter.html#filter.Street.get_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;Street name&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span></div>
+
+<div class="viewcode-block" id="Street.get_rate"><a class="viewcode-back" href="../filter.html#filter.Street.get_rate">[docs]</a>    <span class="k">def</span> <span class="nf">get_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;Get rate table&quot;</span>
+        <span class="n">time_points</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_rate_df</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span>
+                                           <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">]]</span>
+        <span class="n">rate</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_rate_df</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">16</span><span class="p">]]</span>
+        <span class="c1"># Create a list to store key timepoint in `str` and 12-hour clock</span>
+        <span class="n">timepoint_text</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">hour</span> <span class="ow">in</span> <span class="n">time_points</span><span class="p">:</span>
+            <span class="c1"># Convert 24h to 12h</span>
+            <span class="k">if</span> <span class="n">hour</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">hour_new</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">hour_new</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">hour</span><span class="p">),</span> <span class="s1">&#39;%H&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%#I %p&quot;</span><span class="p">)</span>
+            <span class="n">timepoint_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hour_new</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="p">[</span><span class="s1">&#39;DAYS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;WKD&#39;</span><span class="p">,</span><span class="s1">&#39;SAT&#39;</span><span class="p">]</span>
+
+        <span class="n">time_label</span> <span class="o">=</span> <span class="p">[</span><span class="n">timepoint_text</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span> <span class="n">timepoint_text</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">time_label</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">rate</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">rate</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span></div>
+
+<div class="viewcode-block" id="Street.get_limit"><a class="viewcode-back" href="../filter.html#filter.Street.get_limit">[docs]</a>    <span class="k">def</span> <span class="nf">get_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;Get parking limit in hour&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">limit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rate_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">60</span> <span class="c1"># convert into hour</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">limit</span></div>
+
+<div class="viewcode-block" id="Street.get_flow_plot"><a class="viewcode-back" href="../filter.html#filter.Street.get_flow_plot">[docs]</a>    <span class="k">def</span> <span class="nf">get_flow_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;Get the flow analysis figure&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="n">plot_flow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_flow_df</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot</span></div></div>
+
+
+<span class="c1"># Folium map plot layers</span>
+<div class="viewcode-block" id="flow_layer"><a class="viewcode-back" href="../filter.html#filter.flow_layer">[docs]</a><span class="k">def</span> <span class="nf">flow_layer</span><span class="p">(</span><span class="n">date_time</span><span class="p">,</span> <span class="n">file_time</span><span class="o">=</span><span class="n">FLOW_FILE</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate a dataframe of occupancy for all streets at a specific</span>
+<span class="sd">    time point for folium map plot</span>
+
+<span class="sd">    :param date_time: The start time of parking</span>
+<span class="sd">    :type date_time: `datatime` </span>
+
+<span class="sd">    :param file_time: The path of the raw file which containing all smoothed</span>
+<span class="sd">                        occupancy data (i.e. &#39;flow_all_streets.csv&#39;)</span>
+<span class="sd">    :type file_time: str</span>
+
+<span class="sd">    :returns: A dataframe containing occupancy at the time point</span>
+<span class="sd">    :rtype: dataframe</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Round the time decimal to 1 digit</span>
+
+    <span class="n">time_float</span> <span class="o">=</span> <span class="n">date_time</span><span class="o">.</span><span class="n">hour</span> <span class="o">+</span> <span class="n">date_time</span><span class="o">.</span><span class="n">minute</span><span class="o">/</span><span class="mf">60.0</span>
+    <span class="n">time_float</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">time_float</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">d_entire</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_time</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Change columns dtype to accelerate</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">,</span> <span class="s1">&#39;TIME&#39;</span><span class="p">]:</span>
+        <span class="n">d_entire</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">d_entire</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+
+    <span class="n">df_flow</span> <span class="o">=</span> <span class="n">d_entire</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">d_entire</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">time_float</span><span class="p">)]</span>
+
+    <span class="k">return</span> <span class="n">df_flow</span></div>
+
+
+<div class="viewcode-block" id="rate_layer"><a class="viewcode-back" href="../filter.html#filter.rate_layer">[docs]</a><span class="k">def</span> <span class="nf">rate_layer</span><span class="p">(</span><span class="n">date_time</span><span class="p">,</span> <span class="n">file_rate</span><span class="o">=</span><span class="n">RATE_FILE</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate a dataframe of parking rate for all streets at a specific</span>
+<span class="sd">    datetime</span>
+
+<span class="sd">    :param date_time: the start time of parking</span>
+<span class="sd">    :type date_time: `datatime`</span>
+
+<span class="sd">    :param file_rate: The entire rate file (i.e. &#39;Rate_limit.csv&#39;)</span>
+<span class="sd">    :type file_rate: str</span>
+
+<span class="sd">    :returns: a dataframe containing all the info of the layer</span>
+<span class="sd">    :rtype: dataframe</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_rate</span><span class="p">)</span>
+    <span class="n">raw</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+    <span class="n">day</span> <span class="o">=</span> <span class="n">date_time</span><span class="o">.</span><span class="n">isoweekday</span><span class="p">()</span>
+    <span class="n">hour</span> <span class="o">=</span> <span class="n">date_time</span><span class="o">.</span><span class="n">hour</span>
+
+    <span class="c1"># SUN - free</span>
+    <span class="k">if</span> <span class="n">day</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="n">df_rate</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">:</span> <span class="n">raw</span><span class="o">.</span><span class="n">UNITDESC</span><span class="p">,</span> <span class="s1">&#39;RATE&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span>
+    <span class="c1"># SAT</span>
+    <span class="k">elif</span> <span class="n">day</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">,</span> <span class="s1">&#39;SAT_START1&#39;</span><span class="p">,</span> <span class="s1">&#39;SAT_END1&#39;</span><span class="p">,</span> <span class="s1">&#39;SAT_END2&#39;</span><span class="p">,</span> <span class="s1">&#39;SAT_END3&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;SAT_RATE1&#39;</span><span class="p">,</span> <span class="s1">&#39;SAT_RATE2&#39;</span><span class="p">,</span> <span class="s1">&#39;SAT_RATE3&#39;</span><span class="p">]</span>
+        <span class="n">df_rate</span> <span class="o">=</span> <span class="n">_loc_period</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">cols</span><span class="p">],</span> <span class="n">hour</span><span class="p">)</span>
+    <span class="c1"># WKD</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">,</span> <span class="s1">&#39;WKD_START1&#39;</span><span class="p">,</span> <span class="s1">&#39;WKD_END1&#39;</span><span class="p">,</span> <span class="s1">&#39;WKD_END2&#39;</span><span class="p">,</span> <span class="s1">&#39;WKD_END3&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;WKD_RATE1&#39;</span><span class="p">,</span> <span class="s1">&#39;WKD_RATE2&#39;</span><span class="p">,</span> <span class="s1">&#39;WKD_RATE3&#39;</span><span class="p">]</span>
+        <span class="n">df_rate</span> <span class="o">=</span> <span class="n">_loc_period</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">cols</span><span class="p">],</span> <span class="n">hour</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_rate</span></div>
+
+
+<div class="viewcode-block" id="recomm_layer"><a class="viewcode-back" href="../filter.html#filter.recomm_layer">[docs]</a><span class="k">def</span> <span class="nf">recomm_layer</span><span class="p">(</span><span class="n">dest</span><span class="p">,</span> <span class="n">date_time</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="n">RECOMM_FACTOR</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates a dataframe with recommanded score for all streets</span>
+
+<span class="sd">    :param dest: The destination coordinates</span>
+<span class="sd">    :type dest: tuple-like (lat,long)</span>
+
+<span class="sd">    :param date_time: The start time point</span>
+<span class="sd">    :type date_time: `datetime`</span>
+
+<span class="sd">    :param factor: The score factor to calculate recommanded score</span>
+<span class="sd">    :type factor: list</span>
+
+<span class="sd">    :returns: dataframe of recommanded scores</span>
+<span class="sd">    :rtype: dataframe</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Get all properties</span>
+    <span class="n">df_rate</span> <span class="o">=</span> <span class="n">rate_layer</span><span class="p">(</span><span class="n">date_time</span><span class="p">)</span>
+    <span class="n">df_flow</span> <span class="o">=</span> <span class="n">flow_layer</span><span class="p">(</span><span class="n">date_time</span><span class="p">)</span>
+    <span class="n">df_dist</span> <span class="o">=</span> <span class="n">_calc_distance</span><span class="p">(</span><span class="n">dest</span><span class="p">)</span>
+
+    <span class="c1"># Merge into one DataFrame</span>
+    <span class="n">df_recomm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_rate</span><span class="p">,</span> <span class="n">df_flow</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">)</span>
+    <span class="n">df_recomm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_recomm</span><span class="p">,</span> <span class="n">df_dist</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">)</span>
+    <span class="n">df_recomm</span> <span class="o">=</span> <span class="n">df_recomm</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;TIME&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Normalize each column</span>
+    <span class="n">df_recomm</span><span class="p">[</span><span class="s1">&#39;DISTANCE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_recomm</span><span class="p">[</span><span class="s1">&#39;DISTANCE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">)</span>
+
+    <span class="n">df_recomm</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_recomm</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+
+    <span class="n">df_recomm</span><span class="p">[</span><span class="s1">&#39;RECOMM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">df_recomm</span><span class="p">[</span><span class="s1">&#39;RECOMM&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>
+        <span class="n">df_recomm</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">factor</span><span class="p">)[:]</span>
+
+    <span class="c1"># Normalize the recommand score</span>
+    <span class="n">r_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">df_recomm</span><span class="p">[</span><span class="s1">&#39;RECOMM&#39;</span><span class="p">])</span>
+    <span class="n">r_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">df_recomm</span><span class="p">[</span><span class="s1">&#39;RECOMM&#39;</span><span class="p">])</span>
+    <span class="n">df_recomm</span><span class="p">[</span><span class="s1">&#39;RECOMM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_recomm</span><span class="p">[</span><span class="s1">&#39;RECOMM&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">r_max</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">r_max</span> <span class="o">-</span> <span class="n">r_min</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">df_recomm</span></div>
+
+
+<div class="viewcode-block" id="link_to_gis"><a class="viewcode-back" href="../filter.html#filter.link_to_gis">[docs]</a><span class="k">def</span> <span class="nf">link_to_gis</span><span class="p">(</span><span class="n">df_properties</span><span class="p">,</span> <span class="n">street_geojson</span><span class="o">=</span><span class="n">GIS_FILE</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Add GIS info to properties dataframe</span>
+
+<span class="sd">    :param df_properties: the dataframe of properties</span>
+<span class="sd">    :type df_properties: `datatime`</span>
+
+<span class="sd">    :param street_geojson: the JSON file constaining street info</span>
+<span class="sd">    :type street_geojson: str</span>
+
+<span class="sd">    :returns: a dataframe linked to gis</span>
+<span class="sd">    :rtype: GeoPandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">gis</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">street_geojson</span><span class="p">)</span>
+    <span class="n">df_properties</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_properties</span><span class="p">,</span> <span class="n">gis</span><span class="p">[[</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">]],</span>
+                             <span class="n">on</span><span class="o">=</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">)</span>
+    <span class="n">df_gis</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">df_properties</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;init&#39;</span> <span class="p">:</span><span class="s1">&#39;epsg:4326&#39;</span><span class="p">},</span>
+                              <span class="n">geometry</span><span class="o">=</span><span class="s1">&#39;geometry&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_gis</span></div>
+
+
+<div class="viewcode-block" id="ev_layer"><a class="viewcode-back" href="../filter.html#filter.ev_layer">[docs]</a><span class="k">def</span> <span class="nf">ev_layer</span><span class="p">(</span><span class="n">ev_gis</span><span class="o">=</span><span class="n">EV_FILE</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read the EV charging stations datafile and convert into a</span>
+<span class="sd">    GeoPandas.DataFrame</span>
+<span class="sd">    </span>
+<span class="sd">    :param ev_gis: the JSON file constaining layer info</span>
+<span class="sd">    :type ev_gis: str</span>
+
+<span class="sd">    :returns: a dataframe of the layer</span>
+<span class="sd">    :rtype: GeoPandas.DataFrame</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df_ev</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">ev_gis</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df_ev</span></div>
+
+
+<div class="viewcode-block" id="select_station"><a class="viewcode-back" href="../filter.html#filter.select_station">[docs]</a><span class="k">def</span> <span class="nf">select_station</span><span class="p">(</span><span class="n">staion_name</span><span class="p">,</span> <span class="n">df_entire</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Select a specific street info from entire dataframe</span>
+
+<span class="sd">    :param street_name: The given street name</span>
+<span class="sd">    :type street_name: str</span>
+
+<span class="sd">    :param df_entire: The dataframe containing all streets</span>
+<span class="sd">    :type df_entire: dataframe</span>
+
+<span class="sd">    :returns: a dataframe containing specific station</span>
+<span class="sd">    :rtype: dataframe</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">info</span> <span class="o">=</span> <span class="n">df_entire</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_entire</span><span class="p">[</span><span class="s1">&#39;Station Name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">staion_name</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">info</span></div>
+
+
+<div class="viewcode-block" id="EStation"><a class="viewcode-back" href="../filter.html#filter.EStation">[docs]</a><span class="k">class</span> <span class="nc">EStation</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The class `EStation` contains all information of a EV charging station</span>
+<span class="sd">    for future details display.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">    ---------------------</span>
+<span class="sd">    name:   The street name</span>
+<span class="sd">    plot:   Occupancy over time figure</span>
+<span class="sd">    rate:   Parking rate table</span>
+<span class="sd">    limit:  Parking limit (in hour)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">station_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param station_name: The given station name</span>
+<span class="sd">        :type station_name: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">station_name</span>
+
+        <span class="n">df_ev</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">EV_FILE</span><span class="p">)</span>
+        <span class="n">ev_row</span> <span class="o">=</span> <span class="n">select_station</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">df_ev</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="n">ev_row</span><span class="p">[</span><span class="s1">&#39;Street Address&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">ev_row</span><span class="p">[</span><span class="s1">&#39;ZIP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phone</span> <span class="o">=</span> <span class="n">ev_row</span><span class="p">[</span><span class="s2">&quot;Station Phone&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">level1</span> <span class="o">=</span> <span class="n">ev_row</span><span class="p">[</span><span class="s1">&#39;Level 1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">level2</span> <span class="o">=</span> <span class="n">ev_row</span><span class="p">[</span><span class="s1">&#39;Level 2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dc</span> <span class="o">=</span> <span class="n">ev_row</span><span class="p">[</span><span class="s1">&#39;DC Fast&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">NEMA520</span> <span class="o">=</span> <span class="n">ev_row</span><span class="p">[</span><span class="s1">&#39;NEMA520&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">J1772</span> <span class="o">=</span> <span class="n">ev_row</span><span class="p">[</span><span class="s1">&#39;J1772&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">J1772COMBO</span> <span class="o">=</span> <span class="n">ev_row</span><span class="p">[</span><span class="s1">&#39;J1772COMBO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CHADEMO</span> <span class="o">=</span> <span class="n">ev_row</span><span class="p">[</span><span class="s1">&#39;CHADEMO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">TESLA</span> <span class="o">=</span> <span class="n">ev_row</span><span class="p">[</span><span class="s1">&#39;TESLA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Jiajie Guo, Yue Wang, Yuqi Zheng, Zhicheng Ju
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>parking_info module &mdash; parking_advisor 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="streets_filter module" href="streets_filter.html" />
+    <link rel="prev" title="ev_geojson module" href="ev_geojson.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> parking_advisor
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Data_clean_up</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ev_geojson.html">ev_geojson module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">parking_info module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="streets_filter.html">streets_filter module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">filter module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visual.html">visual module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">parking_advisor</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">Data_clean_up</a> &raquo;</li>
+        
+      <li>parking_info module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/parking_info.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-parking_info">
+<span id="parking-info-module"></span><h1>parking_info module<a class="headerlink" href="#module-parking_info" title="Permalink to this headline">¶</a></h1>
+<p>This module cleans 2 datasets (‘Annual_parking_study.csv’, ‘Blockface
+.csv’), summaries The parking utility per hour of the day from annual
+parking study, and generates subset datasets for future use.</p>
+<dl class="function">
+<dt id="parking_info.convert_datetime_to_h">
+<code class="descclassname">parking_info.</code><code class="descname">convert_datetime_to_h</code><span class="sig-paren">(</span><em>dataframe</em>, <em>cols</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/parking_info.html#convert_datetime_to_h"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parking_info.convert_datetime_to_h" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts the hour of the day (i.e. 8) from minute format (e.g. 480) as index</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dataframe</strong> (<em>dataframe</em>) – The dataframe to edit</li>
+<li><strong>cols</strong> (<em>list</em>) – The columns containg datetime</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="parking_info.data_filter">
+<code class="descclassname">parking_info.</code><code class="descname">data_filter</code><span class="sig-paren">(</span><em>dataframe</em>, <em>col</em>, <em>values</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/parking_info.html#data_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parking_info.data_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drop the rows containing specific values in specific columns</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> (<em>dataframe</em>) – The dataframe to clean</li>
+<li><strong>col</strong> (<em>str</em>) – The column names of the insepected columns</li>
+<li><strong>values</strong> (<em>list</em>) – The specific values that need to drop</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a clean dataframe without unwanted values in specific columns</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dataframe</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="parking_info.modify_end_time">
+<code class="descclassname">parking_info.</code><code class="descname">modify_end_time</code><span class="sig-paren">(</span><em>dataframe</em>, <em>end_col</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/parking_info.html#modify_end_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#parking_info.modify_end_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes the hour of datetime (e.g. 8:59) into the end hour number
+(i.e. 9)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dataframe</strong> (<em>dataframe</em>) – The dataframe to edit</li>
+<li><strong>end_col</strong> (<em>list</em>) – The datetime columns to change</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="streets_filter.html" class="btn btn-neutral float-right" title="streets_filter module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ev_geojson.html" class="btn btn-neutral" title="ev_geojson module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Jiajie Guo, Yue Wang, Yuqi Zheng, Zhicheng Ju
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
