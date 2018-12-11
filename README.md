@@ -118,7 +118,7 @@ The [MIT License](https://en.wikipedia.org/wiki/MIT_License) is a permissive fre
         │   ├── bootstrap.min.js
         │   ├── jquery.cookie.js
         │   └── jquery.min.js
-        └── launch_page.html## Installation Tutorial
+        └── launch_page.html
 ```
 ## Installation Tutorial
 
