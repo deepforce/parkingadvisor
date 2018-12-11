@@ -4,7 +4,7 @@ Create colormap based on rank mode
 import branca.colormap as cm
 import folium
 import geopandas as gpd
-from filter import rate_layer, recomm_layer, flow_layer, link_to_gis, ev_layer
+from .filter import rate_layer, recomm_layer, flow_layer, link_to_gis, ev_layer
 
 
 def color_bar(mode):
