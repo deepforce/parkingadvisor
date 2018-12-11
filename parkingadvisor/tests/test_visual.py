@@ -29,9 +29,9 @@ def test_MapLayer():
 
     now = datetime.now()
     # smode test of initiation
-    assert visual.MapLayer(1, now, (47.6062, -122.3321))
+    assert visual.MapLayer(date_time=now, dest=(47.6062, -122.3321), mode=1)
 
-    m = visual.MapLayer(1, now, (47.6062, -122.3321))
+    m = visual.MapLayer(date_time=now, dest=(47.6062, -122.3321), mode=1)
     assert m.mode == 1
     assert m.dest == (47.6062, -122.3321)
 
@@ -40,3 +40,6 @@ def test_MapLayer():
 
     m.add_layer() #  after
     assert 'RATE' in m.gdf.columns.values
+
+    m.add_ev_charger()
+    assert 'EV Connector Types' in m.ev.columns.values

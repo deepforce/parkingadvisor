@@ -4,7 +4,7 @@ Create colormap based on rank mode
 import branca.colormap as cm
 import folium
 import geopandas as gpd
-from .filter import rate_layer, recomm_layer, flow_layer, link_to_gis
+from .filter import rate_layer, recomm_layer, flow_layer, link_to_gis, ev_layer
 
 
 def color_bar(mode):
@@ -61,8 +61,7 @@ class MapLayer(folium.Map):
     """
     Create a MayLAyer baseed on desticnation, parking lime
     """
-
-    def __init__(self, mode, date_time, dest):
+    def __init__(self, date_time, dest, mode=0):
         self.mode = mode
         self.time = date_time
         self.dest = dest
@@ -70,28 +69,42 @@ class MapLayer(folium.Map):
         super(MapLayer, self).__init__(location=self.dest,
                                        tiles='cartodbpositron',
                                        zoom_start=14)
-        self.colormap = color_bar(mode)
-        self.style_func = None
-        self.layer_func, self.prop = switch_layer(mode)
-
         self.gdf = gpd.GeoDataFrame()
+        
+        if self.mode in [1, 2, 3]:
+            self.colormap = color_bar(mode)
+            self.style_func = None
+            self.layer_func, self.prop = switch_layer(mode)
+        else:
+            pass
+        folium.Marker(location=self.dest).add_to(self)
+        self.ev = ev_layer()
 
     def add_layer(self):
         """
-        Add the colorful layer baedd on rank mode
+        Add the colorful layer based on the rank mode
         """
         if self.mode == 3:
             df_temp = self.layer_func(self.dest, self.time)
-        else:
+        elif self.mode in [1,2]:
             df_temp = self.layer_func(self.time)
+        else:
+            return self
         self.gdf = link_to_gis(df_temp)
 
-        folium.Marker(location=self.dest).add_to(self)
         self.colormap.add_to(self)
-
         self.style_func = lambda x: {'color': self.colormap(x['properties'][self.prop]),
                                      'weight': 5}
 
         folium.GeoJson(self.gdf.to_json(), style_function=self.style_func,
                        name=self.prop).add_to(self)
-        folium.LayerControl().add_to(self)
+
+        return self
+    
+    def add_ev_charger(self):
+        """
+        Add EV charging stations layers
+        """
+        folium.GeoJson(self.ev.to_json(), name='EV charging stations').add_to(self)
+
+        return self

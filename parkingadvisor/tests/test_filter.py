@@ -5,6 +5,7 @@ Testing the filtering data module
 from datetime import datetime
 import numpy as np
 import pandas as pd
+import geopandas as gpd
 
 from parkingadvisor import filter
 
@@ -81,7 +82,8 @@ def	test_Street():
     test.get_rate()
     assert isinstance(test.rate, pd.DataFrame)
     assert test.rate.shape[0] == 1
-    assert test.get_flow_plot()
+    assert test.get_flow_plot
+
 
 def test_flow_layer():
     """
@@ -93,6 +95,7 @@ def test_flow_layer():
     assert df.OCCUPANCY.max() >= 0
     assert df.shape[0] == 1234
 
+
 def test_rate_layer():
     """
     Testing creating rate layer
@@ -102,6 +105,7 @@ def test_rate_layer():
     assert np.array_equal(df.columns.values, ['UNITDESC', 'RATE'])
     assert df.RATE.max() >= 0
     assert df.shape[0] == 1234
+
 
 def test_recomm_layer():
     """
@@ -113,3 +117,38 @@ def test_recomm_layer():
         assert df[col].min() == 0
         assert df[col].max() == 1
         assert df[col].dtype == 'float'
+
+
+def test_link_to_gis():
+    """
+    Testing the merging of dataframe and gis file
+    """
+    df_property = pd.read_csv(filter.RATE_FILE, index_col=0)
+    df_gis = filter.link_to_gis(df_property)
+
+    assert 'geometry' in df_gis.columns.values
+    assert isinstance(df_gis, gpd.GeoDataFrame)
+
+
+def test_ev_layer():
+    """
+    Testing the EV layer dataframe
+    """
+    assert filter.ev_layer
+
+
+def test_EStation():
+    """
+    Testing the class EStation
+    """
+    test = filter.EStation('Array Apartments')
+    assert test.address == "14027 Lake City Way NE"
+    assert test.phone == "800-663-5633"
+    assert test.code == 98125
+    assert test.NEMA520 == False
+    assert test.J1772 == True
+    assert test.CHADEMO == False
+    assert test.TESLA == False
+    assert test.level1 == False
+    assert test.level2 == True
+    assert test.dc == False

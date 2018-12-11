@@ -21,6 +21,7 @@ RATE_FILE = DATA_PATH + 'Rate_limit.csv'
 _FLOW_RAW = DATA_PATH + 'Occupancy_per_hour.csv'
 FLOW_FILE = DATA_PATH + 'flow_all_streets.csv'
 GIS_FILE = DATA_PATH + 'Streets_gis.json'
+EV_FILE = DATA_PATH + 'EV Charger.json'
 
 _INTERPOLATION_NUM = 241
 RECOMM_FACTOR = (0.3, 0.4, 0.3)
@@ -276,7 +277,6 @@ class Street():
 
         df_flow = pd.read_csv(FLOW_FILE, index_col=0)
         self._flow_df = select_street(self.name, df_flow)
-        self.plot = plt.figure()
 
         df_rate = pd.read_csv(RATE_FILE, index_col=0)
         self._rate_df = select_street(self.name, df_rate)
@@ -434,7 +434,7 @@ def recomm_layer(dest, date_time, factor=RECOMM_FACTOR):
 
 def link_to_gis(df_properties, street_geojson=GIS_FILE):
     """
-    Add GIS info to properties datafram
+    Add GIS info to properties dataframe
 
     Attributes:
     -------------
@@ -443,11 +443,85 @@ def link_to_gis(df_properties, street_geojson=GIS_FILE):
 
     Returns
     -------------
-    df_gis: geopandas.geodataframe
+    df_gis: GeoPandas.DataFrame
     """
 
     gis = gpd.read_file(street_geojson)
-    df_properties = pd.merge(df_properties, gis[['UNITDESC', 'geometry']], on='UNITDESC')
-    df_gis = gpd.GeoDataFrame(df_properties, crs={'init' :'epsg:4326'}, geometry='geometry')
+    df_properties = pd.merge(df_properties, gis[['UNITDESC', 'geometry']],
+                             on='UNITDESC')
+    df_gis = gpd.GeoDataFrame(df_properties, crs={'init' :'epsg:4326'},
+                              geometry='geometry')
 
     return df_gis
+
+
+def ev_layer(ev_gis=EV_FILE):
+    """
+    Read the EV charging stations datafile and convert into a
+    GeoPandas.DataFrame
+    
+    Attributes:
+    ------------------
+    ev_gis: GeoJSON file
+    
+    Retunes:
+    -----------------
+    df_ev:  GeoPandas.DataFrame
+    """
+
+    df_ev = gpd.read_file(ev_gis)
+    return df_ev
+
+
+def select_station(staion_name, df_entire):
+    """
+    Select a specific street info from entire dataframe
+
+    Attibute:
+    --------------------
+    street_name:
+        The given street name
+    df_entire:
+        The dataframe containing all streets
+
+    Return:
+    -------------------
+    info:   DataFrame.Series
+    """
+
+    info = df_entire.loc[df_entire['Station Name'] == staion_name]
+    return info
+
+
+class EStation():
+    """
+    The class `EStation` contains all information of a EV charging station
+    for future details display.
+
+    Attributes:
+    ---------------------
+    name:   The street name
+    plot:   Occupancy over time figure
+    rate:   Parking rate table
+    limit:  Parking limit (in hour)
+    """
+
+    def __init__(self, station_name):
+        self.name = station_name
+
+        df_ev = gpd.read_file(EV_FILE)
+        ev_row = select_station(self.name, df_ev)
+
+        self.address = ev_row['Street Address'].values[0]
+        self.code = ev_row['ZIP'].values[0]
+        self.phone = ev_row["Station Phone"].values[0]
+
+        self.level1 = ev_row['Level 1'].values[0]
+        self.level2 = ev_row['Level 2'].values[0]
+        self.dc = ev_row['DC Fast'].values[0]
+
+        self.NEMA520 = ev_row['NEMA520'].values[0]
+        self.J1772 = ev_row['J1772'].values[0]
+        self.J1772COMBO = ev_row['J1772COMBO'].values[0]
+        self.CHADEMO = ev_row['CHADEMO'].values[0]
+        self.TESLA = ev_row['TESLA'].values[0]
