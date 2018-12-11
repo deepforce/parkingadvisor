@@ -4,23 +4,18 @@ Create colormap based on rank mode
 import branca.colormap as cm
 import folium
 import geopandas as gpd
-from .filter import rate_layer, recomm_layer, flow_layer, link_to_gis, ev_layer
+from filter import rate_layer, recomm_layer, flow_layer, link_to_gis, ev_layer
 
 
 def color_bar(mode):
     """
     Create different colormap for each mode
 
-    Attribute
-    -----------------
-    mode:   int
-        1: Rate
-        2: Occupancy
-        3: Recommanded
+    :param mode: 1 -- Rate, 2 -- Occupancy, 3 -- Recommanded
+    :type mode: int
 
-    Return
-    ---------------
-    colormap: branca.Colormap
+    :returns: color map
+    :rtype: branca.Colormap
     """
     cm_name = {1: cm.linear.YlGnBu_07,
                2: cm.linear.RdPu_06,
@@ -36,19 +31,14 @@ def switch_layer(mode):
     Switch the function to call to deal with dataset and the property
     based on the ranking mode
 
-    Attributes:
-    -------------
-    mode:   int
-        1: Rate
-        2: Occupancy
-        3: Recommanded
+    :param mode: 1 -- Rate, 2 -- Occupancy, 3 -- Recommanded
+    :type mode: int
 
-    Returns
-    -------------
-    layer_func:  `function`
-        The function to deal with dataset
-    property:   str
-        The property key to read
+    :returns: The function to deal with dataset
+    :rtype: 'function'
+
+    :returns: The property key to read
+    :rtype: str
     """
     layer_func = {1: rate_layer,
                   2: flow_layer,
@@ -62,6 +52,14 @@ class MapLayer(folium.Map):
     Create a MayLAyer baseed on desticnation, parking lime
     """
     def __init__(self, date_time, dest, mode=0):
+        """
+        :param date_time: time of a day
+        :type date_time: datetime
+
+        :param dest: destination coordinates (longitude, latitude)
+        :type dest: tuple
+
+        """
         self.mode = mode
         self.time = date_time
         self.dest = dest

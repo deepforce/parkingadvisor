@@ -12,19 +12,17 @@ def data_filter(dataframe, col, values):
     '''
     Drop the rows containing specific values in specific columns
 
-    Attributes:
-    ---------------
-    dataframe: DataFrame
-        The given DataFrame to clean
-    col: str
-        The column names of the insepected columns
-    values: List
-        The specific values that need to drop
+    :param dataframe: The dataframe to clean
+    :type dataframe: dataframe
+    
+    :param col: The column names of the insepected columns
+    :type col: str
 
-    Returns
-    --------------
-    dataframe: DataFrame
-        a clean Dataframe without unwanted values in specific columns
+    :param values: The specific values that need to drop
+    :type values: list
+
+    :returns: a clean dataframe without unwanted values in specific columns
+    :rtype: dataframe
     '''
 
     for val in values:
@@ -38,12 +36,11 @@ def modify_end_time(dataframe, end_col):
     Changes the hour of datetime (e.g. 8:59) into the end hour number
     (i.e. 9)
 
-    Attributes:
-    ---------------
-    dataframe: DataFrame
-        The DataFrame to edit
-    end_col: list
-        The datetime columns to change
+    :param dataframe: The dataframe to edit
+    :type dataframe: dataframe
+    
+    :param end_col: The datetime columns to change
+    :type end_col: list
     '''
 
     for col in  end_col:
@@ -54,12 +51,11 @@ def convert_datetime_to_h(dataframe, cols):
     '''
     Extracts the hour of the day (i.e. 8) from minute format (e.g. 480) as index
 
-    Attributes:
-    ----------------
-    dataframe: DataFrame
-        The DataFrame to edit
-    cols: list
-        The columns containg datetime
+    :param dataframe: The dataframe to edit
+    :type dataframe: dataframe
+    
+    :param cols: The columns containg datetime
+    :type cols: list    
     '''
     for name in cols:
         dataframe.loc[:, name] = pd.TimedeltaIndex(dataframe.loc[:, name], unit='m')

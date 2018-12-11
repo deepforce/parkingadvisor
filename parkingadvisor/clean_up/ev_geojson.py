@@ -12,15 +12,11 @@ def all_type(dataframe):
     """
     Find all availble EV connector types in column ['EV Connector Types']
 
-    Attributes
-    --------------------------
-    dataframe: DataFrame
-        The DataFrame to deal
-
-    Return
-    --------------------------
-    type_dict: dict
-        A list of all availible connector types
+    :param dataframe: The dataframe to deal
+    :type dataframe: dataframe
+        
+    :returns: A list of all availible connector types
+    :rtype: dict
     """
 
     type_dict = {}
@@ -41,19 +37,17 @@ def ev_level_tf(dataframe, col_ori, col_new):
     """
     Creates new columns to describe each station charging levels
 
-    Attributes
-    ---------------------
-    dataframe: DataFrame
-        The DataFrame to deal
-    col_ori:   str
-        The original column name of the EV Levels
-    col_new:    str
-        The name of new column
+    :param dataframe: The dataframe to deal
+    :type dataframe: dataframe
 
-    Return:
-    ---------------------
-    dataframe: DataFrame
-        The DataFrame with new columns
+    :param col_ori: The original column name of the EV Levels
+    :type col_ori: str
+
+    :param col_new: The name of new column
+    :type col_new: str
+        
+    :returns: The dataFrame with new columns
+    :rtype: dataframe
     """
 
     dataframe[col_new] = np.isfinite(dataframe[col_ori])
@@ -65,17 +59,14 @@ def ev_connector_tf(dataframe, type_list):
     """
     Creates new columns to describe each station connector types
 
-    Attributes
-    -------------------
-    dataframe: DataFrame
-        the DataFrame to deal with
-    type_list:  list
-        all connector types
+    :param dataframe: the dataframe to deal with
+    :type dataframe: dataframe
 
-    Return
-    ----------------------
-    dataframe: DataFrame
-        the DataFrame with new columns
+    :param type_list: all connector types
+    :type type_list: list
+        
+    :returns: The dataFrame with new columns
+    :rtype: dataframe
     """
 
     # splits the long string
@@ -89,12 +80,11 @@ def convert_to_geojson(dataframe, filename):
     """
     Saves a DataFrame as GeoJSON
 
-    Attributes
-    ---------------------
-    dataframe: DataFrame
-        the DataFrame to save
-    filename: str
-        The given filename
+    :param dataframe: the dataframe to save
+    :type dataframe: dataframe
+
+    :param filename: The given filename
+    :type filename: str
     """
     if not 'geometry' in dataframe.columns:
         dataframe['geometry'] = dataframe.apply(lambda z: Point(z.Longitude, z.Latitude), axis=1)

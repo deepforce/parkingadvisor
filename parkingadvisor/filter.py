@@ -2,17 +2,17 @@
 This module contains all methods to filter the data to visualization
 and calculation.
 """
-#%%
 
-from datetime import datetime
 
+import pkg_resources
+
+import pandas as pd
+from scipy.interpolate import interp1d
+import numpy as np
 import geopandas as gpd
 import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import pkg_resources
 from geopy.distance import geodesic
-from scipy.interpolate import interp1d
+
 
 PACKAGE_NAME = __name__
 DATA_PATH = pkg_resources.resource_filename(PACKAGE_NAME, 'data/')
@@ -32,15 +32,11 @@ def _model_flow(d_flow_hour):
     Smooth the occupancy profile by interpolation ('cubic') to fix the
     missing data point issue and provide pretty profile graphs later
 
-    Attributes:
-    -----------------
-    d_flow_discrete: DataFrame
-        The hourly flow data of certain street
+    :param d_flow_hour: The hourly flow data of certain street
+    :type d_flow_hour: dataframe
 
-    Return:
-    -----------------
-    d_flow: DataFrame
-        Smoothed flow dataframe by interpolation
+    :returns: Smoothed flow dataframe by interpolation
+    :rtype: dataframe
     '''
     # Cubic interpolation
     f_flow = interp1d(
@@ -61,15 +57,11 @@ def _create_smooth_flow_file(file_flow=_FLOW_RAW):
     Generates the parking utilities of all streets by interpolation
     and save a .csv file
 
-    Attributes:
-    -------------------
-    file_flow: file
-        The entire flow dataset file
+    :param file_flow: The entire flow dataset file
+    :type file_flow: str
 
-    Return:
-    --------------------
-    data_hour: DataFrame
-        All streets smoothed occupancy
+    :returns: The entire flow dataset file
+    :rtype: dataframe
     '''
 
     df_flow = pd.read_csv(file_flow, index_col=0)
@@ -102,24 +94,21 @@ def _create_smooth_flow_file(file_flow=_FLOW_RAW):
 def _loc_period(df_selected_day, hour):
     """
     Determine the given hour number in which time section
-    and get the corresponding rate
-
-    Attributes
-    ---------------------
-    df_selected_day: DataFrame
-        the rate info dataframe with columns [key timepoint (n), rate_list (n-1)]
-        for each section
-        NOTE
+    and get the corresponding rate.
+    NOTE
         -----------time1--------time2--------time3----------time4(n)----------
         |----SEC0----|----SEC1----|----SEC2---|-----SEC3-----|----SEC4----|
                      |   --------------input---------------  |
-    hour: int
-        the number of datetime hour
 
-    Return:
-    -------------------
-    df_rate: DataFrame
-        the rate for all streets at the given time
+    :param df_selected_day: the rate info dataframe with columns [key timepoint (n), rate_list (n-1)] 
+                            for each section
+    :type df_selected_day: dataframe
+
+    :param hour: the number of datetime hour
+    :type hour: int
+
+    :returns: the rate for all streets at the given time
+    :rtype: dataframe
     """
     if 'SEC0' not in df_selected_day.columns:
         # Get the key timepoint number
@@ -166,17 +155,14 @@ def _calc_distance(gis_data, street_geojson=GIS_FILE):
     Calculates the distance from a given location to all streets
     (midpoint of linestring)
 
-    Attributes:
-    -------------------
-    street_geojson: JSON file
-        The GeoJSON file of all streets (i.e. Streets_gis.json)
-    gis_data:   list (lat, long)
-        The given point coordinate
+    :param gis_data: The given point coordinate, including longitude and latitude
+    :type gis_data: list
 
-    Returns:
-    --------------------
-    df_dist: dataframe
-        a DataFrame of distance of a given point to all streets
+    :param street_geojson: The GeoJSON file of all streets (i.e. Streets_gis.json)
+    :type street_geojson: str
+
+    :returns: a dataframe of distance of a given point to all streets
+    :rtype: dataframe
     """
     street_df = gpd.read_file(street_geojson)
     coord = street_df.geometry.apply(lambda p: p.coords) # (long, lat)
@@ -201,16 +187,14 @@ def select_street(street_name, df_entire):
     """
     Select a specific street info from entire dataframe
 
-    Attibute:
-    --------------------
-    street_name:
-        The given street name
-    df_entire:
-        The dataframe containing all streets
+    :param street_name: The given street name
+    :type street_name: str
 
-    Return:
-    -------------------
-    info:   DataFrame.Series
+    :param df_entire: The dataframe containing all streets
+    :type df_entire: dataframe
+
+    :returns: info of specific street name
+    :rtype: dataframe
     """
 
     info = df_entire.loc[df_entire['UNITDESC'] == street_name]
@@ -221,14 +205,11 @@ def plot_flow(df_smooth_flow):
     """
     Plot the flow figure for a single street
 
-    Attribute:
-    --------------
-    df_smooth_flow: dataframe
-        The smoothed flow data of a dingle street
+    :param df_smooth_flow: The smoothed flow data of a dingle street
+    :type df_smooth_flow: dataframe
 
-    Return:
-    --------------
-    fig:    matplotlib.pyplot.Figure
+    :returns: a figure containing the info of a dataframe
+    :rtype: matplotlib.pyplot.Figure
     """
     time = df_smooth_flow['TIME']
     flow = df_smooth_flow['OCCUPANCY']
@@ -273,15 +254,18 @@ class Street():
     """
 
     def __init__(self, street_name):
+        """
+        :param street_name: The given street name
+        :type street_name: str
+        """
         self.name = street_name
 
         df_flow = pd.read_csv(FLOW_FILE, index_col=0)
         self._flow_df = select_street(self.name, df_flow)
 
-        df_rate = pd.read_csv(RATE_FILE, index_col=0).fillna(0)
+        df_rate = pd.read_csv(RATE_FILE, index_col=0)
         self._rate_df = select_street(self.name, df_rate)
-        self.rate = pd.DataFrame(columns=['DAYS', 'SEC1', 'SEC2', 'SEC3'])
-        
+        self.rate = pd.DataFrame()
         self.limit = 0
 
     def get_name(self):
@@ -289,25 +273,8 @@ class Street():
         return self.name
 
     def get_rate(self):
-        time_points = [int(self._rate_df.values[0][i]) for i in [2, 3, 5, 6, 8, 9,
-                                           11, 12, 14, 15, 17, 18]]
-        rate = [self._rate_df.values[0][i] for i in [1, 4, 7, 10, 13, 16]]
-        # Create a list to store key timepoint in `str` and 12-hour clock
-        timepoint_text = []
-        for hour in time_points:
-            # Convert 24h to 12h
-            if hour == 0:
-                hour_new = '-'
-            else:
-                hour_new = datetime.strptime(str(hour), '%H').strftime("%#I %p")
-            timepoint_text.append(hour_new)
-        self.rate['DAYS'] = ['','WKD','SAT']
-
-        time_label = [timepoint_text[2 * i]+'-'+ timepoint_text[2 * i + 1] for i in range(6)]
-        self.rate.iloc[0, 1:].values[:] = time_label[:3]        
-        self.rate.iloc[1, 1:].values[:] = rate[:3]
-        self.rate.iloc[2, 1:].values[:] = rate[3:]
-
+        "Get rate table"
+        self.rate = self._rate_df.drop('PARKING_TIME_LIMIT', axis=1)
         return self.rate
 
     def get_limit(self):
@@ -327,18 +294,15 @@ def flow_layer(date_time, file_time=FLOW_FILE):
     Generate a dataframe of occupancy for all streets at a specific
     time point for folium map plot
 
-    Attribute
-    ----------------
-    date_time:   `datatime` object
-        The start time of parking
-    file_time: file
-        The path of the raw file which containing all smoothed
-        occupancy data (i.e. 'flow_all_streets.csv')
+    :param date_time: The start time of parking
+    :type date_time: `datatime` 
 
-    Return
-    -----------------
-    df_flow:    DataFrame
-        A dataframe containing occupancy at the time point
+    :param file_time: The path of the raw file which containing all smoothed
+                        occupancy data (i.e. 'flow_all_streets.csv')
+    :type file_time: str
+
+    :returns: A dataframe containing occupancy at the time point
+    :rtype: dataframe
     """
     # Round the time decimal to 1 digit
 
@@ -361,16 +325,14 @@ def rate_layer(date_time, file_rate=RATE_FILE):
     Generate a dataframe of parking rate for all streets at a specific
     datetime
 
-    Attributes:
-    -----------------
-    date_time: `datatime` Object
-        the start time of parking
-    file_rate: file
-        The entire rate file (i.e. 'Rate_limit.csv')
+    :param date_time: the start time of parking
+    :type date_time: `datatime`
 
-    Returns:
-    -------------------
-    df_rate:    dataframe
+    :param file_rate: The entire rate file (i.e. 'Rate_limit.csv')
+    :type file_rate: str
+
+    :returns: a dataframe containing all the info of the layer
+    :rtype: dataframe
     """
     raw = pd.read_csv(file_rate)
     raw.apply(pd.to_numeric, errors='ignore')
@@ -399,27 +361,17 @@ def recomm_layer(dest, date_time, factor=RECOMM_FACTOR):
     """
     Generates a dataframe with recommanded score for all streets
 
-    Attributes:
-    -------------------
-    dest: tuple-like (lat,long)
-        The destination coordinates
-    date_time: `datetime` object
-        The start time point
-    file_time: file
-        The path of the raw file which containing all smoothed
-        occupancy data (i.e. 'flow_all_streets.csv')
-    file_rate: file
-        The entire rate file (i.e. 'Rate_limit.csv')
-    street_geojson: JSON file
-        The GeoJSON file of all streets (i.e. Streets_gis.json)
+    :param dest: The destination coordinates
+    :type dest: tuple-like (lat,long)
 
-    factor: list (order: 'RATE', 'FLOW', 'DISTANCE')
-        The score factor to calculate recommanded score
+    :param date_time: The start time point
+    :type date_time: `datetime`
 
-    Returns:
-    -------------------
-    df_recomm:  DataFrame
-        dataframe of recommanded scores
+    :param factor: The score factor to calculate recommanded score
+    :type factor: list
+
+    :returns: dataframe of recommanded scores
+    :rtype: dataframe
     """
     # Get all properties
     df_rate = rate_layer(date_time)
@@ -454,14 +406,14 @@ def link_to_gis(df_properties, street_geojson=GIS_FILE):
     """
     Add GIS info to properties dataframe
 
-    Attributes:
-    -------------
-    df_properties: DataFrame
-        the DataFrame of properties
+    :param df_properties: the dataframe of properties
+    :type df_properties: `datatime`
 
-    Returns
-    -------------
-    df_gis: GeoPandas.DataFrame
+    :param street_geojson: the JSON file constaining street info
+    :type street_geojson: str
+
+    :returns: a dataframe linked to gis
+    :rtype: GeoPandas.DataFrame
     """
 
     gis = gpd.read_file(street_geojson)
@@ -478,15 +430,12 @@ def ev_layer(ev_gis=EV_FILE):
     Read the EV charging stations datafile and convert into a
     GeoPandas.DataFrame
     
-    Attributes:
-    ------------------
-    ev_gis: GeoJSON file
-    
-    Retunes:
-    -----------------
-    df_ev:  GeoPandas.DataFrame
-    """
+    :param ev_gis: the JSON file constaining layer info
+    :type ev_gis: str
 
+    :returns: a dataframe of the layer
+    :rtype: GeoPandas.DataFrame
+    """
     df_ev = gpd.read_file(ev_gis)
     return df_ev
 
@@ -495,16 +444,14 @@ def select_station(staion_name, df_entire):
     """
     Select a specific street info from entire dataframe
 
-    Attibute:
-    --------------------
-    street_name:
-        The given street name
-    df_entire:
-        The dataframe containing all streets
+    :param street_name: The given street name
+    :type street_name: str
 
-    Return:
-    -------------------
-    info:   DataFrame.Series
+    :param df_entire: The dataframe containing all streets
+    :type df_entire: dataframe
+
+    :returns: a dataframe containing specific station
+    :rtype: dataframe
     """
 
     info = df_entire.loc[df_entire['Station Name'] == staion_name]
@@ -525,6 +472,11 @@ class EStation():
     """
 
     def __init__(self, station_name):
+        """
+        :param station_name: The given station name
+        :type station_name: str
+        """
+
         self.name = station_name
 
         df_ev = gpd.read_file(EV_FILE)
@@ -543,6 +495,3 @@ class EStation():
         self.J1772COMBO = ev_row['J1772COMBO'].values[0]
         self.CHADEMO = ev_row['CHADEMO'].values[0]
         self.TESLA = ev_row['TESLA'].values[0]
-
-a  =Street('WESTLAKE AVE N BETWEEN JOHN ST AND THOMAS ST').get_rate()
-print(a)
