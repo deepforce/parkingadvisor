@@ -14,34 +14,38 @@ In order to provide a beeter experience for people to park their car, we develop
 **ParkingAdvisor**, Provide your parking lot and save both money and time!
 
 ## Data
-* [source1]()
+* [Annual Parking Study Data](https://data.seattle.gov/Transportation/Annual-Parking-Study-Data/7jzm-ucez)
 
-* [source2]()
+* [Seattle Streets](http://data-seattlecitygis.opendata.arcgis.com/datasets/seattle-streets)
 
-* [source3]()
+* [Blockface](https://data-seattlecitygis.opendata.arcgis.com/datasets/blockface)
+
+* [Electric Vehicle Charging Station Locations](https://afdc.energy.gov/fuels/electricity_locations.html#/find/nearest?fuel=ELEC)
 
 ## Software dependencies and license information
 
 ### Programming language:
-Python, version 3.6 and above
+* Python, version 3.6 and above
 
-JavaScript
+* JavaScript
 
-HTML
+* HTML
 
 ### Python packages needed:
-folium
+* folium
 
-geopandas
+* geopandas
 
-pandas
+* pandas
 
-NumPy
+* NumPy
 
 ### Tools
-Bootstrap
+* Bootstrap
+
 ### License Information:
 The [MIT License](https://en.wikipedia.org/wiki/MIT_License) is a permissive free software license originating at the Massachusetts Institute of Technology (MIT). As a permissive license, it puts only very limited restriction on reuse and has therefore an excellent license compatibility. [This link](https://opensource.org/licenses/MIT) grant the permission of MIT License.
+
 ## Directory Structure
 #### ParkingAdvisor (master)
 ```bash
