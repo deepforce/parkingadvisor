@@ -49,7 +49,7 @@ The [MIT License](https://en.wikipedia.org/wiki/MIT_License) is a permissive fre
 ## Directory Structure
 #### ParkingAdvisor (master)
 ```bash
-> .
+.
 └── parkingadvisor
     ├── Backend
     │   └── ParkingAdvisor
