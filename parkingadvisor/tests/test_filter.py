@@ -78,10 +78,9 @@ def	test_Street():
     assert test.name == TEST_STREET_NAME
 
     test.get_limit()
-    assert test.limit == 2
     test.get_rate()
-    assert isinstance(test.rate, pd.DataFrame)
-    assert test.rate.shape[0] == 1
+    assert np.array_equal(test.rate.shape, [3, 4])
+    assert test.limit == 2
     assert test.get_flow_plot
 
 
