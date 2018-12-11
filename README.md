@@ -73,7 +73,6 @@ The [MIT License](https://en.wikipedia.org/wiki/MIT_License) is a permissive fre
 │       └── templates
 ├── LICENSE
 ├── README.md
-├── backup-whateverfolder-2018-12-11.txt
 ├── docs
 │   ├── Component\ Specification.md
 │   ├── Functional\ Specification.md
