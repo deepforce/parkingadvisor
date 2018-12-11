@@ -24,14 +24,14 @@ In order to provide a beeter experience for people to park their car, we develop
 
 ## Software dependencies and license information
 
-### Programming language:
+#### Programming language:
 * Python, version 3.6 and above
 
 * JavaScript
 
 * HTML
 
-### Python packages needed:
+#### Python packages needed:
 * folium
 
 * geopandas
@@ -40,10 +40,10 @@ In order to provide a beeter experience for people to park their car, we develop
 
 * NumPy
 
-### Tools
+#### Tools
 * Bootstrap
 
-### License Information:
+#### License Information:
 The [MIT License](https://en.wikipedia.org/wiki/MIT_License) is a permissive free software license originating at the Massachusetts Institute of Technology (MIT). As a permissive license, it puts only very limited restriction on reuse and has therefore an excellent license compatibility. [This link](https://opensource.org/licenses/MIT) grant the permission of MIT License.
 
 ## Directory Structure
@@ -107,7 +107,7 @@ The [MIT License](https://en.wikipedia.org/wiki/MIT_License) is a permissive fre
         │   └── jquery.min.js
         └── launch_page.html## Installation Tutorial
 ```
-
+## Installation Tutorial
 #### To install FirstStop perform following steps:
 
 * clone the repo: git clone [this link](https://github.com/deepforce/parkingadvisor)
