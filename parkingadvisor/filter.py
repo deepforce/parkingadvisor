@@ -285,7 +285,7 @@ class Street():
             if hour == 0:
                 hour_new = '-'
             else:
-                hour_new = datetime.strptime(str(hour), '%H').strftime("%#I %p")
+                hour_new = datetime.strptime(str(hour), '%H').strftime("%I %p").lstrip('0')
             timepoint_text.append(hour_new)
         self.rate['DAYS'] = ['','WKD','SAT']
 
