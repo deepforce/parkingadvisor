@@ -3,8 +3,8 @@ This module contains all methods to filter the data to visualization
 and calculation.
 """
 
-
 import pkg_resources
+from datetime import datetime
 
 import pandas as pd
 from scipy.interpolate import interp1d
@@ -263,9 +263,10 @@ class Street():
         df_flow = pd.read_csv(FLOW_FILE, index_col=0)
         self._flow_df = select_street(self.name, df_flow)
 
-        df_rate = pd.read_csv(RATE_FILE, index_col=0)
+        df_rate = pd.read_csv(RATE_FILE, index_col=0).fillna(0)
         self._rate_df = select_street(self.name, df_rate)
-        self.rate = pd.DataFrame()
+        self.rate = pd.DataFrame(columns=['DAYS', 'SEC1', 'SEC2', 'SEC3'])
+        
         self.limit = 0
 
     def get_name(self):
@@ -274,7 +275,25 @@ class Street():
 
     def get_rate(self):
         "Get rate table"
-        self.rate = self._rate_df.drop('PARKING_TIME_LIMIT', axis=1)
+        time_points = [int(self._rate_df.values[0][i]) for i in [2, 3, 5, 6, 8, 9,
+                                           11, 12, 14, 15, 17, 18]]
+        rate = [self._rate_df.values[0][i] for i in [1, 4, 7, 10, 13, 16]]
+        # Create a list to store key timepoint in `str` and 12-hour clock
+        timepoint_text = []
+        for hour in time_points:
+            # Convert 24h to 12h
+            if hour == 0:
+                hour_new = '-'
+            else:
+                hour_new = datetime.strptime(str(hour), '%H').strftime("%#I %p")
+            timepoint_text.append(hour_new)
+        self.rate['DAYS'] = ['','WKD','SAT']
+
+        time_label = [timepoint_text[2 * i]+'-'+ timepoint_text[2 * i + 1] for i in range(6)]
+        self.rate.iloc[0, 1:].values[:] = time_label[:3]        
+        self.rate.iloc[1, 1:].values[:] = rate[:3]
+        self.rate.iloc[2, 1:].values[:] = rate[3:]
+
         return self.rate
 
     def get_limit(self):
