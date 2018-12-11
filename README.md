@@ -64,9 +64,11 @@ The [MIT License](https://en.wikipedia.org/wiki/MIT_License) is a permissive fre
     ├── LICENSE
     ├── README.md
     ├── docs
+    |	├── AutoDoc
     │   ├── Component\ Specification.md
     │   ├── Functional\ Specification.md
     │   └── presentation.pptx
+    |	
     ├── images
     │   ├── Logo
     │   │   ├── 0.5x
