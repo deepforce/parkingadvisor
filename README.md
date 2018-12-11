@@ -15,12 +15,23 @@ In order to provide a beeter experience for people to park their car, we develop
 
 ## Data
 * [Annual Parking Study Data](https://data.seattle.gov/Transportation/Annual-Parking-Study-Data/7jzm-ucez)
-
 * [Seattle Streets](http://data-seattlecitygis.opendata.arcgis.com/datasets/seattle-streets)
-
 * [Blockface](https://data-seattlecitygis.opendata.arcgis.com/datasets/blockface)
-
 * [Electric Vehicle Charging Station Locations](https://afdc.energy.gov/fuels/electricity_locations.html#/find/nearest?fuel=ELEC)
+
+## Documentation
+
+To mak users unsterstand the functions we used in ParkingAdvisor project easierly, we documented every modules and functions within this project.
+
+To document `parking_advisor` we use the [sphinx documentation system](http://sphinx-doc.org/). You can follow the instructions on the sphinx website, and the example [here](http://matplotlib.org/sampledoc/) to set up the system, but we have also already initialized and commited a skeleton documentation system in the `docs/AutoDoc` directory, that you can build upon.
+
+For example, if you want to generate the HTML rendering of the documentation (web pages that you can upload to a website to explain the software), you will type:
+
+```
+make html
+```
+
+This will generate a set of static webpages in the `doc/AutoDoc/Documentation/build/html`, which you can then upload to a website of your choice.
 
 ## Software dependencies and license information
 
@@ -110,6 +121,7 @@ The [MIT License](https://en.wikipedia.org/wiki/MIT_License) is a permissive fre
         └── launch_page.html## Installation Tutorial
 ```
 ## Installation Tutorial
+
 #### To install FirstStop perform following steps:
 
 * clone the repo: git clone [this link](https://github.com/deepforce/parkingadvisor)
