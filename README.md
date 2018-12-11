@@ -61,64 +61,61 @@ The [MIT License](https://en.wikipedia.org/wiki/MIT_License) is a permissive fre
 #### ParkingAdvisor (master)
 ```bash
 .
-└── parkingadvisor
-    ├── Backend
-    │   └── ParkingAdvisor
-    │       ├── Datasets
-    │       ├── ParkingAdvisor
-    │       ├── db.sqlite3
-    │       ├── home_page
-    │       ├── launch_page
-    │       ├── manage.py
-    │       ├── static
-    │       └── templates
-    ├── LICENSE
-    ├── README.md
-    ├── docs
-    |	├── AutoDoc
-    │   ├── Component\ Specification.md
-    │   ├── Functional\ Specification.md
-    │   └── presentation.pptx
-    |	
+├── Backend
+│   └── ParkingAdvisor
+│       ├── Datasets
+│       ├── ParkingAdvisor
+│       ├── db.sqlite3
+│       ├── home_page
+│       ├── launch_page
+│       ├── manage.py
+│       ├── static
+│       └── templates
+├── LICENSE
+├── README.md
+├── docs
+│   ├── Component\ Specification.md
+│   ├── Functional\ Specification.md
+│   └── presentation.pptx
+├── images
+│   ├── Logo
+│   │   ├── 0.5x
+│   │   ├── 1x
+│   │   ├── 2x
+│   │   └── SVG
+│   └── Logo.png
+├── parkingadvisor
+│   ├── __init__.py
+│   ├── data
+│   │   ├── Clean_Annual_Parking_Strudy.ipynb
+│   │   ├── Clean_Blockface.ipynb
+│   │   ├── Clean_EV_Charger.ipynb
+│   │   ├── EV\ Charger.json
+│   │   ├── Occupancy_per_hour.csv
+│   │   ├── Rate_limit.csv
+│   │   ├── Streets_gis.json
+│   │   ├── Subset_Streets_GIS.ipynb
+│   │   ├── clean_up
+│   │   ├── flow_all_streets.csv
+│   │   └── raw_data
+│   ├── filter.py
+│   ├── plot_map.py
+│   ├── test.py
+│   └── visual.py
+└── website
+    ├── css
+    │   ├── L.Control.Sidebar.css
+    │   └── bootstrap.min.css
+    ├── homepage.html
     ├── images
-    │   ├── Logo
-    │   │   ├── 0.5x
-    │   │   ├── 1x
-    │   │   ├── 2x
-    │   │   └── SVG
-    │   └── Logo.png
-    ├── parkingadvisor
-    │   ├── __init__.py
-    │   ├── data
-    │   │   ├── Clean_Annual_Parking_Strudy.ipynb
-    │   │   ├── Clean_Blockface.ipynb
-    │   │   ├── Clean_EV_Charger.ipynb
-    │   │   ├── EV\ Charger.json
-    │   │   ├── Occupancy_per_hour.csv
-    │   │   ├── Rate_limit.csv
-    │   │   ├── Streets_gis.json
-    │   │   ├── Subset_Streets_GIS.ipynb
-    │   │   ├── clean_up
-    │   │   ├── flow_all_streets.csv
-    │   │   └── raw_data
-    │   ├── filter.py
-    │   ├── plot_map.py
-    │   ├── test.py
-    │   └── visual.py
-    └── website
-        ├── css
-        │   ├── L.Control.Sidebar.css
-        │   └── bootstrap.min.css
-        ├── homepage.html
-        ├── images
-        │   ├── _DS_Store
-        │   └── homepage
-        ├── js
-        │   ├── L.Control.Sidebar.js
-        │   ├── bootstrap.min.js
-        │   ├── jquery.cookie.js
-        │   └── jquery.min.js
-        └── launch_page.html
+    │   ├── _DS_Store
+    │   └── homepage
+    ├── js
+    │   ├── L.Control.Sidebar.js
+    │   ├── bootstrap.min.js
+    │   ├── jquery.cookie.js
+    │   └── jquery.min.js
+    └── launch_page.html
 ```
 ## Installation Tutorial
 
