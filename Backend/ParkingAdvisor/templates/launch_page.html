@@ -32,6 +32,67 @@
 body{
 	height: 100%;
 }
+
+@font-face {font-family: "Akkurat";
+    src: url("//db.onlinewebfonts.com/t/cf3327022417d4ff7f54f0963c4f41ea.eot");
+    src: url("//db.onlinewebfonts.com/t/cf3327022417d4ff7f54f0963c4f41ea.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/cf3327022417d4ff7f54f0963c4f41ea.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/cf3327022417d4ff7f54f0963c4f41ea.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/cf3327022417d4ff7f54f0963c4f41ea.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/cf3327022417d4ff7f54f0963c4f41ea.svg#Akkurat") format("svg");
+}
+
+#ev_type {
+    background:#ffffff;
+
+}
+#ev_type_img {
+    height: 32px;
+}
+
+table {
+  width: 100%;
+  font-family: "Akkurat";
+  font-size: 12px;
+  font-weight: bold;
+  table-layout: fixed;
+  border-style: hidden;
+}
+table,td, th{
+  border: 2px solid white;
+  width: 100%;
+}
+
+
+ th:first-child{
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+ th:last-child{
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+
+table, th, td {
+  border-collapse: collapse;
+}
+table th {
+  color: black;
+}
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+th:nth-child(odd), td:nth-child(odd){
+  background:#fafcfe;
+}
+th:nth-child(even), td:nth-child(even){
+  background:#CEE2ED;
+}
+
 .navigator{
 	background-color: white;
 	color:#1B5C99;
@@ -171,6 +232,27 @@ body{
     bottom:0px;
     width:100%;
 }
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
 </style>
 <body>
 
@@ -199,55 +281,289 @@ body{
 </body>
 <script>
 
+
         var map = L.map('map').setView([47.6062, -122.3321], 10);
         var tiles = L.esri.basemapLayer("Gray").addTo(map);
 
         // add a sidebar
-        var sidebar = L.control.sidebar('sidebar', {
-            closeButton: false,
+        var si = L.control.sidebar('sidebar', {
+            closeButton: true,
             position: 'right'
         });
-        map.addControl(sidebar);
+
+        map.addControl(si);
 
         // create the geocoding control and add it to the map
         var searchControl = L.esri.Geocoding.geosearch().addTo(map);
 
         // create an empty layer group to store the results and add it to the map
+        var streets;
+
+        var streets_filtered;
+        var EV_layer = L.layerGroup().addTo(map);
         var results = L.layerGroup().addTo(map);
+
+
         // listen for the results event and add every result to the map
         searchControl.on("results", function(data) {
 
-            results.clearLayers();
+            // EV Charge Stations
+            $.getJSON("{% static "/Datasets/data/EV Charger.json" %}", function(data){
+                    var myIcon = L.icon({
+                        iconUrl: "{% static "icons/Group33.png" %}",
+                        iconSize: [25, 25]
+                    });
+
+                    var i;
+
+                    for (i = 0; i < data.features.length; i++) {
+                        // console.log(data.features[i]);
+                        var lon = data.features[i].geometry.coordinates[0];
+                        var lat = data.features[i].geometry.coordinates[1];
+
+                        function judge(value) {
+                            if (value) {
+                                return '1';
+                            }
+                            else {
+                                return '0';
+                            }
+                        }
+
+                        var marker = L.marker([lat, lon], {icon: myIcon});
+                        marker.on('click', function (click_data) {
+
+                            $.getJSON("{% static "/Datasets/data/EV Charger.json" %}", function(data){
+                                var lat_t = click_data.latlng.lat;
+                                var lon_t = click_data.latlng.lng;
+                                for (i = 0; i < data.features.length; i++) {
+
+                                    if (lat_t == data.features[i].geometry.coordinates[1] && lon_t == data.features[i].geometry.coordinates[0]) {
+
+                                        var name = data.features[i].properties['Station Name'];
+                                        var address = data.features[i].properties['Street Address'];
+                                        var code = data.features[i].properties['ZIP'];
+                                        var phone = data.features[i].properties['Station Phone'];
+                                        var NEMA520 = data.features[i].properties['NEMA520'];
+                                        var J1772 = data.features[i].properties['J1772'];
+                                        var J1772COMBO = data.features[i].properties['J1772COMBO'];
+                                        var CHADEMO = data.features[i].properties['CHADEMO'];
+                                        var TESLA = data.features[i].properties['TESLA'];
+                                        var level1 = data.features[i].properties['Level 1'];
+                                        var level2 = data.features[i].properties['Level 2'];
+                                        var dc = data.features[i].properties['DC Fast'];
+
+                                        var name_html = "<div style = \"color: #1B5C99; font-size: 32px; \">" + name + "</div>";
+                                        var address_html = "<div style = \"color: #84B5D1; font-size: 15px; \">" + address + " " + code
+                                            + "</div>";
+
+
+                                        var Station_phone_img = "<img src=" + "{% static "icons/svg/001-clock-circular-outline.svg" %}" +
+                                            " width=\"19\" height=\"19\"" + "style = \" position:relative; left:0px;  top:5px; float: left;\"" + ">" + "</img>";
+
+                                        var station_html = "<div style = \"margin-left: 30px;\">" + "Station Phone" + "</div>";
+
+                                        var Station_phone_html = "<div style = \"color: #1B5C99; font-size: 20px; border-width = 0px; \">"
+                                            + Station_phone_img + station_html + "</div>";
+
+                                        var phone_html = "<div style = \"font-size: 18px; margin-left: 30px; \">" + phone + "</div>";
+
+
+                                        var Connection_type_html = "<div style = \"color: #1B5C99; font-size: 20px; border-width = 0px; \">" +
+                                            "<img src=" + "{% static "icons/svg/004-plug.svg" %}" +
+                                            " width=\"19\" height=\"19\"" + " style = \" position:relative; left:0px;  top:5px; float: left;\""
+                                            + ">" + "</img>" + "<div style = \"margin-left: 30px;\">" + "Connection Types" + "</div>"
+                                            + "</div>";
+
+                                        var NEMA520_html = "<img id= \"ev_type_img\" src=" + "{% static "icons/EV_icons/NEMA520" %}" + '_' + judge(NEMA520) + ".png" + ">"
+                                            + "</img>";
+                                        var J1772_html = "<img id= \"ev_type_img\" src=" + "{% static "icons/EV_icons/J1772" %}" + '_' + judge(J1772) + ".png" + ">"
+                                            + "</img>";
+                                        var CHADEMO_html = "<img id= \"ev_type_img\" src=" + "{% static "icons/EV_icons/CHADEMO" %}" + '_' + judge(CHADEMO) + ".png" +">"
+                                            + "</img>";
+                                        var TESLA_html = "<img id= \"ev_type_img\" src=" + "{% static "icons/EV_icons/TESLA" %}" + '_' + judge(TESLA) + ".png" + ">"
+                                            + "</img>";
+                                        var J1772COMBO_html = "<img id= \"ev_type_img\" src=" + "{% static "icons/EV_icons/J1772COMBO" %}" + '_' + judge(J1772COMBO) + ".png" + ">"
+                                            + "</img>";
+
+
+                                        var table_html = "<table border=\"1\">\n" + "<tr>\n" +
+                                            "<td id = \"ev_type\" >" + NEMA520_html + "</td>\n" + "<td id = \"ev_type\" colspan=\"3\">" + J1772_html + "</td>\n"
+                                            + "<td id = \"ev_type\" >" + CHADEMO_html + "</td>\n" + "</tr>\n"
+                                            + "<tr>" + "<td id = \"ev_type\" colspan=\"3\">" + TESLA_html + "</td>" + "<td id = \"ev_type\" colspan=\"3\">" + J1772COMBO_html + "</td>"
+                                            + "</tr>" + "</table>";
+
+
+                                        var EV_types_html = "<table border=\"1\">\n";
+
+
+                                        var EV_level_html = "<div style = \"color: #1B5C99; font-size: 20px; border-width = 0px; \">" +
+                                            "<img src=" + "{% static "icons/svg/005-lightning-bolt-shadow.svg" %}" +
+                                                " width=\"19\" height=\"19\"" + " style = \" position:relative; left:0px;  top:5px; float: left;\""
+                                            + "</img>" + "<div style = \"margin-left: 30px;\">" + "EV Level" + "</div>";
+
+                                        var level1_html = "<img src=" + "{% static "icons/EV_icons/LEVEL_1" %}" + '_' + judge(level1) + ".png" + ">"
+                                            + "</img>";
+                                        var level2_html = "<img src=" + "{% static "icons/EV_icons/LEVEL_2" %}" + '_' + judge(level2) + ".png" + ">"
+                                            + "</img>";
+                                        var dc_html =  "<img src=" + "{% static "icons/EV_icons/DC_FAST" %}" + '_' + judge(dc) + ".png" + ">"
+                                            + "</img>";
+
+                                        var EV_level_img_html = "<table border=\"1\">\n" + "<tr>\n" +
+                                            "<td id = \"ev_type\" >" + level1_html + "</td>\n" + "<td id = \"ev_type\" colspan=\"3\">" + level2_html + "</td>\n"
+                                            + "<td id = \"ev_type\" >" + dc_html + "</td>\n" + "</tr>\n";
+
+                                        var result = name_html + address_html + Station_phone_html  + phone_html + Connection_type_html +
+                                            table_html + EV_level_html + EV_level_img_html;
+
+                                        si.setContent(result);
+                                        si.toggle();
+                                    }
+
+                                }
+                                })
+
+                        });
+                        EV_layer.addLayer(marker);
+                    }
+                    //console.log(EV_layer);
+                    // console.log(street_data);
+
+            });
+
             for (var i = data.results.length - 1; i >= 0; i--) {
                 var gis = data.results[i].latlng;
                 // console.log(gis);
-                results.addLayer(L.marker(data.results[i].latlng).on('click', function (gis) {
-                sidebar.toggle();
+
+                results.addLayer(L.marker(data.results[i].latlng));
 
                 $.ajax({
                 type: "POST",
                 data: JSON.stringify({
-                    'gis_lat': gis.latlng.lat,
-                    'gis_lon': gis.latlng.lng
+                    'gis_lat': gis.lat,
+                    'gis_lon': gis.lng
                 }),
                 headers: { "X-CSRFToken":$.cookie('csrftoken') },
                 contentType: "application/json",
                 success: function (gis_data) {
-                    alert(gis_data);
-                },
+                    //alert(gis_data);
+
+                }
+                }).done(function () {
+                    // alert("success");
+                    var colorlist = {{ colorlist|safe }} ;
+                    $.getJSON("{% static "/Datasets/data/Streets_filtered.json" %}", function(data){
+                    var streets_data_filtered = data;
+                    var index = 0;
+
+                    streets_filtered = L.geoJSON(streets_data_filtered, {
+                    style: function (feature) {
+                        // console.log(colorlist[index]);
+                        return {color: colorlist[index++], weight: 5};
+                    },
+                    onEachFeature: function (feature, layer) {
+                        // console.log(feature.properties.UNITDESC);
+
+                        layer.on('click', function () {
+                                $.ajax({
+                                type: "POST",
+                                data: JSON.stringify({
+                                    'street_name': feature.properties.UNITDESC
+                                }),
+                                headers: { "X-CSRFToken":$.cookie('csrftoken') },
+                                contentType: "application/json",
+                                success: function (data) {
+                                    data = JSON.parse(data);
+                                    table_html = data.tables;
+                                    street_html = data.street.split(" BETWEEN");
+                                    mainstreet_html = "<div style = \"color: #1B5C99; font-size: 32px;\">" + street_html[0]+ "</div>";
+                                    substreet_html = "<div style = \"color: #84B5D1; font-size: 15px; \">" + street_html[1]+ "</div>";
+
+                                    Parking_img = "<img src=" + "{% static "icons/svg/001-clock-circular-outline.svg" %}" +
+                                            " width=\"19\" height=\"19\"" + "style = \" position:relative; left:0px;  top:5px; float: left;\"" + ">" + "</img>";
+
+                                    Parking_html = "<div style = \"margin-left: 30px;\">" + "Parking Time Limit" + "</div>";
+
+                                    parking_html = "<div style = \"color: #1B5C99; font-size: 20px; border-width = 0px; \">" + Parking_img + Parking_html + "</div>";
+
+                                    park_time_limit_html = "<div style = \"font-size: 18px; margin-left: 30px; \">" + data.limit + " HOURS" + "</div>";
+
+                                    Rate_html = "<div style = \"color: #1B5C99; font-size: 20px; border-width = 0px; \">" +
+                                            "<img src=" + "{% static "icons/svg/002-dollar-symbol.svg" %}" +
+                                            " width=\"19\" height=\"19\"" + " style = \" position:relative; left:0px;  top:5px; float: left;\""
+                                            + ">" + "</img>" + "<div style = \"margin-left: 30px;\">" + "Rate" + "</div>"
+                                            + "</div>";
+
+
+
+
+
+                                    Fig_html = "<div style = \"color: #1B5C99; font-size: 20px; border-width = 0px; \">" +
+                                            "<img src=" + "{% static "icons/svg/003-graph.svg" %}" +
+                                            " width=\"19\" height=\"19\"" + " style = \" position:relative; left:0px;  top:5px; float: left;\""
+                                            + ">" + "</img>" + "<div style = \"margin-left: 30px;\">" + "Busy Time" + "</div>"
+                                            + "</div>";
+
+                                    fig_html = "<img src=" + "{% static "images/parkingfig/info.svg" %}"
+                                        + " alt="+ "&quot;" + "Flow Plot" + "&quot;" + " width=" + "&quot;" + "200" + "&quot;"
+                                        + " height=" + "&quot;" + "100" + "&quot;>";
+
+                                    result = mainstreet_html + substreet_html + parking_html + park_time_limit_html + Rate_html +
+                                        + table_html + Fig_html + fig_html;
+
+                                    si.setContent(mainstreet_html + substreet_html + parking_html + park_time_limit_html+ Rate_html+table_html+ Fig_html + fig_html);
+                                }
+                                });
+                                console(si.toggle());
+
+
+
+
+
+                        })}
+                    }).addTo(map);
+
+
+                    var colorbar = {{ colorbar|safe }}
+
+                    var legend = L.control({position: 'bottomright'});
+
+                    legend.onAdd = function (map) {
+
+                        var div = L.DomUtil.create('div', 'info legend'),
+                            grades = {{ grades|safe }},
+                            labels = [];
+
+                        // loop through our density intervals and generate a label with a colored square for each interval
+                        for (var i = 0; i < grades.length-1; i++) {
+                            div.innerHTML +=
+                                '<i style="background:' + colorbar[i] + '"></i> ' +
+                                grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '');
+                        }
+
+                        return div;
+                    };
+
+                    legend.addTo(map);
+
+                    });
                 });
 
-            }));
             }
+
+            var overlayMaps = {
+            "EV Charge Stations": EV_layer
+            };
+
+            L.control.layers({},overlayMaps).addTo(map);
+
         });
-        {#results.addLayer(L.marker(data.results[i].latlng).on('click', function () {#}
-        {#        sidebar.toggle();#}
-        {#    }));#}
+
 
         // var inBounds = [];
         // sidebar.setContent(inBounds.join(''));
         map.on('click', function () {
-            sidebar.hide();
+            si.hide();
         })
 
 
