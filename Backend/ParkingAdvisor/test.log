@@ -1,0 +1,358 @@
+*** Starting uWSGI 2.0.17.1 (64bit) on [Wed Dec 12 10:20:23 2018] ***
+compiled with version: 7.3.0 on 11 December 2018 23:55:36
+os: Linux-4.15.0-1035-azure #36-Ubuntu SMP Fri Nov 30 12:47:16 UTC 2018
+nodename: ParkingAdvisor
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/deepforce/parkingadvisor
+detected binary path: /home/deepforce/.virtualenvs/parkingadvisor/bin/uwsgi
+chdir() to /home/deepforce/parkingadvisor
+your processes number limit is 6623
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+Python version: 3.6.7 (default, Dec 11 2018, 22:23:35)  [GCC 7.3.0]
+Set PythonHome to /home/deepforce/.virtualenvs/parkingadvisor
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x5585fca88120
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 802120 bytes (783 KB) for 10 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x5585fca88120 pid: 13503 (default app)
+spawned uWSGI master process (pid: 13503)
+spawned uWSGI worker 1 (pid: 13505, cores: 1)
+spawned uWSGI worker 2 (pid: 13506, cores: 1)
+spawned uWSGI worker 3 (pid: 13507, cores: 1)
+spawned uWSGI worker 4 (pid: 13508, cores: 1)
+spawned uWSGI worker 5 (pid: 13509, cores: 1)
+spawned uWSGI worker 6 (pid: 13510, cores: 1)
+spawned uWSGI worker 7 (pid: 13511, cores: 1)
+spawned uWSGI worker 8 (pid: 13512, cores: 1)
+spawned uWSGI worker 9 (pid: 13513, cores: 1)
+spawned uWSGI worker 10 (pid: 13514, cores: 1)
+[pid: 13512|app: 0|req: 1/1] 67.183.27.228 () {42 vars in 748 bytes} [Wed Dec 12 02:20:35 2018] GET /launch_page => generated 36126 bytes in 3237 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+Internal Server Error: /launch_page
+Traceback (most recent call last):
+  File "fiona/ogrext.pyx", line 913, in fiona.ogrext.WritingSession.start
+  File "fiona/_err.pyx", line 229, in fiona._err.exc_wrap_pointer
+fiona._err.CPLE_NotSupportedError: GeoJSON driver doesn't support creating a layer on a read-only datasource
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/deepforce/.virtualenvs/parkingadvisor/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/deepforce/.virtualenvs/parkingadvisor/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/deepforce/.virtualenvs/parkingadvisor/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/deepforce/.virtualenvs/parkingadvisor/lib/python3.6/site-packages/django/views/decorators/csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./launch_page/views.py", line 37, in show
+    gdf.to_file("static/Datasets/data/Streets_filtered.json", driver="GeoJSON")
+  File "/home/deepforce/.virtualenvs/parkingadvisor/lib/python3.6/site-packages/geopandas/geodataframe.py", line 413, in to_file
+    to_file(self, filename, driver, schema, **kwargs)
+  File "/home/deepforce/.virtualenvs/parkingadvisor/lib/python3.6/site-packages/geopandas/io/file.py", line 110, in to_file
+    schema=schema, **kwargs) as colxn:
+  File "/home/deepforce/.virtualenvs/parkingadvisor/lib/python3.6/site-packages/fiona/__init__.py", line 175, in open
+    enabled_drivers=enabled_drivers, crs_wkt=crs_wkt)
+  File "/home/deepforce/.virtualenvs/parkingadvisor/lib/python3.6/site-packages/fiona/collection.py", line 156, in __init__
+    self.session.start(self, **kwargs)
+  File "fiona/ogrext.pyx", line 920, in fiona.ogrext.WritingSession.start
+fiona.errors.DriverIOError: GeoJSON driver doesn't support creating a layer on a read-only datasource
+[pid: 13514|app: 0|req: 1/2] 67.183.27.228 () {50 vars in 827 bytes} [Wed Dec 12 02:20:43 2018] POST /launch_page => generated 13523 bytes in 6863 msecs (HTTP/1.1 500) 4 headers in 145 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17.1 (64bit) on [Wed Dec 12 10:51:13 2018] ***
+compiled with version: 7.3.0 on 11 December 2018 23:55:36
+os: Linux-4.15.0-1035-azure #36-Ubuntu SMP Fri Nov 30 12:47:16 UTC 2018
+nodename: ParkingAdvisor
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/deepforce/parkingadvisor
+detected binary path: /home/deepforce/.virtualenvs/parkingadvisor/bin/uwsgi
+chdir() to /home/deepforce/parkingadvisor
+your processes number limit is 6623
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+Python version: 3.6.7 (default, Dec 11 2018, 22:23:35)  [GCC 7.3.0]
+Set PythonHome to /home/deepforce/.virtualenvs/parkingadvisor
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x55a750682120
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 802120 bytes (783 KB) for 10 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55a750682120 pid: 16098 (default app)
+spawned uWSGI master process (pid: 16098)
+spawned uWSGI worker 1 (pid: 16100, cores: 1)
+spawned uWSGI worker 2 (pid: 16101, cores: 1)
+spawned uWSGI worker 3 (pid: 16102, cores: 1)
+spawned uWSGI worker 4 (pid: 16103, cores: 1)
+spawned uWSGI worker 5 (pid: 16104, cores: 1)
+spawned uWSGI worker 6 (pid: 16105, cores: 1)
+spawned uWSGI worker 7 (pid: 16106, cores: 1)
+spawned uWSGI worker 8 (pid: 16107, cores: 1)
+spawned uWSGI worker 9 (pid: 16108, cores: 1)
+spawned uWSGI worker 10 (pid: 16109, cores: 1)
+[pid: 16108|app: 0|req: 1/1] 67.183.27.228 () {42 vars in 748 bytes} [Wed Dec 12 02:51:23 2018] GET /launch_page => generated 36131 bytes in 3150 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+[pid: 16109|app: 0|req: 1/2] 67.183.27.228 () {50 vars in 827 bytes} [Wed Dec 12 02:51:31 2018] POST /launch_page => generated 531717 bytes in 7118 msecs (HTTP/1.1 200) 3 headers in 112 bytes (1 switches on core 0)
+[pid: 16109|app: 0|req: 2/3] 67.183.27.228 () {50 vars in 827 bytes} [Wed Dec 12 02:51:40 2018] POST /launch_page => generated 520 bytes in 1373 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 16108|app: 0|req: 2/4] 67.183.27.228 () {50 vars in 827 bytes} [Wed Dec 12 02:51:45 2018] POST /launch_page => generated 520 bytes in 1340 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17.1 (64bit) on [Wed Dec 12 10:52:50 2018] ***
+compiled with version: 7.3.0 on 11 December 2018 23:55:36
+os: Linux-4.15.0-1035-azure #36-Ubuntu SMP Fri Nov 30 12:47:16 UTC 2018
+nodename: ParkingAdvisor
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/deepforce/parkingadvisor
+detected binary path: /home/deepforce/.virtualenvs/parkingadvisor/bin/uwsgi
+chdir() to /home/deepforce/parkingadvisor
+your processes number limit is 6623
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+Python version: 3.6.7 (default, Dec 11 2018, 22:23:35)  [GCC 7.3.0]
+Set PythonHome to /home/deepforce/.virtualenvs/parkingadvisor
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x55e82e116120
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 802120 bytes (783 KB) for 10 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55e82e116120 pid: 16246 (default app)
+spawned uWSGI master process (pid: 16246)
+spawned uWSGI worker 1 (pid: 16248, cores: 1)
+spawned uWSGI worker 2 (pid: 16249, cores: 1)
+spawned uWSGI worker 3 (pid: 16250, cores: 1)
+spawned uWSGI worker 4 (pid: 16251, cores: 1)
+spawned uWSGI worker 5 (pid: 16252, cores: 1)
+spawned uWSGI worker 6 (pid: 16253, cores: 1)
+spawned uWSGI worker 7 (pid: 16254, cores: 1)
+spawned uWSGI worker 8 (pid: 16255, cores: 1)
+spawned uWSGI worker 9 (pid: 16256, cores: 1)
+spawned uWSGI worker 10 (pid: 16257, cores: 1)
+[pid: 16253|app: 0|req: 1/1] 67.183.27.228 () {42 vars in 748 bytes} [Wed Dec 12 02:52:54 2018] GET /launch_page => generated 36131 bytes in 3138 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+Forbidden (CSRF cookie not set.): /launch_page
+[pid: 16255|app: 0|req: 1/2] 67.183.27.228 () {50 vars in 827 bytes} [Wed Dec 12 02:53:02 2018] POST /launch_page => generated 2868 bytes in 2893 msecs (HTTP/1.1 403) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 16255|app: 0|req: 2/3] 89.235.96.22 () {34 vars in 495 bytes} [Wed Dec 12 02:55:44 2018] GET / => generated 6241 bytes in 8 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17.1 (64bit) on [Wed Dec 12 10:58:17 2018] ***
+compiled with version: 7.3.0 on 11 December 2018 23:55:36
+os: Linux-4.15.0-1035-azure #36-Ubuntu SMP Fri Nov 30 12:47:16 UTC 2018
+nodename: ParkingAdvisor
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/deepforce/parkingadvisor
+detected binary path: /home/deepforce/.virtualenvs/parkingadvisor/bin/uwsgi
+chdir() to /home/deepforce/parkingadvisor
+your processes number limit is 6623
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+Python version: 3.6.7 (default, Dec 11 2018, 22:23:35)  [GCC 7.3.0]
+Set PythonHome to /home/deepforce/.virtualenvs/parkingadvisor
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x559217ebe120
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 802120 bytes (783 KB) for 10 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x559217ebe120 pid: 16689 (default app)
+spawned uWSGI master process (pid: 16689)
+spawned uWSGI worker 1 (pid: 16695, cores: 1)
+spawned uWSGI worker 2 (pid: 16698, cores: 1)
+spawned uWSGI worker 3 (pid: 16699, cores: 1)
+spawned uWSGI worker 4 (pid: 16700, cores: 1)
+spawned uWSGI worker 5 (pid: 16701, cores: 1)
+spawned uWSGI worker 6 (pid: 16702, cores: 1)
+spawned uWSGI worker 7 (pid: 16703, cores: 1)
+spawned uWSGI worker 8 (pid: 16704, cores: 1)
+spawned uWSGI worker 9 (pid: 16705, cores: 1)
+spawned uWSGI worker 10 (pid: 16706, cores: 1)
+[pid: 16705|app: 0|req: 1/1] 67.183.27.228 () {42 vars in 748 bytes} [Wed Dec 12 02:58:22 2018] GET /launch_page => generated 36163 bytes in 3161 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+Forbidden (CSRF cookie not set.): /launch_page
+[pid: 16706|app: 0|req: 1/2] 67.183.27.228 () {50 vars in 827 bytes} [Wed Dec 12 02:58:30 2018] POST /launch_page => generated 2868 bytes in 2947 msecs (HTTP/1.1 403) 3 headers in 102 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17.1 (64bit) on [Wed Dec 12 11:13:51 2018] ***
+compiled with version: 7.3.0 on 11 December 2018 23:55:36
+os: Linux-4.15.0-1035-azure #36-Ubuntu SMP Fri Nov 30 12:47:16 UTC 2018
+nodename: ParkingAdvisor
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/deepforce/parkingadvisor
+detected binary path: /home/deepforce/.virtualenvs/parkingadvisor/bin/uwsgi
+chdir() to /home/deepforce/parkingadvisor
+your processes number limit is 6623
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+Python version: 3.6.7 (default, Dec 11 2018, 22:23:35)  [GCC 7.3.0]
+Set PythonHome to /home/deepforce/.virtualenvs/parkingadvisor
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x55f03103c120
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 802120 bytes (783 KB) for 10 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55f03103c120 pid: 17934 (default app)
+spawned uWSGI master process (pid: 17934)
+spawned uWSGI worker 1 (pid: 17936, cores: 1)
+spawned uWSGI worker 2 (pid: 17937, cores: 1)
+spawned uWSGI worker 3 (pid: 17938, cores: 1)
+spawned uWSGI worker 4 (pid: 17939, cores: 1)
+spawned uWSGI worker 5 (pid: 17940, cores: 1)
+spawned uWSGI worker 6 (pid: 17941, cores: 1)
+spawned uWSGI worker 7 (pid: 17942, cores: 1)
+spawned uWSGI worker 8 (pid: 17943, cores: 1)
+spawned uWSGI worker 9 (pid: 17944, cores: 1)
+spawned uWSGI worker 10 (pid: 17945, cores: 1)
+[pid: 17941|app: 0|req: 1/1] 67.183.27.228 () {42 vars in 748 bytes} [Wed Dec 12 03:14:00 2018] GET /launch_page => generated 36166 bytes in 3175 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+[pid: 17945|app: 0|req: 1/2] 67.183.27.228 () {40 vars in 695 bytes} [Wed Dec 12 03:14:10 2018] GET / => generated 6241 bytes in 3027 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 17945|app: 0|req: 2/3] 67.183.27.228 () {40 vars in 651 bytes} [Wed Dec 12 03:26:33 2018] GET / => generated 6241 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 17944|app: 0|req: 1/4] 67.183.27.228 () {40 vars in 651 bytes} [Wed Dec 12 03:26:52 2018] GET / => generated 6241 bytes in 3105 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+Invalid HTTP_HOST header: 'parkingadvisor.westus2.cloudapp.azure.com'. You may need to add 'parkingadvisor.westus2.cloudapp.azure.com' to ALLOWED_HOSTS.
+Bad Request: /
+[pid: 17945|app: 0|req: 3/5] 67.183.27.228 () {40 vars in 751 bytes} [Wed Dec 12 03:30:27 2018] GET / => generated 56125 bytes in 125 msecs (HTTP/1.1 400) 1 headers in 53 bytes (1 switches on core 0)
+Invalid HTTP_HOST header: 'parkingadvisor.westus2.cloudapp.azure.com'. You may need to add 'parkingadvisor.westus2.cloudapp.azure.com' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[pid: 17944|app: 0|req: 2/6] 67.183.27.228 () {40 vars in 757 bytes} [Wed Dec 12 03:30:28 2018] GET /favicon.ico => generated 56241 bytes in 165 msecs (HTTP/1.1 400) 1 headers in 53 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.17.1 (64bit) on [Wed Dec 12 11:31:36 2018] ***
+compiled with version: 7.3.0 on 11 December 2018 23:55:36
+os: Linux-4.15.0-1035-azure #36-Ubuntu SMP Fri Nov 30 12:47:16 UTC 2018
+nodename: ParkingAdvisor
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/deepforce/parkingadvisor
+detected binary path: /home/deepforce/.virtualenvs/parkingadvisor/bin/uwsgi
+chdir() to /home/deepforce/parkingadvisor
+your processes number limit is 6623
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+Python version: 3.6.7 (default, Dec 11 2018, 22:23:35)  [GCC 7.3.0]
+Set PythonHome to /home/deepforce/.virtualenvs/parkingadvisor
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x562174e9a120
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 802120 bytes (783 KB) for 10 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x562174e9a120 pid: 19867 (default app)
+spawned uWSGI master process (pid: 19867)
+spawned uWSGI worker 1 (pid: 19869, cores: 1)
+spawned uWSGI worker 2 (pid: 19870, cores: 1)
+spawned uWSGI worker 3 (pid: 19871, cores: 1)
+spawned uWSGI worker 4 (pid: 19872, cores: 1)
+spawned uWSGI worker 5 (pid: 19873, cores: 1)
+spawned uWSGI worker 6 (pid: 19874, cores: 1)
+spawned uWSGI worker 7 (pid: 19875, cores: 1)
+spawned uWSGI worker 8 (pid: 19876, cores: 1)
+spawned uWSGI worker 9 (pid: 19877, cores: 1)
+spawned uWSGI worker 10 (pid: 19878, cores: 1)
+[pid: 19874|app: 0|req: 1/1] 67.183.27.228 () {42 vars in 782 bytes} [Wed Dec 12 03:31:40 2018] GET / => generated 6241 bytes in 5464 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19874|app: 0|req: 2/2] 67.183.27.228 () {40 vars in 751 bytes} [Wed Dec 12 03:31:48 2018] GET / => generated 6241 bytes in 35 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 19874|app: 0|req: 3/3] 67.183.27.228 () {44 vars in 810 bytes} [Wed Dec 12 03:31:49 2018] GET /favicon.ico => generated 2256 bytes in 60 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 1/4] 67.183.27.228 () {42 vars in 782 bytes} [Wed Dec 12 03:31:42 2018] GET / => generated 6241 bytes in 9498 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 2/5] 67.183.27.228 () {42 vars in 838 bytes} [Wed Dec 12 03:31:52 2018] GET /launch_page => generated 36166 bytes in 621 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 1/6] 67.183.27.228 () {42 vars in 782 bytes} [Wed Dec 12 03:31:43 2018] GET / => generated 6241 bytes in 10094 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19876|app: 0|req: 1/7] 67.183.27.228 () {42 vars in 782 bytes} [Wed Dec 12 03:31:44 2018] GET / => generated 6241 bytes in 9074 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 3/8] 67.183.27.228 () {50 vars in 939 bytes} [Wed Dec 12 03:31:57 2018] POST /launch_page => generated 531703 bytes in 4185 msecs (HTTP/1.1 200) 3 headers in 112 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 4/9] 101.227.139.173 () {36 vars in 593 bytes} [Wed Dec 12 03:42:00 2018] GET / => generated 6241 bytes in 3 msecs (HTTP/1.0 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 2/10] 73.140.205.46 () {40 vars in 756 bytes} [Wed Dec 12 03:42:14 2018] GET / => generated 6241 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 5/11] 73.140.205.46 () {42 vars in 843 bytes} [Wed Dec 12 03:42:25 2018] GET /launch_page => generated 36166 bytes in 335 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 6/12] 73.140.205.46 () {40 vars in 756 bytes} [Wed Dec 12 03:42:39 2018] GET / => generated 6241 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 3/13] 61.151.178.197 () {36 vars in 647 bytes} [Wed Dec 12 03:43:00 2018] GET / => generated 6241 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19876|app: 0|req: 2/14] 101.91.60.110 () {36 vars in 711 bytes} [Wed Dec 12 03:43:28 2018] GET /launch_page => generated 36166 bytes in 186 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 7/15] 98.232.66.33 () {40 vars in 758 bytes} [Wed Dec 12 06:50:45 2018] GET / => generated 6241 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 8/16] 73.181.211.97 () {40 vars in 762 bytes} [Wed Dec 12 12:22:03 2018] GET / => generated 6241 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 9/17] 67.183.27.228 () {42 vars in 904 bytes} [Wed Dec 12 13:03:44 2018] GET / => generated 6241 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 19877|app: 0|req: 10/18] 67.183.27.228 () {42 vars in 910 bytes} [Wed Dec 12 13:03:45 2018] GET /favicon.ico => generated 2256 bytes in 18 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 11/19] 166.137.242.24 () {42 vars in 811 bytes} [Wed Dec 12 14:16:19 2018] GET / => generated 6241 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 4/20] 166.137.242.24 () {44 vars in 898 bytes} [Wed Dec 12 14:17:01 2018] GET /launch_page => generated 36166 bytes in 193 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 12/21] 61.151.178.165 () {36 vars in 647 bytes} [Wed Dec 12 14:17:21 2018] GET / => generated 6241 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 13/22] 166.137.242.24 () {52 vars in 1021 bytes} [Wed Dec 12 14:19:25 2018] POST /launch_page => generated 539630 bytes in 4060 msecs (HTTP/1.1 200) 3 headers in 112 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 5/23] 166.137.242.24 () {52 vars in 1020 bytes} [Wed Dec 12 14:20:20 2018] POST /launch_page => generated 495 bytes in 1251 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 14/24] 166.137.242.24 () {52 vars in 1020 bytes} [Wed Dec 12 14:20:22 2018] POST /launch_page => generated 495 bytes in 1205 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 15/25] 73.181.211.97 () {40 vars in 762 bytes} [Wed Dec 12 14:55:55 2018] GET / => generated 6241 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 6/26] 73.181.211.97 () {40 vars in 762 bytes} [Wed Dec 12 14:55:57 2018] GET / => generated 6241 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 16/27] 73.181.211.97 () {42 vars in 849 bytes} [Wed Dec 12 14:56:01 2018] GET /launch_page => generated 36166 bytes in 169 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 7/28] 73.181.211.97 () {50 vars in 972 bytes} [Wed Dec 12 14:56:13 2018] POST /launch_page => generated 539367 bytes in 4294 msecs (HTTP/1.1 200) 3 headers in 112 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 17/29] 73.181.211.97 () {50 vars in 972 bytes} [Wed Dec 12 14:56:23 2018] POST /launch_page => generated 514 bytes in 1173 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 8/30] 101.91.62.99 () {36 vars in 689 bytes} [Wed Dec 12 14:56:54 2018] GET / => generated 6241 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 18/31] 205.175.106.15 () {46 vars in 864 bytes} [Wed Dec 12 17:12:37 2018] GET / => generated 6241 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 19/32] 205.175.106.15 () {44 vars in 858 bytes} [Wed Dec 12 17:12:41 2018] GET /launch_page => generated 36166 bytes in 167 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 19878|app: 0|req: 9/33] 205.175.106.15 () {42 vars in 774 bytes} [Wed Dec 12 17:12:42 2018] GET /favicon.ico => generated 2256 bytes in 10 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 20/34] 205.175.106.15 () {52 vars in 981 bytes} [Wed Dec 12 17:12:46 2018] POST /launch_page => generated 539036 bytes in 3986 msecs (HTTP/1.1 200) 3 headers in 112 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 21/35] 205.175.106.15 () {52 vars in 981 bytes} [Wed Dec 12 17:13:03 2018] POST /launch_page => generated 510 bytes in 1162 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 10/36] 205.175.106.15 () {44 vars in 858 bytes} [Wed Dec 12 17:13:07 2018] GET /launch_page => generated 36166 bytes in 175 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 22/37] 205.175.106.15 () {52 vars in 981 bytes} [Wed Dec 12 17:13:12 2018] POST /launch_page => generated 539036 bytes in 4023 msecs (HTTP/1.1 200) 3 headers in 112 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 23/38] 205.175.106.54 () {40 vars in 751 bytes} [Wed Dec 12 17:19:59 2018] GET / => generated 6241 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 19877|app: 0|req: 24/39] 205.175.106.54 () {40 vars in 757 bytes} [Wed Dec 12 17:20:00 2018] GET /favicon.ico => generated 2256 bytes in 3 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 25/40] 205.175.106.54 () {42 vars in 838 bytes} [Wed Dec 12 17:20:02 2018] GET /launch_page => generated 36166 bytes in 177 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 11/41] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:20:12 2018] POST /launch_page => generated 539147 bytes in 4030 msecs (HTTP/1.1 200) 3 headers in 112 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 26/42] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:20:53 2018] POST /launch_page => generated 514 bytes in 1174 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 12/43] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:21:01 2018] POST /launch_page => generated 523 bytes in 1293 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 27/44] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:21:27 2018] POST /launch_page => generated 510 bytes in 1228 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 13/45] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:21:35 2018] POST /launch_page => generated 514 bytes in 1185 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 28/46] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:21:57 2018] POST /launch_page => generated 515 bytes in 1182 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 29/47] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:22:02 2018] POST /launch_page => generated 511 bytes in 1259 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 14/48] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:22:04 2018] POST /launch_page => generated 524 bytes in 1173 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 30/49] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:22:20 2018] POST /launch_page => generated 523 bytes in 1201 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 15/50] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:22:43 2018] POST /launch_page => generated 517 bytes in 1174 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+Not Found: /Homepage.html
+[pid: 19877|app: 0|req: 31/51] 205.175.106.54 () {42 vars in 853 bytes} [Wed Dec 12 17:23:06 2018] GET /Homepage.html => generated 2262 bytes in 9 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 16/52] 205.175.106.54 () {42 vars in 838 bytes} [Wed Dec 12 17:23:08 2018] GET /launch_page => generated 36166 bytes in 192 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 32/53] 205.175.106.54 () {40 vars in 751 bytes} [Wed Dec 12 17:26:42 2018] GET / => generated 6241 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 17/54] 205.175.106.54 () {42 vars in 838 bytes} [Wed Dec 12 17:26:44 2018] GET /launch_page => generated 36166 bytes in 180 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 33/55] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:26:52 2018] POST /launch_page => generated 539093 bytes in 12697 msecs (HTTP/1.1 200) 3 headers in 112 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 18/56] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:26:52 2018] POST /launch_page => generated 539123 bytes in 12927 msecs (HTTP/1.1 200) 3 headers in 112 bytes (1 switches on core 0)
+[pid: 19871|app: 0|req: 1/57] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:26:52 2018] POST /launch_page => generated 539093 bytes in 16120 msecs (HTTP/1.1 200) 3 headers in 112 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 34/58] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:27:23 2018] POST /launch_page => generated 495 bytes in 1169 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 19/59] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:27:40 2018] POST /launch_page => generated 524 bytes in 1181 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 35/60] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:28:19 2018] POST /launch_page => generated 498 bytes in 1144 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 20/61] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:28:35 2018] POST /launch_page => generated 539128 bytes in 4057 msecs (HTTP/1.1 200) 3 headers in 112 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 36/62] 205.175.106.54 () {44 vars in 869 bytes} [Wed Dec 12 17:28:39 2018] GET /launch_page => generated 36166 bytes in 186 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 21/63] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:28:51 2018] POST /launch_page => generated 539128 bytes in 4209 msecs (HTTP/1.1 200) 3 headers in 112 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 37/64] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:29:08 2018] POST /launch_page => generated 517 bytes in 1149 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 22/65] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 17:29:25 2018] POST /launch_page => generated 509 bytes in 1148 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 38/66] 205.175.106.54 () {50 vars in 939 bytes} [Wed Dec 12 18:04:03 2018] POST /launch_page => generated 509 bytes in 1144 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 39/67] 205.175.106.15 () {44 vars in 858 bytes} [Wed Dec 12 19:01:04 2018] GET /launch_page => generated 36166 bytes in 177 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 23/68] 205.175.106.15 () {52 vars in 981 bytes} [Wed Dec 12 19:01:09 2018] POST /launch_page => generated 547094 bytes in 4043 msecs (HTTP/1.1 200) 3 headers in 112 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 40/69] 205.175.106.15 () {52 vars in 981 bytes} [Wed Dec 12 19:01:21 2018] POST /launch_page => generated 520 bytes in 1149 msecs (HTTP/1.1 200) 3 headers in 109 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 41/70] 205.175.106.54 () {40 vars in 751 bytes} [Wed Dec 12 19:22:40 2018] GET / => generated 6241 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19878|app: 0|req: 24/71] 205.175.106.54 () {42 vars in 838 bytes} [Wed Dec 12 19:22:53 2018] GET /launch_page => generated 36166 bytes in 162 msecs (HTTP/1.1 200) 3 headers in 111 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 42/72] 205.175.106.15 () {40 vars in 752 bytes} [Wed Dec 12 20:57:33 2018] GET / => generated 6241 bytes in 3 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 43/73] 205.175.106.15 () {40 vars in 752 bytes} [Wed Dec 12 21:12:39 2018] GET / => generated 6241 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 44/74] 205.175.106.15 () {40 vars in 752 bytes} [Wed Dec 12 21:15:47 2018] GET / => generated 6241 bytes in 2 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+[pid: 19877|app: 0|req: 45/75] 205.175.106.15 () {42 vars in 783 bytes} [Wed Dec 12 21:19:12 2018] GET / => generated 6241 bytes in 7 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+Not Found: /home/deepforce/parkingadvisor/docs/build/html/index.html
+[pid: 19877|app: 0|req: 46/76] 205.175.106.15 () {40 vars in 813 bytes} [Wed Dec 12 21:21:43 2018] GET /docs/ => generated 2391 bytes in 89 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)
+Not Found: /home/deepforce/parkingadvisor/docs/build/html/index.html
+[pid: 19878|app: 0|req: 25/77] 205.175.106.15 () {42 vars in 844 bytes} [Wed Dec 12 21:21:55 2018] GET /docs/ => generated 2391 bytes in 19 msecs (HTTP/1.1 404) 3 headers in 102 bytes (1 switches on core 0)

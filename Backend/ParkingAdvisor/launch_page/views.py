@@ -20,7 +20,7 @@ street_geojson = "static/Datasets/data/Streets_gis.json"
 
 
 
-
+@csrf_exempt
 def show(request):
 
     if request.is_ajax():
@@ -32,10 +32,14 @@ def show(request):
 
             df_recomm = fl.recomm_layer(gis, now,
                         [0.3, 0.4, 0.3])
+
+
+
             df_recomm = pd.merge(df_recomm, gis_data[['UNITDESC', 'geometry']], on='UNITDESC')
             gdf = gpd.GeoDataFrame(df_recomm, crs={'init': 'epsg:4326'}, geometry='geometry')
-            gdf.to_file("static/Datasets/data/Streets_filtered.json", driver="GeoJSON")
-            return HttpResponse(json.dumps({"msg": "Success!"}))
+            # gdf.to_file("static/Datasets/data/Streets_filtered.json", driver="GeoJSON")
+            # print(json.loads(gdf.to_json()))
+            return HttpResponse(json.dumps({"gdf_json": gdf.to_json()}))
         elif "street_name" in data.keys():
             unitdesc = data['street_name']
             street = fl.Street(street_name = unitdesc)

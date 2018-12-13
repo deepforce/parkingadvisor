@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>filter module &mdash; parking_advisor 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="visual module" href="visual.html" />
+    <link rel="prev" title="streets_filter module" href="streets_filter.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> parking_advisor
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Data_clean_up</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">filter module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visual.html">visual module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">parking_advisor</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>filter module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/filter.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-filter">
+<span id="filter-module"></span><h1>filter module<a class="headerlink" href="#module-filter" title="Permalink to this headline">¶</a></h1>
+<p>This module contains all methods to filter the data to visualization
+and calculation.</p>
+<dl class="class">
+<dt id="filter.EStation">
+<em class="property">class </em><code class="descclassname">filter.</code><code class="descname">EStation</code><span class="sig-paren">(</span><em>station_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#EStation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.EStation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The class <cite>EStation</cite> contains all information of a EV charging station
+for future details display.</p>
+<p>name:   The street name
+plot:   Occupancy over time figure
+rate:   Parking rate table
+limit:  Parking limit (in hour)</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="filter.Street">
+<em class="property">class </em><code class="descclassname">filter.</code><code class="descname">Street</code><span class="sig-paren">(</span><em>street_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#Street"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.Street" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The class <cite>Street</cite> contains all information of a on-street parking
+spot for future details display.</p>
+<p>name:   The street name
+plot:   Occupancy over time figure
+rate:   Parking rate table
+limit:  Parking limit (in hour)</p>
+<dl class="method">
+<dt id="filter.Street.get_flow_plot">
+<code class="descname">get_flow_plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#Street.get_flow_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.Street.get_flow_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the flow analysis figure</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="filter.Street.get_limit">
+<code class="descname">get_limit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#Street.get_limit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.Street.get_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parking limit in hour</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="filter.Street.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#Street.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.Street.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Street name</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="filter.Street.get_rate">
+<code class="descname">get_rate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#Street.get_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.Street.get_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get rate table</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="filter.distance_df">
+<code class="descclassname">filter.</code><code class="descname">distance_df</code><span class="sig-paren">(</span><em>target_gis</em>, <em>street_geojson='/Users/ju/parkingadvisor/docs/AutoDoc/Documentation/Data_clean_up/data/Streets_gis.json'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#distance_df"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.distance_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the distance from a given location to all streets</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>target_gis</strong> (<em>list</em>) – The given point coordinate (long, lat)</li>
+<li><strong>street_geojson</strong> (<em>str</em>) – The GeoJSON file of all streets (i.e. Streets_gis.json)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a dataframe of distance of a given point to all streets</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dataframe</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="filter.ev_layer">
+<code class="descclassname">filter.</code><code class="descname">ev_layer</code><span class="sig-paren">(</span><em>ev_gis='/Users/ju/parkingadvisor/docs/AutoDoc/Documentation/Data_clean_up/data/EV Charger.json'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#ev_layer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.ev_layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the EV charging stations datafile and convert into a
+GeoPandas.DataFrame</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ev_gis</strong> (<em>str</em>) – the JSON file constaining layer info</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a dataframe of the layer</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">GeoPandas.DataFrame</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="filter.flow_layer">
+<code class="descclassname">filter.</code><code class="descname">flow_layer</code><span class="sig-paren">(</span><em>date_time</em>, <em>file_time='/Users/ju/parkingadvisor/docs/AutoDoc/Documentation/Data_clean_up/data/flow_all_streets.csv'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#flow_layer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.flow_layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a dataframe of occupancy for all streets at a specific
+time point for folium map plot</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>date_time</strong> (<cite>datatime</cite>) – The start time of parking</li>
+<li><strong>file_time</strong> (<em>str</em>) – The path of the raw file which containing all smoothed
+occupancy data (i.e. ‘flow_all_streets.csv’)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dataframe containing occupancy at the time point</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dataframe</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="filter.link_to_gis">
+<code class="descclassname">filter.</code><code class="descname">link_to_gis</code><span class="sig-paren">(</span><em>df_properties</em>, <em>street_geojson='/Users/ju/parkingadvisor/docs/AutoDoc/Documentation/Data_clean_up/data/Streets_gis.json'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#link_to_gis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.link_to_gis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add GIS info to properties dataframe</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>df_properties</strong> (<cite>datatime</cite>) – the dataframe of properties</li>
+<li><strong>street_geojson</strong> (<em>str</em>) – the JSON file constaining street info</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a dataframe linked to gis</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">GeoPandas.DataFrame</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="filter.plot_flow">
+<code class="descclassname">filter.</code><code class="descname">plot_flow</code><span class="sig-paren">(</span><em>df_smooth_flow</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#plot_flow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.plot_flow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the flow figure for a single street</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>df_smooth_flow</strong> (<em>dataframe</em>) – The smoothed flow data of a dingle street</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a figure containing the info of a dataframe</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">matplotlib.pyplot.Figure</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="filter.rate_layer">
+<code class="descclassname">filter.</code><code class="descname">rate_layer</code><span class="sig-paren">(</span><em>date_time</em>, <em>file_rate='/Users/ju/parkingadvisor/docs/AutoDoc/Documentation/Data_clean_up/data/Rate_limit.csv'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#rate_layer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.rate_layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a dataframe of parking rate for all streets at a specific
+datetime</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>date_time</strong> (<cite>datatime</cite>) – the start time of parking</li>
+<li><strong>file_rate</strong> (<em>str</em>) – The entire rate file (i.e. ‘Rate_limit.csv’)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a dataframe containing all the info of the layer</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dataframe</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="filter.recomm_layer">
+<code class="descclassname">filter.</code><code class="descname">recomm_layer</code><span class="sig-paren">(</span><em>dest</em>, <em>date_time</em>, <em>factor=(0.3</em>, <em>0.4</em>, <em>0.3)</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#recomm_layer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.recomm_layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a dataframe with recommanded score for all streets</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dest</strong> (<em>tuple-like</em><em> (</em><em>lat</em><em>,</em><em>long</em><em>)</em>) – The destination coordinates</li>
+<li><strong>date_time</strong> (<cite>datetime</cite>) – The start time point</li>
+<li><strong>factor</strong> (<em>list</em>) – The score factor to calculate recommanded score</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dataframe of recommanded scores</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dataframe</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="filter.select_station">
+<code class="descclassname">filter.</code><code class="descname">select_station</code><span class="sig-paren">(</span><em>staion_name</em>, <em>df_entire</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#select_station"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.select_station" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select a specific street info from entire dataframe</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>street_name</strong> (<em>str</em>) – The given street name</li>
+<li><strong>df_entire</strong> (<em>dataframe</em>) – The dataframe containing all streets</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a dataframe containing specific station</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dataframe</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="filter.select_street">
+<code class="descclassname">filter.</code><code class="descname">select_street</code><span class="sig-paren">(</span><em>street_name</em>, <em>df_entire</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#select_street"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.select_street" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select a specific street info from entire dataframe</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>street_name</strong> (<em>str</em>) – The given street name</li>
+<li><strong>df_entire</strong> (<em>dataframe</em>) – The dataframe containing all streets</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">info of specific street name</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dataframe</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="visual.html" class="btn btn-neutral float-right" title="visual module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="streets_filter.html" class="btn btn-neutral" title="streets_filter module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Jiajie Guo, Yue Wang, Yuqi Zheng, Zhicheng Ju
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

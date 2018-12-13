@@ -25,7 +25,7 @@ SECRET_KEY = ')v0va&e6pu0@bjb5-l#pkx4(5ecjq9a0=8#23l4f!8dzom(4hv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['parkingadvisor.westus2.cloudapp.azure.com','127.0.0.1','13.66.170.237']
 
 
 # Application definition
@@ -119,9 +119,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
+
 )
