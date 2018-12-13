@@ -3,7 +3,7 @@
 
 ![](https://img.shields.io/github/license/mashape/apistatus.svg)
 
-Hello there! Here is **ParkingAdvisor**, a webpage-based tool to provide the best on-street parking spot for you.
+Hello there! Here is **ParkingAdvisor**, a webpage-based tool to provide the best on-street parking spot for you. Here is our web app [demo](http://parkingadvisor.westus2.cloudapp.azure.com/).
 
 Let me introduce myself.
 ## Background
@@ -11,7 +11,7 @@ A [study](https://www.seattlemag.com/article/how-find-parking-seattle) shows Sea
 
 In order to provide a beeter experience for people to park their car, we develop a tool to provide a list of recommendation for our users to park theie car, just based on the user's location and their preference. In addition, our tool could show every public charging station around our user's target parking area. 
 
-**ParkingAdvisor**, Provide your parking lot and save both money and time!
+**ParkingAdvisor**, provide your parking lot and save both money and time!
 
 ## Data
 * [Annual Parking Study Data](https://data.seattle.gov/Transportation/Annual-Parking-Study-Data/7jzm-ucez)
@@ -21,7 +21,7 @@ In order to provide a beeter experience for people to park their car, we develop
 
 ## Documentation
 
-To mak users unsterstand the functions we used in ParkingAdvisor project easierly, we documented every modules and functions within this project.
+To make users unsterstand the functions we used in ParkingAdvisor project easierly, we documented every modules and functions within this project.
 
 To document `parking_advisor` we use the [sphinx documentation system](http://sphinx-doc.org/). You can follow the instructions on the sphinx website, and the example [here](http://matplotlib.org/sampledoc/) to set up the system, but we have also already initialized and commited a skeleton documentation system in the `docs/AutoDoc` directory, that you can build upon.
 
@@ -121,8 +121,16 @@ The [MIT License](https://en.wikipedia.org/wiki/MIT_License) is a permissive fre
 
 #### To install FirstStop perform following steps:
 
-* clone the repo: git clone [this link](https://github.com/deepforce/parkingadvisor)
-* run the setup.py file: python setup.py install
+* clone the repo: 
+
+  `git clone https://github.com/deepforce/parkingadvisor`
+
+* run the setup.py file: 
+
+  `python setup.py install`
+
 * open homepage.html and click ParkingAdvisor to access the launch page 
+
 * input the destination of your parking area and research
+
 * the information will be provided in the pop window

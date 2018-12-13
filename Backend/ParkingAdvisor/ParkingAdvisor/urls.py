@@ -18,6 +18,8 @@ from django.conf.urls import include, url
 from django.urls import path
 from launch_page import views as launch_page_views
 from home_page import views as home_page_views
+from django.views.static import serve
+from ParkingAdvisor import settings
 
 urlpatterns = [
     path('', home_page_views.show, name = "home_page"),

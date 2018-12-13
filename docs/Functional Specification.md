@@ -22,23 +22,27 @@ Almost everyone. They need to know how to read virtual maps. Follow the map to f
 
 ### Use cases
 
-1. Displays recommended parking area.
+1. Displays parking blockfaces under different modes.
 
-   **User**: Put a pinpoint on the map or input the location name.
+   **User**: input the destination name, then choose different ranking modes.
 
-   **System**: Displays all the recommended parking area near the place chose by user.
+   **System**: Displays all available parking area near the place chosen by user.
 
-2. Show flow analysis of parking lots.
+2. Show details of a specifc parking lot.
 
-   **User**: Select one of the parking lot and choose to show the flow analysis of this parking lot.
+   **User**: Select one of the parking lot.
 
-   **System**: Displays the flow analysis of the parking lot.
+   **System**: Displays the detailed information of the parking lot.
 
-3. Displays recommended parking area including electric vehicle charging station.
+3. Displays electric vehicle charging station.
 
-   **User**: Select the "EVC" checkbox and put a pinpoint on the map or input the location name.
+   **User**: After receving the blockface map, use can select the "EVC" checkbox to show the charging station.
 
-   **System**: Displays all the recommended parking area near the place chose by user.
+   **System**: Displays all charging stations on the blockface map
 
+4. Show details of a specific charging station.
 
+   **User**: Select one of the charging station.
+
+   **System**: Displays the detailed information of the charging station.
 

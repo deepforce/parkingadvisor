@@ -280,7 +280,35 @@ th:nth-child(even), td:nth-child(even){
 	</div>
 </body>
 <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getCookie('csrftoken');
 
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        // console.log(csrftoken);
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
 
         var map = L.map('map').setView([47.6062, -122.3321], 10);
         var tiles = L.esri.basemapLayer("Gray").addTo(map);
@@ -443,20 +471,21 @@ th:nth-child(even), td:nth-child(even){
                     'gis_lat': gis.lat,
                     'gis_lon': gis.lng
                 }),
-                headers: { "X-CSRFToken":$.cookie('csrftoken') },
+                {#headers: { "X-CSRFToken":$.cookie('csrftoken') },#}
                 contentType: "application/json",
                 success: function (gis_data) {
                     //alert(gis_data);
 
                 }
-                }).done(function () {
+                }).done(function (return_data) {
                     // alert("success");
+                    return_data = JSON.parse(return_data);
                     var colorlist = {{ colorlist|safe }} ;
-                    $.getJSON("{% static "/Datasets/data/Streets_filtered.json" %}", function(data){
-                    var streets_data_filtered = data;
+                    var gdf_json = JSON.parse(return_data.gdf_json);
+                    // console.log(gdf_json);
                     var index = 0;
 
-                    streets_filtered = L.geoJSON(streets_data_filtered, {
+                    streets_filtered = L.geoJSON(gdf_json, {
                     style: function (feature) {
                         // console.log(colorlist[index]);
                         return {color: colorlist[index++], weight: 5};
@@ -470,7 +499,7 @@ th:nth-child(even), td:nth-child(even){
                                 data: JSON.stringify({
                                     'street_name': feature.properties.UNITDESC
                                 }),
-                                headers: { "X-CSRFToken":$.cookie('csrftoken') },
+                                {#headers: { "X-CSRFToken":$.cookie('csrftoken') },#}
                                 contentType: "application/json",
                                 success: function (data) {
                                     data = JSON.parse(data);
@@ -547,7 +576,6 @@ th:nth-child(even), td:nth-child(even){
                     legend.addTo(map);
 
                     });
-                });
 
             }
 
