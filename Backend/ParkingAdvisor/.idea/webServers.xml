@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="33daf5e4-b623-43b0-a577-bfff4a94a971" name="UW" url="http://vergil.u.washington.edu">
+        <fileTransfer host="vergil.u.washington.edu" port="22" rootFolder="/nfs/bronfs/uwfs/da00/d95/yuqi95" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="8508eb51-9a77-470a-b6ce-486454e1df57" name="Azure" url="http://13.66.170.237">
+        <fileTransfer host="13.66.170.237" port="22" privateKey="$USER_HOME$/.ssh/id_rsa" rootFolder="/home/deepforce" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
