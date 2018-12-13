@@ -150,13 +150,37 @@ def _loc_period(df_selected_day, hour):
     return df_rate
 
 
-def _calc_distance(gis_data, street_geojson=GIS_FILE):
+def _calc_distance(target, line_coordinate):
     """
-    Calculates the distance from a given location to all streets
+    Calculates the distance from a given location to a street line
     (midpoint of linestring)
 
-    :param gis_data: The given point coordinate, including longitude and latitude
-    :type gis_data: list
+    :param target: The given point coordinate (long, lat)
+    :type target: list
+
+    :param line_coordinate: The start and end points of a street linestring
+    :type street_geojson: list of two list
+
+    :returns: The distance between target and street line
+    :rtype: float
+    """    
+    # Calculates the midpoint of the street line
+    m_point = ((line_coordinate[0][1] + line_coordinate[1][1])/2,
+               (line_coordinate[0][0] + line_coordinate[1][0])/2)
+
+    # Calculates the distance
+    distance = geodesic(target, m_point).miles
+
+    return distance
+
+
+
+def distance_df(target_gis, street_geojson=GIS_FILE):
+    """
+    Calculates the distance from a given location to all streets
+    
+    :param target_gis: The given point coordinate (long, lat)
+    :type target_gis: list
 
     :param street_geojson: The GeoJSON file of all streets (i.e. Streets_gis.json)
     :type street_geojson: str
@@ -164,23 +188,14 @@ def _calc_distance(gis_data, street_geojson=GIS_FILE):
     :returns: a dataframe of distance of a given point to all streets
     :rtype: dataframe
     """
+    
     street_df = gpd.read_file(street_geojson)
-    coord = street_df.geometry.apply(lambda p: p.coords) # (long, lat)
+    street_df['DISTANCE'] = street_df.geometry.apply(lambda p: _calc_distance(target_gis, p.coords))
 
-    # Calculates the midpoint of each street line
-    m_list = [] # (lat, long)
-    for i in coord:
-        m_list.append(((i[0][1] + i[1][1])/2, (i[0][0] + i[1][0])/2))
-
-    # Calculates the distance
-    distance = []
-    for i in m_list:
-        distance.append(geodesic(gis_data, i).miles)
-
-    street_df['DISTANCE'] = distance
     df_dist = street_df[['UNITDESC', 'DISTANCE']]
 
-    return df_dist
+    return df_dist    
+
 
 
 def select_street(street_name, df_entire):
@@ -247,10 +262,10 @@ class Street():
 
     Attributes:
     ---------------------
-    name:   The street name.
-    plot:   Occupancy over time figure.
-    rate:   Parking rate table.
-    limit:  Parking limit (in hour).
+    name:   The street name
+    plot:   Occupancy over time figure
+    rate:   Parking rate table
+    limit:  Parking limit (in hour)
     """
 
     def __init__(self, street_name):
@@ -285,7 +300,7 @@ class Street():
             if hour == 0:
                 hour_new = '-'
             else:
-                hour_new = datetime.strptime(str(hour), '%H').strftime("%#I %p")
+                hour_new = datetime.strptime(str(hour), '%H').strftime("%I %p").lstrip('0')
             timepoint_text.append(hour_new)
         self.rate['DAYS'] = ['','WKD','SAT']
 
@@ -395,7 +410,7 @@ def recomm_layer(dest, date_time, factor=RECOMM_FACTOR):
     # Get all properties
     df_rate = rate_layer(date_time)
     df_flow = flow_layer(date_time)
-    df_dist = _calc_distance(dest)
+    df_dist = distance_df(dest)
 
     # Merge into one DataFrame
     df_recomm = pd.merge(df_rate, df_flow, on='UNITDESC')
@@ -406,7 +421,7 @@ def recomm_layer(dest, date_time, factor=RECOMM_FACTOR):
     df_recomm['DISTANCE'] = df_recomm['DISTANCE'].apply(np.log10)
 
     df_recomm.iloc[:, 1:4] = df_recomm.iloc[:, 1:4].apply(
-        lambda x: (x - np.min(x))/(np.max(x) - np.min(x)) if x.any() else x)
+        lambda x: (x - np.min(x))/(np.max(x) - np.min(x)) if (np.max(x)-np.min(x)) else 1)
 
     df_recomm['RECOMM'] = np.nan
     df_recomm['RECOMM'].values[:] = np.dot(

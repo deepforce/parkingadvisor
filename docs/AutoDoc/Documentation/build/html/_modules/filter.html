@@ -296,13 +296,37 @@
     <span class="k">return</span> <span class="n">df_rate</span>
 
 
-<span class="k">def</span> <span class="nf">_calc_distance</span><span class="p">(</span><span class="n">gis_data</span><span class="p">,</span> <span class="n">street_geojson</span><span class="o">=</span><span class="n">GIS_FILE</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_calc_distance</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">line_coordinate</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculates the distance from a given location to all streets</span>
+<span class="sd">    Calculates the distance from a given location to a street line</span>
 <span class="sd">    (midpoint of linestring)</span>
 
-<span class="sd">    :param gis_data: The given point coordinate, including longitude and latitude</span>
-<span class="sd">    :type gis_data: list</span>
+<span class="sd">    :param target: The given point coordinate (long, lat)</span>
+<span class="sd">    :type target: list</span>
+
+<span class="sd">    :param line_coordinate: The start and end points of a street linestring</span>
+<span class="sd">    :type street_geojson: list of two list</span>
+
+<span class="sd">    :returns: The distance between target and street line</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="c1"># Calculates the midpoint of the street line</span>
+    <span class="n">m_point</span> <span class="o">=</span> <span class="p">((</span><span class="n">line_coordinate</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">line_coordinate</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+               <span class="p">(</span><span class="n">line_coordinate</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">line_coordinate</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Calculates the distance</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">geodesic</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">m_point</span><span class="p">)</span><span class="o">.</span><span class="n">miles</span>
+
+    <span class="k">return</span> <span class="n">distance</span>
+
+
+
+<div class="viewcode-block" id="distance_df"><a class="viewcode-back" href="../filter.html#filter.distance_df">[docs]</a><span class="k">def</span> <span class="nf">distance_df</span><span class="p">(</span><span class="n">target_gis</span><span class="p">,</span> <span class="n">street_geojson</span><span class="o">=</span><span class="n">GIS_FILE</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the distance from a given location to all streets</span>
+<span class="sd">    </span>
+<span class="sd">    :param target_gis: The given point coordinate (long, lat)</span>
+<span class="sd">    :type target_gis: list</span>
 
 <span class="sd">    :param street_geojson: The GeoJSON file of all streets (i.e. Streets_gis.json)</span>
 <span class="sd">    :type street_geojson: str</span>
@@ -310,23 +334,14 @@
 <span class="sd">    :returns: a dataframe of distance of a given point to all streets</span>
 <span class="sd">    :rtype: dataframe</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    
     <span class="n">street_df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">street_geojson</span><span class="p">)</span>
-    <span class="n">coord</span> <span class="o">=</span> <span class="n">street_df</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span> <span class="c1"># (long, lat)</span>
+    <span class="n">street_df</span><span class="p">[</span><span class="s1">&#39;DISTANCE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">street_df</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">_calc_distance</span><span class="p">(</span><span class="n">target_gis</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">coords</span><span class="p">))</span>
 
-    <span class="c1"># Calculates the midpoint of each street line</span>
-    <span class="n">m_list</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># (lat, long)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">coord</span><span class="p">:</span>
-        <span class="n">m_list</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
-
-    <span class="c1"># Calculates the distance</span>
-    <span class="n">distance</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">m_list</span><span class="p">:</span>
-        <span class="n">distance</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">geodesic</span><span class="p">(</span><span class="n">gis_data</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">miles</span><span class="p">)</span>
-
-    <span class="n">street_df</span><span class="p">[</span><span class="s1">&#39;DISTANCE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span>
     <span class="n">df_dist</span> <span class="o">=</span> <span class="n">street_df</span><span class="p">[[</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">,</span> <span class="s1">&#39;DISTANCE&#39;</span><span class="p">]]</span>
 
-    <span class="k">return</span> <span class="n">df_dist</span>
+    <span class="k">return</span> <span class="n">df_dist</span>    </div>
+
 
 
 <div class="viewcode-block" id="select_street"><a class="viewcode-back" href="../filter.html#filter.select_street">[docs]</a><span class="k">def</span> <span class="nf">select_street</span><span class="p">(</span><span class="n">street_name</span><span class="p">,</span> <span class="n">df_entire</span><span class="p">):</span>
@@ -393,10 +408,10 @@
 
 <span class="sd">    Attributes:</span>
 <span class="sd">    ---------------------</span>
-<span class="sd">    name:   The street name.</span>
-<span class="sd">    plot:   Occupancy over time figure.</span>
-<span class="sd">    rate:   Parking rate table.</span>
-<span class="sd">    limit:  Parking limit (in hour).</span>
+<span class="sd">    name:   The street name</span>
+<span class="sd">    plot:   Occupancy over time figure</span>
+<span class="sd">    rate:   Parking rate table</span>
+<span class="sd">    limit:  Parking limit (in hour)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">street_name</span><span class="p">):</span>
@@ -431,7 +446,7 @@
             <span class="k">if</span> <span class="n">hour</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">hour_new</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">hour_new</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">hour</span><span class="p">),</span> <span class="s1">&#39;%H&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%#I %p&quot;</span><span class="p">)</span>
+                <span class="n">hour_new</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">hour</span><span class="p">),</span> <span class="s1">&#39;%H&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%I %p&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
             <span class="n">timepoint_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hour_new</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="p">[</span><span class="s1">&#39;DAYS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;WKD&#39;</span><span class="p">,</span><span class="s1">&#39;SAT&#39;</span><span class="p">]</span>
 
@@ -541,7 +556,7 @@
     <span class="c1"># Get all properties</span>
     <span class="n">df_rate</span> <span class="o">=</span> <span class="n">rate_layer</span><span class="p">(</span><span class="n">date_time</span><span class="p">)</span>
     <span class="n">df_flow</span> <span class="o">=</span> <span class="n">flow_layer</span><span class="p">(</span><span class="n">date_time</span><span class="p">)</span>
-    <span class="n">df_dist</span> <span class="o">=</span> <span class="n">_calc_distance</span><span class="p">(</span><span class="n">dest</span><span class="p">)</span>
+    <span class="n">df_dist</span> <span class="o">=</span> <span class="n">distance_df</span><span class="p">(</span><span class="n">dest</span><span class="p">)</span>
 
     <span class="c1"># Merge into one DataFrame</span>
     <span class="n">df_recomm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_rate</span><span class="p">,</span> <span class="n">df_flow</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;UNITDESC&#39;</span><span class="p">)</span>
@@ -552,7 +567,7 @@
     <span class="n">df_recomm</span><span class="p">[</span><span class="s1">&#39;DISTANCE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_recomm</span><span class="p">[</span><span class="s1">&#39;DISTANCE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">)</span>
 
     <span class="n">df_recomm</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_recomm</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
-        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="n">df_recomm</span><span class="p">[</span><span class="s1">&#39;RECOMM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
     <span class="n">df_recomm</span><span class="p">[</span><span class="s1">&#39;RECOMM&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span>

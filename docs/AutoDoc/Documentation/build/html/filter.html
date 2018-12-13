@@ -169,10 +169,10 @@ limit:  Parking limit (in hour)</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>The class <cite>Street</cite> contains all information of a on-street parking
 spot for future details display.</p>
-<p>name:   The street name.
-plot:   Occupancy over time figure.
-rate:   Parking rate table.
-limit:  Parking limit (in hour).</p>
+<p>name:   The street name
+plot:   Occupancy over time figure
+rate:   Parking rate table
+limit:  Parking limit (in hour)</p>
 <dl class="method">
 <dt id="filter.Street.get_flow_plot">
 <code class="descname">get_flow_plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#Street.get_flow_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.Street.get_flow_plot" title="Permalink to this definition">¶</a></dt>
@@ -197,6 +197,30 @@ limit:  Parking limit (in hour).</p>
 <dd><p>Get rate table</p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="function">
+<dt id="filter.distance_df">
+<code class="descclassname">filter.</code><code class="descname">distance_df</code><span class="sig-paren">(</span><em>target_gis</em>, <em>street_geojson='/Users/ju/parkingadvisor/docs/AutoDoc/Documentation/Data_clean_up/data/Streets_gis.json'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/filter.html#distance_df"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#filter.distance_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the distance from a given location to all streets</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>target_gis</strong> (<em>list</em>) – The given point coordinate (long, lat)</li>
+<li><strong>street_geojson</strong> (<em>str</em>) – The GeoJSON file of all streets (i.e. Streets_gis.json)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a dataframe of distance of a given point to all streets</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dataframe</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
