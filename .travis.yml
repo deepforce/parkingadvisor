@@ -1,0 +1,9 @@
+language: python
+python:
+  - "3.6-dev"
+# command to install dependencises
+install:
+  - pip install -r requirements.txt
+# command to run tests
+script:
+  - pytest
