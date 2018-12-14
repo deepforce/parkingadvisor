@@ -2,6 +2,10 @@ language: python
 python:
   - "3.6-dev"
 # command to install dependencises
+before_install:
+  - sudo apt-get install -y libgdal1-dev
+  - gdal-config --version
+  - pip install --upgrade pip
 install:
   - pip install -r requirements.txt
 # command to run tests
