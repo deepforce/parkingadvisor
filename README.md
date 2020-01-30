@@ -3,7 +3,7 @@
 
 ![](https://img.shields.io/github/license/mashape/apistatus.svg)
 
-Hello there! Here is **ParkingAdvisor**, a webpage-based tool to provide the best on-street parking spot for you. Here is our web app [demo](http://parkingadvisor.westus2.cloudapp.azure.com/).
+Hello there! Here is **ParkingAdvisor**, a webpage-based tool to provide the best on-street parking spot for you. Here is our web app [demo](http://35.203.178.8).
 
 Let me introduce myself.
 ## Background
