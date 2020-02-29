@@ -11,6 +11,7 @@ jobs:
           command: |
             sudo pip install pytest
             pwd
+            ls
             python test_clean_up.py
           name: Test
 
