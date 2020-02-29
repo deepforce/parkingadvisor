@@ -1,0 +1,19 @@
+version: 2.1
+
+jobs:
+  build-and-test:
+    working_directory: ~/parkingadvisor/tests
+    docker:
+      - image: circleci/python:3.6.4  # primary container for the build job
+    steps:
+      - checkout
+      - run:
+          command: |
+            sudo pip install pytest
+            python test_clean_up.py
+          name: Test
+
+workflows:
+  main:
+    jobs:
+      - build-and-test
