@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           command: |
-            sudo pip install pytest
+            sudo pip install -r requirement.txt
             python parkingadvisor/tests/test_clean_up.py
           name: Test
 
