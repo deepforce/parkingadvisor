@@ -10,7 +10,7 @@ jobs:
       - run:
           command: |
             ls
-            sudo pip install pytest pandas visual pandas numpy geopandas scipy matplotlib folium geopy
+            sudo pip install pytest pandas pandas numpy geopandas scipy matplotlib folium geopy
             python parkingadvisor/tests/test_clean_up.py
           name: Test
 
