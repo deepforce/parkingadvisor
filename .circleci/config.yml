@@ -10,7 +10,7 @@ jobs:
       - run:
           command: |
             ls
-            sudo pip install -r ../requirements.txt
+            sudo pip install -r requirements.txt
             python parkingadvisor/tests/test_clean_up.py
           name: Test
 
