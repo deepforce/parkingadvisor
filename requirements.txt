@@ -19,7 +19,7 @@ geographiclib==1.49
 geopandas==0.4.0
 geopy==1.17.0
 idna==2.8
-Jinja2==2.10
+Jinja2==2.11.3
 jsonschema==3.0.0a3
 kiwisolver==1.0.1
 MarkupSafe==1.1.0
