@@ -52,6 +52,6 @@ vincent==0.4.4
 win-inet-pton==1.0.1
 wincertstore==0.2
 Cython==0.29.1
-Django==2.1.11
+Django==2.2.24
 pytz==2018.7
 
